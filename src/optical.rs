@@ -111,7 +111,25 @@ macro_rules! optical_kernel {
         pub struct $mixer;
         impl $mixer {
             pub fn encode(&self, c: Color) -> $latent {
-                let x = c.linear();
+                self.encode_linear_unchecked(c.linear())
+            }
+            /// Encode checked linear-light RGB (each channel finite and in [0, 1]).
+            ///
+            /// `encode(c)` equals `encode_linear(c.linear())` bit for bit. A host that needs
+            /// identical results on every platform can apply the sRGB transfer with its own
+            /// portable arithmetic and pass linear values here: `Color::linear` uses the
+            /// platform's `powf`, whose last bits differ between targets (for example
+            /// native x86-64 and wasm32).
+            pub fn encode_linear(&self, x: [f64; 3]) -> Result<$latent, MixError> {
+                if x.iter().any(|v| !v.is_finite()) {
+                    return Err(MixError::NonFinite);
+                }
+                if x.iter().any(|v| !(0. ..=1.).contains(v)) {
+                    return Err(MixError::OutOfRange);
+                }
+                Ok(self.encode_linear_unchecked(x))
+            }
+            fn encode_linear_unchecked(&self, x: [f64; 3]) -> $latent {
                 let weights = recipe(x);
                 let r: [$ty; $n] = std::array::from_fn(|i| {
                     weights.iter().map(|(p, w)| *w as $ty * $basis[*p][i]).sum()

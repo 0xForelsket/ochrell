@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased - linear-light input
+
+- Add `encode_linear(&self, [f64; 3]) -> Result<_, MixError>` to `FastPigmentMixer` and
+  `ReferenceSpectralMixer`: checked linear-light RGB (finite, in [0, 1]). `encode(c)` now calls
+  the same code with `c.linear()` and is bit-identical to before (tested on 5,093 colors for both
+  mixers). Hosts that need identical results on every platform can apply the sRGB transfer with
+  their own portable arithmetic: `Color::linear` uses the platform `powf`, whose last bits differ
+  between targets (for example native x86-64 and wasm32). No model, coefficient, state format or
+  existing API changes.
+
 ## Unreleased - optimization round 2
 
 - Add opt-in `compact::CompactLatent`: 24 nonuniform f32 K/S samples plus
