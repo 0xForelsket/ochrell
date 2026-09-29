@@ -1,0 +1,6 @@
+{
+  "initial_numerical_sha256": "a1d7e19d999430a663b507015c7c24459766b886807dd19c0cd5c207a7e74134",
+  "candidate_numerical_sha256": "a1d7e19d999430a663b507015c7c24459766b886807dd19c0cd5c207a7e74134",
+  "exact_csv_match": true,
+  "note": "Initial per-band guarded implementation vs compile-time expansion map and batched validation. Preliminary timings unpinned; no isolated speedup claim. Later const fn was replaced by an equivalent const initializer for Rust 1.75 support; final validation uses the public source."
+}

@@ -7,6 +7,7 @@
 //! ```
 #![forbid(unsafe_code)]
 pub mod color;
+pub mod compact;
 pub mod conversion;
 mod generated;
 pub mod kubelka_munk;

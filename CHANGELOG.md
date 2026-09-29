@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased - optimization round 2
+
+- Add opt-in `compact::CompactLatent`: 24 nonuniform f32 K/S samples plus
+  residual, 204 bytes, persistent interpolation/weighted mixing, checked
+  import, full-state expansion and explicit little-endian serialization.
+- Retain 26 screened representations, failed positivity/error gates, frozen
+  selection and independent Rust holdout. Maximum compact/full difference on
+  that holdout is 0.029 delta E OKLab * 100; this is model agreement, not paint
+  calibration. See docs/optimization-round2.md.
+- Record the cost as well as the saving: state memory falls 40%, while compact
+  mixing/decoding is slower. Default 340-byte latents, coefficients, reference,
+  renderer integration and existing wire formats remain unchanged.
+
 ## Unreleased - optimization round 1
 
 - Separate independent per-wavelength optics from ordered RGB integration in

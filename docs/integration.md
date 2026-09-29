@@ -7,6 +7,12 @@ The [measured report](integration-results.md) covers quality, mixing, rendering,
 memory, Mixbox comparison, failures and next steps. The research paper and its
 earlier measurements remain a frozen study, not an account of these additions.
 
+Ochrell now also exposes an opt-in [204-byte compact material](optimization-round2.md).
+The existing bridge and canvas format described here still use full 340-byte
+states. Compact storage needs an explicit renderer format/cache decision and
+is not enabled by this library change. Its measured CPU cost makes full states
+preferable for frequently updated brush material.
+
 ## Setup and run
 
 Keep the two source directories side by side:

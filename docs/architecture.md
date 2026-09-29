@@ -6,6 +6,8 @@
 
 - `color` / `conversion`: checked bounded sRGB, transfer functions, OKLab and gamut mapping.
 - `optical`: new reconstruction recipe, separate K/S inference, latent interpolation, pair and weighted APIs.
+- `compact`: optional 204-byte, 24-knot approximation of full optical material,
+  with persistent mixing, full-state expansion and versioned byte payloads.
 - `optical_generated`: immutable independently fitted spectra and quadrature generated from `config.toml` and attributed CIE data.
 - `legacy`: explicit re-exports of the frozen v0.1 finite-palette mixer and concentration latents.
 - `pigment`, `latent`, `lut`, `spectrum`, `mixing`, `generated`: retained legacy implementation, used by the baseline reproduction and comparison experiments.
@@ -32,7 +34,7 @@ retaining the original reduction order. See `optimization-round1.md` for exact
 output checks, CPU measurements and retained losing candidates. This does not
 change the latent layout, numerical model or reference wavelength grid.
 
-Caching saves two spectral encodes per operation. A fast latent occupies 340 bytes; its memory cost may be unsuitable for every canvas pixel. Tile-level caches, brush-color caches or a later compressed state can be more appropriate. The original 44-byte legacy state remains available, with different numerical behavior.
+Caching saves two spectral encodes per operation. A fast latent occupies 340 bytes; its memory cost may be unsuitable for every canvas pixel. Tile-level caches, brush-color caches or opt-in compact storage can be more appropriate. The original 44-byte legacy state remains available, with different numerical behavior.
 
 `Latent::try_from_parts` and its reference counterpart now validate imported
 K/S/residual arrays for storage and bindings (finite values, K >= 0, S > 0).
@@ -46,3 +48,21 @@ No explicit SIMD, parallelism, JS binding or GPU kernel is claimed. Fixed arrays
 read-only coefficients and no OS calls in the optical kernel provide a path to
 WASM/SIMD. Existing WASM CI remains a compile check; browser execution was not
 measured here.
+
+## Optional compact storage
+
+`compact::CompactLatent` is a separate type; root `Latent` remains 340 bytes.
+Its 24 K/S knots are sampled from the full state, and missing wavelengths use
+nonnegative linear interpolation. A one-time residual adjustment during packing
+preserves immediate linear RGB. The residual cannot restore discarded optical
+shape, so future mixtures can differ. Selection used only this model's own
+synthetic states; see `optimization-round2.md` for holdout errors and failures.
+
+The compact type maintains f32 optical state through interpolation and weighted
+mixing. It has no alpha, thickness, amount or renderer dependency. `to_full`
+expands the approximation, not the original state. Its checked little-endian
+payload contains K, S and residual arrays (204 bytes), with `FORMAT_ID` stored
+and validated by the host. Do not serialize Rust struct memory or interpret old
+renderer snapshots using this format. Full hot material caches and compact cold
+storage are a possible host policy; no automatic eviction/conversion is hidden
+inside the library. Current compact decoding is slower than full decoding.

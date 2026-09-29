@@ -1,0 +1,91 @@
+    Finished release [optimized] target(s) in 0.73s
+     Running unittests src\lib.rs (target\release\deps\ochrell-56d49cb7dd31b7ae.exe)
+
+running 1 test
+test spectrum::tests::analytic_jacobian_agrees_with_central_differences ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\experiments.rs (target\release\deps\experiments-acd25b0a56ea1f48.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\generate-lut.rs (target\release\deps\generate_lut-c2989d23b1e77c06.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\revision-experiments.rs (target\release\deps\revision_experiments-65d061a9be9284d3.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\compact.rs (target\release\deps\compact-b8b43e47e431fe63.exe)
+
+running 4 tests
+test grouped_weights_and_tiny_updates_preserve_material ... ok
+test canonical_mixtures_and_tints_stay_within_the_compact_budget ... ok
+test positivity_and_validation_include_imported_extremes ... ok
+test source_reconstruction_and_exact_serialization ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests\numerics.rs (target\release\deps\numerics-6e2eb6636e62dab8.exe)
+
+running 14 tests
+test both_lut_interpolators_reproduce_affine_fields ... ok
+test canonical_hues ... ok
+test color_validation ... ok
+test endpoints_identity_symmetry ... ok
+test gamut_identity_and_bounded ... ok
+test continuity ... ok
+test km_inverse ... ok
+test neutral_spectrum ... ok
+test oklab_known ... ok
+test reference_reconstruction ... ok
+test reconstruction_grid ... ok
+test weighted ... ok
+test transfer_roundtrip ... ok
+test lut_validation ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests\optical.rs (target\release\deps\optical-7ea8385bb0403132.exe)
+
+running 7 tests
+test black_endpoint_converges_despite_cuberoot_metric ... ok
+test canonical_mixtures ... ok
+test channel_order_boundaries_are_continuous ... ok
+test f32_decoder_against_promoted_f64 ... ok
+test weighted_material_state_and_symmetry ... ok
+test endpoints_reconstruction_and_positive_optics ... ok
+test sampled_tint_luminance ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests\optical_scale.rs (target\release\deps\optical_scale-0e9ed215180e2c8e.exe)
+
+running 1 test
+test imported_optics_retain_scale_invariance_at_extreme_finite_magnitudes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\storage.rs (target\release\deps\storage-538f726985c476eb.exe)
+
+running 2 tests
+test exact_components_survive_storage_and_future_tinting ... ok
+test invalid_storage_is_rejected ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ochrell
+
+running 2 tests
+test src\compact.rs - compact (line 12) ... ok
+test src\lib.rs - (line 3) ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.34s

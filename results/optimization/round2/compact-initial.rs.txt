@@ -1,0 +1,193 @@
+//! Opt-in, lossy 204-byte material state for the v0.2, 41-band model.
+//!
+//! Stores 24 nonuniform samples of each of K and S plus a three-channel f32
+//! residual. Missing wavelengths are linearly interpolated with nonnegative
+//! weights. Mixing remains linear in stored material, with no RGB round trip.
+//!
+//! This does not replace [`crate::Latent`]. Error budgets and limitations are in
+//! `docs/optimization-round2.md`; they concern model-generated materials, not
+//! arbitrary imported spectra or measured paints. See `docs/coefficients.md`
+//! and retained CIE/data notices. Knot selection uses only Ochrell's own states.
+use crate::{Color, FastPigmentMixer, Latent, MixError};
+
+pub const SAMPLES: usize = 24;
+pub const COMPONENTS: usize = 2 * SAMPLES + 3;
+pub const BYTES: usize = COMPONENTS * 4;
+/// Save alongside serialized component bytes; no header is embedded in them.
+pub const FORMAT_ID: &str = "ochrell-v0.2-compact24-linear-ks-residual-v1";
+/// Indices on the full grid, whose wavelengths are `380 + 10 * index` nm.
+pub const INDICES: [usize; SAMPLES] = [
+    0, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 40,
+];
+
+// For valid positive optics, convex interpolation cannot produce zero or
+// infinity mathematically. Fall back for f32 underflow/overflow at imported
+// extremes. No model-domain coefficient clipping or projection is used.
+fn convex(a: f32, b: f32, t: f32) -> f32 {
+    let v = a * (1. - t) + b * t;
+    if v.is_finite() && !(v == 0. && a > 0. && b > 0.) {
+        v
+    } else {
+        (a as f64 * (1. - t as f64) + b as f64 * t as f64) as f32
+    }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct CompactLatent {
+    k: [f32; SAMPLES],
+    s: [f32; SAMPLES],
+    residual: [f32; 3],
+}
+
+impl CompactLatent {
+    /// Encode through the unchanged full model, then pack its inferred material.
+    /// Cache the result for repeated mixing: packing costs more than an update.
+    pub fn encode(color: Color) -> Self {
+        Self::try_from_full(FastPigmentMixer.encode(color)).expect("encoded model state is valid")
+    }
+
+    /// Lossy optical compression with immediate linear-RGB color preservation.
+    /// The residual correction does not recover discarded material information;
+    /// future mixtures can differ from the full state. No RGB re-encoding occurs.
+    pub fn try_from_full(z: Latent) -> Result<Self, MixError> {
+        let mut compact = Self::try_from_parts(
+            std::array::from_fn(|i| z.absorption()[INDICES[i]]),
+            std::array::from_fn(|i| z.scattering()[INDICES[i]]),
+            [0.; 3],
+        )?;
+        let target = FastPigmentMixer.decode_linear(z);
+        let reconstructed = FastPigmentMixer.decode_linear(compact.to_full());
+        compact.residual = std::array::from_fn(|i| (target[i] - reconstructed[i]) as f32);
+        Self::try_from_parts(compact.k, compact.s, compact.residual)
+    }
+
+    /// Expand the stored approximation. This cannot recover discarded samples.
+    pub fn to_full(self) -> Latent {
+        let mut k = [0.; 41];
+        let mut s = [0.; 41];
+        let mut segment = 0;
+        for band in 0..41 {
+            while segment + 1 < SAMPLES && INDICES[segment + 1] <= band {
+                segment += 1;
+            }
+            if band == INDICES[segment] {
+                k[band] = self.k[segment];
+                s[band] = self.s[segment];
+            } else {
+                let t = (band - INDICES[segment]) as f32
+                    / (INDICES[segment + 1] - INDICES[segment]) as f32;
+                k[band] = convex(self.k[segment], self.k[segment + 1], t);
+                s[band] = convex(self.s[segment], self.s[segment + 1], t);
+            }
+        }
+        Latent::try_from_parts(k, s, self.residual)
+            .expect("private compact fields preserve valid optics")
+    }
+
+    pub fn decode(self) -> Color {
+        FastPigmentMixer.decode(self.to_full())
+    }
+    pub fn absorption(&self) -> &[f32; SAMPLES] {
+        &self.k
+    }
+    pub fn scattering(&self) -> &[f32; SAMPLES] {
+        &self.s
+    }
+    pub fn residual(&self) -> [f32; 3] {
+        self.residual
+    }
+
+    /// Clamp t to [0,1], with NaN interpreted as zero, like the full latent.
+    pub fn interpolate(self, b: Self, t: f32) -> Self {
+        let t = if t.is_nan() { 0. } else { t.clamp(0., 1.) };
+        if t == 0. {
+            return self;
+        }
+        if t == 1. {
+            return b;
+        }
+        Self {
+            k: std::array::from_fn(|i| convex(self.k[i], b.k[i], t)),
+            s: std::array::from_fn(|i| convex(self.s[i], b.s[i], t)),
+            residual: std::array::from_fn(|i| convex(self.residual[i], b.residual[i], t)),
+        }
+    }
+
+    /// Normalized nonnegative weights, accumulated in f64. Carry group amounts
+    /// into outer weights when constructing a mixture in several steps.
+    pub fn weighted(items: &[(Self, f32)]) -> Result<Self, MixError> {
+        if items.is_empty() || items.iter().any(|(_, w)| !w.is_finite() || *w < 0.) {
+            return Err(MixError::InvalidWeights);
+        }
+        let total: f64 = items.iter().map(|(_, w)| *w as f64).sum();
+        if total <= 0. {
+            return Err(MixError::InvalidWeights);
+        }
+        let mut k = [0_f64; SAMPLES];
+        let mut s = [0_f64; SAMPLES];
+        let mut e = [0_f64; 3];
+        for (z, weight) in items {
+            let w = *weight as f64 / total;
+            for i in 0..SAMPLES {
+                k[i] += w * z.k[i] as f64;
+                s[i] += w * z.s[i] as f64;
+            }
+            for i in 0..3 {
+                e[i] += w * z.residual[i] as f64;
+            }
+        }
+        Self::try_from_parts(
+            k.map(|v| v as f32),
+            s.map(|v| v as f32),
+            e.map(|v| v as f32),
+        )
+    }
+
+    /// Validate the fixed compact layout. These are material coefficients, not
+    /// alpha, paint quantity or measured thickness.
+    pub fn try_from_parts(
+        k: [f32; SAMPLES],
+        s: [f32; SAMPLES],
+        residual: [f32; 3],
+    ) -> Result<Self, MixError> {
+        if k.iter()
+            .chain(s.iter())
+            .chain(residual.iter())
+            .any(|x| !x.is_finite())
+        {
+            return Err(MixError::NonFinite);
+        }
+        if k.iter().any(|x| *x < 0.) || s.iter().any(|x| *x <= 0.) {
+            return Err(MixError::OutOfRange);
+        }
+        Ok(Self { k, s, residual })
+    }
+
+    /// Portable lossless serialization of this already-lossy compact state.
+    /// Store FORMAT_ID separately; byte order is little endian, K then S then e.
+    pub fn to_le_bytes(self) -> [u8; BYTES] {
+        let mut out = [0; BYTES];
+        for (i, v) in self
+            .k
+            .iter()
+            .chain(self.s.iter())
+            .chain(self.residual.iter())
+            .enumerate()
+        {
+            out[i * 4..i * 4 + 4].copy_from_slice(&v.to_le_bytes());
+        }
+        out
+    }
+
+    /// Reads only this format's payload. Caller must check the saved FORMAT_ID.
+    pub fn try_from_le_bytes(bytes: [u8; BYTES]) -> Result<Self, MixError> {
+        let values: [f32; COMPONENTS] = std::array::from_fn(|i| {
+            f32::from_le_bytes(bytes[i * 4..i * 4 + 4].try_into().unwrap())
+        });
+        Self::try_from_parts(
+            values[..SAMPLES].try_into().unwrap(),
+            values[SAMPLES..2 * SAMPLES].try_into().unwrap(),
+            values[2 * SAMPLES..].try_into().unwrap(),
+        )
+    }
+}

@@ -40,6 +40,14 @@ let sample = mixer.decode(a.interpolate(b, 0.5));
 
 Preserving K/S states retains the inferred material; an RGB decode/re-encode round trip loses it. Grouped latent mixtures agree when outer weights carry group amounts. RGB-only repeated mixing is not generally associative.
 
+For memory-sensitive storage, the opt-in `ochrell::compact::CompactLatent`
+retains 24 nonuniform K/S samples and a residual in **204 bytes**, compared
+with the default's 340 bytes. It supports persistent mixing and checked byte
+serialization. This is lossy, model-specific compression; its measured errors,
+slower decode cost, API example and reproduction commands are in
+[optimization round 2](docs/optimization-round2.md). The default model and
+existing renderer state format are unchanged.
+
 ## What changed
 
 The unreleased [first optimization round](docs/optimization-round1.md) separates
@@ -85,6 +93,7 @@ the Rust library still builds and runs without Python or renderer code.
 | Path | Contents |
 |---|---|
 | `src/optical.rs` | Default continuous spectral model, fast and reference kernels |
+| `src/compact.rs` | Opt-in compact material storage, interpolation and serialization |
 | `tools/optical_model.py` | Independent coefficient generation and Python reference |
 | `docs/research.md`, `docs/math.md` | Literature, equations, assumptions |
 | `docs/architecture.md`, `docs/coefficients.md` | API design and parameter provenance |
@@ -102,7 +111,7 @@ The model is a synthetic optical prior. It cannot identify an actual paint from 
 
 The core has no OS dependency, unsafe code or external crate dependencies. A
 renderer-owned native bridge now exercises it from Python. SIMD/GPU, browser
-execution measurements and production state compression remain future work.
+execution measurements and production deployment of compact storage remain future work.
 A WASM compile check is configured in CI.
 
 Original code: **MIT OR Apache-2.0**. Attributed CIE data and derived numerical assets: **CC BY-SA 4.0**. This is a mixed-license open-source distribution; see `data/README.md`, `docs/coefficients.md` and retained third-party notices. No proprietary mixing artifact is required by the engine.
