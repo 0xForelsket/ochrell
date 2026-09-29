@@ -1,0 +1,106 @@
+[
+  {
+    "pair": "yellow_blue",
+    "rgb8": [
+      0,
+      104,
+      112
+    ]
+  },
+  {
+    "pair": "red_blue",
+    "rgb8": [
+      85,
+      40,
+      84
+    ]
+  },
+  {
+    "pair": "red_yellow",
+    "rgb8": [
+      241,
+      50,
+      21
+    ]
+  },
+  {
+    "pair": "cyan_magenta",
+    "rgb8": [
+      130,
+      83,
+      183
+    ]
+  },
+  {
+    "pair": "magenta_yellow",
+    "rgb8": [
+      230,
+      79,
+      73
+    ]
+  },
+  {
+    "pair": "black_white",
+    "rgb8": [
+      35,
+      35,
+      35
+    ]
+  },
+  {
+    "pair": "red_green",
+    "rgb8": [
+      128,
+      61,
+      36
+    ]
+  },
+  {
+    "pair": "blue_orange",
+    "rgb8": [
+      46,
+      90,
+      100
+    ]
+  },
+  {
+    "pair": "yellow_purple",
+    "rgb8": [
+      161,
+      82,
+      85
+    ]
+  },
+  {
+    "pair": "blue_white",
+    "rgb8": [
+      89,
+      132,
+      255
+    ]
+  },
+  {
+    "pair": "red_white",
+    "rgb8": [
+      255,
+      98,
+      117
+    ]
+  },
+  {
+    "pair": "extreme_yellow_blue",
+    "rgb8": [
+      0,
+      82,
+      93
+    ]
+  },
+  {
+    "pair": "official_default",
+    "rgb8": [
+      0,
+      67,
+      80
+    ]
+  }
+]

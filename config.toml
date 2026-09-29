@@ -1,0 +1,48 @@
+# Reproduction configuration. Python tooling reads this file; generated Rust
+# tables record these parameters. Run tools/reproduce.py after model edits.
+[model]
+# Smooth reflectance transitions; nm. Synthetic pigments, not measurements.
+blue_edge_nm = 510.0
+yellow_edge_nm = 530.0
+red_edge_nm = 600.0
+transition_nm = 22.0
+reflectance_floor = 0.025
+reflectance_ceiling = 0.94
+white_scattering = 8.0
+black_scattering = 0.5
+chromatic_scattering = 1.0
+regularization = 0.0002
+solver_iterations = 80
+
+[experiments]
+seed = 20260929
+random_colors = 10000
+random_pairs = 10000
+trajectory_steps = 1001
+benchmark_iterations = 100000
+benchmark_repeats = 7
+lut_resolutions = [17, 33, 65]
+
+[paths]
+results = "results"
+figures = "paper/figures"
+
+# v0.2 synthetic reflectance reconstruction. These are mathematical design
+# choices, not measured pigment coefficients. Changes require regeneration.
+[optical]
+reflectance_floor = 0.001
+logit_smoothing = 0.001
+initial_smoothing = 0.01
+beta = 0.5
+white_strength = 2.0
+reference_step_nm = 5
+fast_step_nm = 10
+
+[revision]
+seed = 20260930
+random_colors = 10000
+random_pairs = 10000
+trajectory_steps = 1001
+random_trajectories = 200
+benchmark_iterations = 100000
+benchmark_repeats = 7

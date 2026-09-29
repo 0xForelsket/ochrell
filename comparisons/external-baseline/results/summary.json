@@ -1,0 +1,321 @@
+{
+  "scope": "13 fixed pairs, t=0.25,0.50,0.75; screenshot-based, not SDK numerical parity or paint accuracy",
+  "samples": 39,
+  "mean_deltaE00_approx": 13.508896707623713,
+  "median_deltaE00_approx": 11.68211742045965,
+  "max_deltaE00_approx": 29.7896205707932,
+  "control_mean_deltaE00": 0.28617599971899943,
+  "control_max_deltaE00": 0.8044579804103187,
+  "control_max_channel_error": 3.25,
+  "midpoints": [
+    {
+      "pair": "yellow_blue",
+      "a": "#ffdc00",
+      "b": "#1446ff",
+      "ours": [
+        49,
+        144,
+        112
+      ],
+      "mixbox_approx": [
+        93,
+        165,
+        88
+      ],
+      "deltaE00_approx": 13.529862364165156,
+      "spectral": [
+        81,
+        160,
+        68
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 3.2978640478443473,
+      "spectral_vs_ours_deltaE00": 14.526952133208388
+    },
+    {
+      "pair": "red_blue",
+      "a": "#e61e28",
+      "b": "#1446ff",
+      "ours": [
+        88,
+        0,
+        71
+      ],
+      "mixbox_approx": [
+        123,
+        36,
+        123
+      ],
+      "deltaE00_approx": 11.180216781485564,
+      "spectral": [
+        80,
+        50,
+        67
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 16.493685582667105,
+      "spectral_vs_ours_deltaE00": 13.139705217977582
+    },
+    {
+      "pair": "red_yellow",
+      "a": "#e61e28",
+      "b": "#ffdc00",
+      "ours": [
+        242,
+        118,
+        14
+      ],
+      "mixbox_approx": [
+        254,
+        97,
+        42
+      ],
+      "deltaE00_approx": 9.792371899012197,
+      "spectral": [
+        252,
+        89,
+        36
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 1.6156236788566585,
+      "spectral_vs_ours_deltaE00": 10.804440738031209
+    },
+    {
+      "pair": "cyan_magenta",
+      "a": "#00bed2",
+      "b": "#dc00a0",
+      "ours": [
+        148,
+        101,
+        130
+      ],
+      "mixbox_approx": [
+        117,
+        71,
+        177
+      ],
+      "deltaE00_approx": 19.256433448882383,
+      "spectral": [
+        97,
+        69,
+        190
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 4.819988453116525,
+      "spectral_vs_ours_deltaE00": 22.90243428973255
+    },
+    {
+      "pair": "magenta_yellow",
+      "a": "#dc00a0",
+      "b": "#ffdc00",
+      "ours": [
+        237,
+        120,
+        116
+      ],
+      "mixbox_approx": [
+        239,
+        104,
+        75
+      ],
+      "deltaE00_approx": 8.79344502999562,
+      "spectral": [
+        246,
+        89,
+        64
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 2.835624369064247,
+      "spectral_vs_ours_deltaE00": 10.026058787266333
+    },
+    {
+      "pair": "black_white",
+      "a": "#000000",
+      "b": "#ffffff",
+      "ours": [
+        141,
+        141,
+        141
+      ],
+      "mixbox_approx": [
+        124,
+        122,
+        127
+      ],
+      "deltaE00_approx": 7.63015480595633,
+      "spectral": [
+        166,
+        166,
+        166
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 14.994655024409909,
+      "spectral_vs_ours_deltaE00": 7.818124942650944
+    },
+    {
+      "pair": "red_green",
+      "a": "#e61e28",
+      "b": "#1eaa37",
+      "ours": [
+        137,
+        100,
+        39
+      ],
+      "mixbox_approx": [
+        146,
+        88,
+        48
+      ],
+      "deltaE00_approx": 10.055912661634666,
+      "spectral": [
+        99,
+        72,
+        55
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 12.898717982252835,
+      "spectral_vs_ours_deltaE00": 16.212058666406477
+    },
+    {
+      "pair": "blue_orange",
+      "a": "#1446ff",
+      "b": "#ff8200",
+      "ours": [
+        103,
+        87,
+        91
+      ],
+      "mixbox_approx": [
+        99,
+        118,
+        73
+      ],
+      "deltaE00_approx": 29.7896205707932,
+      "spectral": [
+        80,
+        116,
+        52
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 5.663778344007597,
+      "spectral_vs_ours_deltaE00": 32.7653897166853
+    },
+    {
+      "pair": "yellow_purple",
+      "a": "#ffdc00",
+      "b": "#8c1eb4",
+      "ours": [
+        162,
+        130,
+        134
+      ],
+      "mixbox_approx": [
+        178,
+        139,
+        70
+      ],
+      "deltaE00_approx": 24.97737389203491,
+      "spectral": [
+        206,
+        123,
+        65
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 13.215639234901449,
+      "spectral_vs_ours_deltaE00": 21.927783173868583
+    },
+    {
+      "pair": "blue_white",
+      "a": "#1446ff",
+      "b": "#ffffff",
+      "ours": [
+        107,
+        188,
+        255
+      ],
+      "mixbox_approx": [
+        108,
+        161,
+        254
+      ],
+      "deltaE00_approx": 9.066978442954676,
+      "spectral": [
+        95,
+        165,
+        255
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 2.889186373359395,
+      "spectral_vs_ours_deltaE00": 6.993050129200687
+    },
+    {
+      "pair": "red_white",
+      "a": "#e61e28",
+      "b": "#ffffff",
+      "ours": [
+        255,
+        166,
+        124
+      ],
+      "mixbox_approx": [
+        252,
+        119,
+        148
+      ],
+      "deltaE00_approx": 23.242781347076107,
+      "spectral": [
+        255,
+        95,
+        109
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 8.483378838416659,
+      "spectral_vs_ours_deltaE00": 20.964156348402987
+    },
+    {
+      "pair": "extreme_yellow_blue",
+      "a": "#ffff00",
+      "b": "#0000ff",
+      "ours": [
+        60,
+        174,
+        124
+      ],
+      "mixbox_approx": [
+        77,
+        149,
+        100
+      ],
+      "deltaE00_approx": 8.123905995610937,
+      "spectral": [
+        57,
+        143,
+        84
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 3.8225773004286414,
+      "spectral_vs_ours_deltaE00": 10.593430218128601
+    },
+    {
+      "pair": "official_default",
+      "a": "#002185",
+      "b": "#fcd200",
+      "ours": [
+        73,
+        97,
+        107
+      ],
+      "mixbox_approx": [
+        41,
+        128,
+        57
+      ],
+      "deltaE00_approx": 29.53010961610603,
+      "spectral": [
+        61,
+        147,
+        62
+      ],
+      "spectral_vs_mixbox_deltaE00_approx": 7.3361039840999664,
+      "spectral_vs_ours_deltaE00": 33.617039852233404
+    }
+  ],
+  "spectral_vs_mixbox_deltaE00_approx": {
+    "mean": 7.857837533245932,
+    "median": 5.663778344007597,
+    "max": 23.585601256582695
+  },
+  "spectral_vs_ours_deltaE00": {
+    "mean": 15.626534608062707,
+    "median": 14.526952133208388,
+    "max": 33.617039852233404
+  }
+}

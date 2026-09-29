@@ -1,0 +1,28 @@
+{
+  "source_run": "out\\ochrell-storm",
+  "source_strokes_sha256": "032ba76de8753d5a7bccd1d33073104abf8a3b87d79be1f2b281c25103d50214",
+  "shared_rgb_geometry_sha256": "4d4a8a80d10135e295257f8f856efe3896c4445cb17e970354bd7476d73c5d7a",
+  "repeats": 3,
+  "width": 600,
+  "strokes": 13988,
+  "backends": {
+    "mixbox": {
+      "rgb_sha256": "5b96563fbef55c34de8da3c4d9536b8fc3318e6da6a2ecb84c7855a5f6544044",
+      "paint_seconds_median": 4.546360600099433,
+      "lighting_seconds_median": 0.12728020001668483
+    },
+    "mixbox-material": {
+      "rgb_sha256": "91646d84ad4ff490a84f0a06f06a9fbff1a6c072400d662017463ea9e46624f4",
+      "paint_seconds_median": 14.77347089984687,
+      "lighting_seconds_median": 0.13233789999503642
+    },
+    "ochrell": {
+      "rgb_sha256": "8c90e79af8697b25bc142bf537484379e1b02ecb2e6549aecfb0ead65d028db6",
+      "same_height_as_matched_mixbox": true,
+      "paint_seconds_median": 18.033317699970212,
+      "lighting_seconds_median": 0.11691709997830912
+    }
+  },
+  "scope": "same source-derived RGB loads, regenerated authoring streaks, same paths/pressure/params/seeds/layers; no replanning; scalar CPU native kernels",
+  "seed": 1907
+}

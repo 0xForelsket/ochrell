@@ -1,0 +1,146 @@
+{
+  "T1 across-profile ridges (w=2.5%cw @600px) >= 3": {
+    "pass": true,
+    "detail": "4 local maxima in 19 px"
+  },
+  "T1 dry tail < 60% of middle": {
+    "pass": true,
+    "detail": "middle 0.265 tail 0.000"
+  },
+  "T1 single coverage per stroke (max cover <= 1.001) and no aliasing steps inside (< 0.8)": {
+    "pass": true,
+    "detail": "max cover 0.982, max interior step 0.42"
+  },
+  "T1 replay 2400 downsampled ~= 600 render (mean |diff| < 0.06)": {
+    "pass": true,
+    "detail": "mean abs diff 0.0061"
+  },
+  "T2 mixbox blue+yellow midpoint is green (Lab hue 90-160)": {
+    "pass": true,
+    "detail": "mixbox hue 142 deg, rgb-lerp hue 111 deg"
+  },
+  "T3 pick-up on wet side (b* < -8), trail fades on dry side (near < far), far end clean (L* > 84)": {
+    "pass": true,
+    "detail": "wet b* -31.8, dry near b* 11.8, dry far b* 15.4, far L* 92.6"
+  },
+  "T3 smudge carries blue into orange and decays (b* near < far <= orange)": {
+    "pass": true,
+    "detail": "b* near 52.0, far 71.1, untouched orange 71.1"
+  },
+  "T4 lighting follows height (shade toward > away, spec toward > 2x away, flat ~ 1)": {
+    "pass": true,
+    "detail": "shade toward 1.11 away 0.79; spec toward 0.0228 away 0.0001; flat shade 0.999"
+  },
+  "T4 weave attenuated under thick paint (< 50% of bare)": {
+    "pass": true,
+    "detail": "thick 0.23 bare 1.00"
+  },
+  "T6 scumble alpha correlates with height above local mean (corr > 0.3)": {
+    "pass": true,
+    "detail": "corr 0.489"
+  },
+  "T5 mean Lab error decreases every layer": {
+    "pass": true,
+    "detail": "9.3 -> 5.5 -> 5.2 -> 4.8 -> 4.7"
+  },
+  "T5 strokes near the sphere edge follow the contour (>= 65% within 60 deg of tangent)": {
+    "pass": true,
+    "detail": "100% of 310 edge strokes"
+  },
+  "T5 replay at 2x matches the plan render (mean |diff| < 0.05)": {
+    "pass": true,
+    "detail": "mean abs diff 0.0035"
+  },
+  "T7 bristle ridges across a 2% brush at 2400: (p90-p10)/mean > 0.25 and >= 8 lanes": {
+    "pass": true,
+    "detail": "amplitude 0.46, 9 maxima across 52 px"
+  },
+  "T7 edge crispness: cover 0.1->0.9 within <= 3 px at 2400 (hardness 0.75)": {
+    "pass": true,
+    "detail": "median 1.0 px"
+  },
+  "T7 two-colour load: >= 3 colour switches across the stroke (marble 1.0)": {
+    "pass": true,
+    "detail": "6 switches, 12/53 px red"
+  },
+  "T7 levees: both edge zones > 1.08 x centre height": {
+    "pass": true,
+    "detail": "left 0.98 right 0.99 centre 0.61"
+  },
+  "T7 satin not gel: at bump 3 / spec 0.18 mean specular on paint < 0.02 and p99 < 0.12": {
+    "pass": true,
+    "detail": "mean 0.0066 p99 0.052"
+  },
+  "T8 swatch sheet has every required swatch, boxes in canvas-width units, each says what it tests": {
+    "pass": true,
+    "detail": "17 swatches, missing []"
+  },
+  "T8 same seed -> bit-identical strokes; other seed -> different strokes": {
+    "pass": true,
+    "detail": "210 strokes"
+  },
+  "T8 hairline metric: strata sky at shade_blur 0.0006 >= 3x the 0.002 value (flaw 1)": {
+    "pass": true,
+    "detail": "strata 0.180 vs 0.033; whole sheet 0.247 vs 0.119"
+  },
+  "T8 seam metrics: outline hairlines of overlapping strokes clearly higher at 0.0006 (deep: >2x and > 0.03 vs ~0)": {
+    "pass": true,
+    "detail": "seam 0.274/0.087 vs 0.085/0.000"
+  },
+  "T8 bristle metrics: the blurred (silky) light has clearly less bristle texture (flaw 2), height-based bristle is light-independent": {
+    "pass": true,
+    "detail": "bristle_L 2.96 -> 1.79, relief 4.73 -> 1.65"
+  },
+  "T8 no swatch metric raised an error": {
+    "pass": true,
+    "detail": "errors in []"
+  },
+  "T8 metrics are resolution independent: hairline, seams, chroma, blend green agree within 12% between 1250 and 1600 px": {
+    "pass": true,
+    "detail": "0.247/0.247, 0.274/0.272, 38.263/38.337, 34.052/33.891"
+  },
+  "T8 blend correctness: blue over wet yellow goes green with Mixbox (a* < both parents, on the mixing curve) and not with an RGB mixer": {
+    "pass": true,
+    "detail": "mixbox green 33.9 off-curve 2.7; rgb green 0.2 off-curve 28.8"
+  },
+  "T8 wet-in-wet mixes more than wet-on-dry (dry_after), and more pickup mixes more": {
+    "pass": true,
+    "detail": "contrast 0.15, pk060 contrast 0.61"
+  },
+  "T8 bristle_L: 0 on a silky field, positive on a bristle-scale grain and proportional to its amplitude": {
+    "pass": true,
+    "detail": "silky 0.000, grain 1.47, double grain 2.94"
+  },
+  "T8 hairline: ~0 on an even lighting term, jumps for a 2 px dark line; deep-line share appears": {
+    "pass": true,
+    "detail": "0.0000 -> 0.0385, deep 0.0385"
+  },
+  "T8 dab faceting: round dab ~0, hexagon > 0.05 (flaw 3)": {
+    "pass": true,
+    "detail": "circle 0.004, hexagon 0.073"
+  },
+  "T8 compare: exit 1 on regression (hairlines appear), 0 for identical runs, 2 for different widths; thresholds file is well formed": {
+    "pass": true,
+    "detail": "exit codes 1, 0, 2 (reverse direction: 1); 62 rules"
+  },
+  "T8 compare honours a custom thresholds file": {
+    "pass": true,
+    "detail": "exit 1"
+  },
+  "T8 determinism: identical strokes, near-identical image, reproducible planner": {
+    "pass": true,
+    "detail": "max |diff| rgb 0.0e+00, height 0.0e+00"
+  },
+  "T8 peak-memory probe runs in a fresh process": {
+    "pass": false,
+    "detail": "nan MB for 0.00 Mpx"
+  },
+  "T8 `eval run` writes eval.json, contact_sheet.png and summary.md": {
+    "pass": true,
+    "detail": "exit 0 [True, True, True] Finished `release` profile [optimized] target(s) in 0.02s"
+  },
+  "T8 `eval reference DIR` computes image metrics and calibration targets (synthetic stand-ins, offline)": {
+    "pass": true,
+    "detail": "exit 0 "
+  }
+}

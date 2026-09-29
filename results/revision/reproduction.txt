@@ -1,0 +1,72 @@
+   Compiling pigment-mix v0.2.0 (/workspace/scratch/8c24eee05c7e/revision-current/work/pigment-mix)
+    Finished release [optimized] target(s) in 2.44s
+     Running unittests src/lib.rs (target/release/deps/pigment_mix-44710975fe1c8b75)
+
+running 1 test
+test spectrum::tests::analytic_jacobian_agrees_with_central_differences ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/experiments.rs (target/release/deps/experiments-281fa53246dcab11)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/generate-lut.rs (target/release/deps/generate_lut-6928c8bf6cdc9f58)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/revision-experiments.rs (target/release/deps/revision_experiments-6699a9f324b3d6ba)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/numerics.rs (target/release/deps/numerics-53d9e00d3b5b7ecf)
+
+running 14 tests
+test color_validation ... ok
+test both_lut_interpolators_reproduce_affine_fields ... ok
+test gamut_identity_and_bounded ... ok
+test neutral_spectrum ... ok
+test km_inverse ... ok
+test oklab_known ... ok
+test reference_reconstruction ... ok
+test canonical_hues ... ok
+test endpoints_identity_symmetry ... ok
+test transfer_roundtrip ... ok
+test reconstruction_grid ... ok
+test continuity ... ok
+test lut_validation ... ok
+test weighted ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/optical.rs (target/release/deps/optical-30eba9c379c34064)
+
+running 7 tests
+test canonical_mixtures ... ok
+test black_endpoint_converges_despite_cuberoot_metric ... ok
+test weighted_material_state_and_symmetry ... ok
+test channel_order_boundaries_are_continuous ... ok
+test f32_decoder_against_promoted_f64 ... ok
+test endpoints_reconstruction_and_positive_optics ... ok
+test sampled_tint_luminance ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+
+   Doc-tests pigment_mix
+
+running 1 test
+test src/lib.rs - (line 3) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+    Finished release [optimized] target(s) in 0.00s
+    Finished release [optimized] target(s) in 0.00s
+     Running `target/release/revision-experiments 10000 10000 1001 200 100000 7 20260930`
+Generated revised paper Markdown, TeX, PDF and results documents.
+Reproduced v0.2: tests, fit, experiments, ablations, comparisons, figures and paper.

@@ -1,0 +1,345 @@
+{
+  "anchor_linear_errors": [
+    [
+      -0.0010000000014122046,
+      -0.0010000000014129817,
+      -0.0010000000014117605
+    ],
+    [
+      2.2836932138899958e-05,
+      -0.00010941983316192783,
+      -1.4351715562632705e-05
+    ],
+    [
+      -1.3858327972182671e-05,
+      4.3197756305266705e-05,
+      -3.660282142692317e-05
+    ],
+    [
+      -2.06689449888664e-07,
+      -2.1737119046294495e-05,
+      1.4447580534006181e-05
+    ],
+    [
+      -2.2836927715763622e-05,
+      0.00010941981805182629,
+      1.4351713243877817e-05
+    ],
+    [
+      1.3858327984251143e-05,
+      -4.3197756336432747e-05,
+      3.6602821515909715e-05
+    ],
+    [
+      2.0661215453278425e-07,
+      2.1737023864394807e-05,
+      -1.4447574853138079e-05
+    ],
+    [
+      0.0010000000014119732,
+      0.0010000000014119726,
+      0.0010000000014119739
+    ]
+  ],
+  "pairs": [
+    {
+      "pair": "yellow_blue",
+      "constant_s": [
+        0,
+        117,
+        94
+      ],
+      "scalar_budget": [
+        0,
+        113,
+        97
+      ],
+      "luminance_budget": [
+        75,
+        145,
+        76
+      ],
+      "band_budget": [
+        140,
+        153,
+        151
+      ]
+    },
+    {
+      "pair": "red_blue",
+      "constant_s": [
+        84,
+        44,
+        73
+      ],
+      "scalar_budget": [
+        76,
+        47,
+        84
+      ],
+      "luminance_budget": [
+        92,
+        42,
+        67
+      ],
+      "band_budget": [
+        146,
+        65,
+        150
+      ]
+    },
+    {
+      "pair": "red_yellow",
+      "constant_s": [
+        242,
+        56,
+        17
+      ],
+      "scalar_budget": [
+        244,
+        62,
+        16
+      ],
+      "luminance_budget": [
+        250,
+        77,
+        18
+      ],
+      "band_budget": [
+        236,
+        141,
+        37
+      ]
+    },
+    {
+      "pair": "cyan_magenta",
+      "constant_s": [
+        113,
+        55,
+        180
+      ],
+      "scalar_budget": [
+        108,
+        63,
+        189
+      ],
+      "luminance_budget": [
+        108,
+        63,
+        189
+      ],
+      "band_budget": [
+        148,
+        129,
+        183
+      ]
+    },
+    {
+      "pair": "magenta_yellow",
+      "constant_s": [
+        232,
+        63,
+        75
+      ],
+      "scalar_budget": [
+        251,
+        94,
+        65
+      ],
+      "luminance_budget": [
+        243,
+        78,
+        68
+      ],
+      "band_budget": [
+        229,
+        140,
+        115
+      ]
+    },
+    {
+      "pair": "black_white",
+      "constant_s": [
+        7,
+        7,
+        7
+      ],
+      "scalar_budget": [
+        142,
+        142,
+        142
+      ],
+      "luminance_budget": [
+        142,
+        142,
+        142
+      ],
+      "band_budget": [
+        142,
+        142,
+        142
+      ]
+    },
+    {
+      "pair": "red_green",
+      "constant_s": [
+        112,
+        65,
+        50
+      ],
+      "scalar_budget": [
+        119,
+        62,
+        49
+      ],
+      "luminance_budget": [
+        107,
+        70,
+        51
+      ],
+      "band_budget": [
+        150,
+        122,
+        50
+      ]
+    },
+    {
+      "pair": "blue_orange",
+      "constant_s": [
+        54,
+        100,
+        70
+      ],
+      "scalar_budget": [
+        58,
+        101,
+        68
+      ],
+      "luminance_budget": [
+        90,
+        109,
+        55
+      ],
+      "band_budget": [
+        148,
+        111,
+        148
+      ]
+    },
+    {
+      "pair": "yellow_purple",
+      "constant_s": [
+        161,
+        78,
+        83
+      ],
+      "scalar_budget": [
+        155,
+        74,
+        87
+      ],
+      "luminance_budget": [
+        197,
+        109,
+        71
+      ],
+      "band_budget": [
+        178,
+        142,
+        127
+      ]
+    },
+    {
+      "pair": "blue_white",
+      "constant_s": [
+        40,
+        101,
+        255
+      ],
+      "scalar_budget": [
+        100,
+        153,
+        255
+      ],
+      "luminance_budget": [
+        84,
+        140,
+        255
+      ],
+      "band_budget": [
+        142,
+        150,
+        255
+      ]
+    },
+    {
+      "pair": "red_white",
+      "constant_s": [
+        243,
+        53,
+        63
+      ],
+      "scalar_budget": [
+        255,
+        119,
+        136
+      ],
+      "luminance_budget": [
+        252,
+        74,
+        88
+      ],
+      "band_budget": [
+        237,
+        143,
+        144
+      ]
+    },
+    {
+      "pair": "extreme_yellow_blue",
+      "constant_s": [
+        0,
+        81,
+        92
+      ],
+      "scalar_budget": [
+        0,
+        81,
+        92
+      ],
+      "luminance_budget": [
+        22,
+        107,
+        93
+      ],
+      "band_budget": [
+        135,
+        151,
+        154
+      ]
+    },
+    {
+      "pair": "official_default",
+      "constant_s": [
+        0,
+        65,
+        72
+      ],
+      "scalar_budget": [
+        0,
+        90,
+        73
+      ],
+      "luminance_budget": [
+        65,
+        132,
+        67
+      ],
+      "band_budget": [
+        142,
+        139,
+        99
+      ]
+    }
+  ]
+}

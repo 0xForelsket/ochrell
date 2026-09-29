@@ -1,0 +1,8 @@
+{
+  "name": "pigment-mixer-comparison",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Independent evaluation harness; not a dependency of pigment-mix",
+  "scripts": { "spectral": "python3 tools/run_spectral.py" },
+  "dependencies": { "spectral.js": "3.0.0" }
+}

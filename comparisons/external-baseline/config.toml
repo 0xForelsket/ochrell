@@ -1,0 +1,25 @@
+# Browser viewport is 1363 x 936 pixels. Coordinates come from the visible
+# canvas, with its bounds recorded in captures/manifest.json. The RGB control
+# validates this mapping independently at t=.25,.5,.75.
+[sampling]
+y_start = 200
+y_span = 400
+mixbox_x = 480
+rgb_x = 680
+half_width = 20
+# Ignore JPEG antialiasing at bar endpoints in the visual gradients.
+first_row = 204
+last_row = 596
+comparison_ratios = [0.25, 0.50, 0.75]
+
+[figure]
+dpi = 180
+width_inches = 14.5
+height_inches = 10.2
+
+# Spectral.js is an evaluation-only dependency, pinned in package-lock.json.
+# Default tinting strength and perceptual gamut mapping; no per-pair tuning.
+[spectral]
+version = "3.0.0"
+tinting_strength = 1.0
+gamut_mapping = "map"

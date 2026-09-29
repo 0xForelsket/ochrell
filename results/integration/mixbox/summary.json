@@ -1,0 +1,102 @@
+{
+  "seed": 20260930,
+  "mixbox_version": "2.0.0",
+  "mixbox_license": "CC BY-NC 4.0, Secret Weapons; existing optional renderer backend",
+  "native_profile": "both kernels in one release binary: lto=false, codegen-units=1, same CPU thread, cached states; no native Mixbox encode claimed",
+  "adapter_scope": "actual Python adapters including validation, allocation, NumPy/ctypes; not a native encoder contest",
+  "rendering_scope": "original Mixbox has alpha-as-mixture transport; matched Mixbox pads 7 floats to 85 and uses the same amount, coverage and geometry as Ochrell",
+  "brush": {
+    "320": {
+      "mixbox": {
+        "rgb_sha256": "f1e18eb671415a432653c7e3f4848eaf93d3d3beca5ec1fc5d4385f025316cb5",
+        "paint_seconds_median": 0.03181720001157373,
+        "lighting_seconds_median": 0.02444639999885112,
+        "canvas_bytes": 6712320
+      },
+      "mixbox-material": {
+        "rgb_sha256": "312fb3f48e378ada4bdd68789a1adf28b101cc09aca09b746d0e73d3ce0ee08a",
+        "paint_seconds_median": 0.07615329994587228,
+        "lighting_seconds_median": 0.024449100019410253,
+        "canvas_bytes": 43924480
+      },
+      "ochrell": {
+        "rgb_sha256": "e594cf4670ab577aaf53f83271542c9fe75b53f909b175c6010179c44511511e",
+        "difference_from_matched_mixbox": {
+          "mean": 2.2686202927806978,
+          "p95": 6.944321904437216,
+          "max": 10.183461964232118
+        },
+        "same_height_as_matched_mixbox": true,
+        "paint_seconds_median": 0.11155559972394258,
+        "lighting_seconds_median": 0.025810100021772087,
+        "canvas_bytes": 43924480
+      }
+    },
+    "600": {
+      "mixbox": {
+        "rgb_sha256": "1661bf2f5955d2a9ca9d0b3736462590423e1bde990138802d78baec8cbce58b",
+        "paint_seconds_median": 0.09492060000775382,
+        "lighting_seconds_median": 0.12126200000056997,
+        "canvas_bytes": 23598000
+      },
+      "mixbox-material": {
+        "rgb_sha256": "35640a7ac0ad80d5b740ec57a6d51266f1cab98f3f18305e39901fdaca8cdb6a",
+        "paint_seconds_median": 0.2378834001137875,
+        "lighting_seconds_median": 0.10182789998361841,
+        "canvas_bytes": 154422000
+      },
+      "ochrell": {
+        "rgb_sha256": "96e2335447c245c5611f74f2a5f17f315feaa9afb26900c1c3aa73e3884328cf",
+        "difference_from_matched_mixbox": {
+          "mean": 2.286798296467453,
+          "p95": 6.9326671222110345,
+          "max": 12.316352525928854
+        },
+        "same_height_as_matched_mixbox": true,
+        "paint_seconds_median": 0.3492675001034513,
+        "lighting_seconds_median": 0.10902249999344349,
+        "canvas_bytes": 154422000
+      }
+    }
+  },
+  "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)\nbinary: rustc\ncommit-hash: ed61e7d7e242494fb7057f2657300d9e77bb4fcb\ncommit-date: 2025-11-07\nhost: x86_64-pc-windows-msvc\nrelease: 1.91.1\nLLVM version: 21.1.2\n",
+  "python": "3.12.11 (main, Jul 11 2025, 22:40:18) [MSC v.1944 64 bit (AMD64)]",
+  "source_sha256": {
+    "oilpaint\\mix.py": "9a26065e42e8f5bdb4465a0aa95fc04379d054bf81e04a8757e7299301268fb2",
+    "spikes\\oilcore\\src\\kernel.rs": "09adb2956f3d70c3264334509f2861632833dc64387f227c9b01bfb39ccd09db",
+    "native\\ochrell-brush\\src\\material.rs": "403db40292bfe2226054e4c1405d5e3c4f925dfb28724af3218115e978cd744c",
+    "tools\\compare_mixbox.py": "52f64b4bdebdad82ffbee76922788ea1651423f55a08a24a6cdd2d2925f65314"
+  },
+  "fresh_process_memory": [
+    {
+      "backend": "mixbox",
+      "width": 600,
+      "height": 690,
+      "baseline_mb": 65.421312,
+      "paint_peak_mb": 89.161728,
+      "paint_light_peak_mb": 147.570688,
+      "current_mb": 94.5152,
+      "pixel_visits": 413677
+    },
+    {
+      "backend": "mixbox-material",
+      "width": 600,
+      "height": 690,
+      "baseline_mb": 65.55648,
+      "paint_peak_mb": 219.521024,
+      "paint_light_peak_mb": 277.929984,
+      "current_mb": 224.874496,
+      "pixel_visits": 413677
+    },
+    {
+      "backend": "ochrell",
+      "width": 600,
+      "height": 690,
+      "baseline_mb": 60.60032,
+      "paint_peak_mb": 215.146496,
+      "paint_light_peak_mb": 273.661952,
+      "current_mb": 220.606464,
+      "pixel_visits": 413677
+    }
+  ]
+}

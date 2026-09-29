@@ -1,0 +1,3 @@
+# Preserve byte-level provenance hashes in the imported source/research archive.
+# Source formatting changes should be explicit, not checkout-dependent.
+* -text

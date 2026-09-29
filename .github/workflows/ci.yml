@@ -1,0 +1,12 @@
+name: numerical checks
+on: [push, pull_request]
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - run: cargo test --all-targets
+      - run: cargo check --lib --target wasm32-unknown-unknown

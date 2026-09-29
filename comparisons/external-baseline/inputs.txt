@@ -1,0 +1,13 @@
+yellow_blue 255 220 0 20 70 255
+red_blue 230 30 40 20 70 255
+red_yellow 230 30 40 255 220 0
+cyan_magenta 0 190 210 220 0 160
+magenta_yellow 220 0 160 255 220 0
+black_white 0 0 0 255 255 255
+red_green 230 30 40 30 170 55
+blue_orange 20 70 255 255 130 0
+yellow_purple 255 220 0 140 30 180
+blue_white 20 70 255 255 255 255
+red_white 230 30 40 255 255 255
+extreme_yellow_blue 255 255 0 0 0 255
+official_default 0 33 133 252 210 0

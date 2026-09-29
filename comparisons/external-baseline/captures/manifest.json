@@ -1,0 +1,90 @@
+{
+  "url": "https://scrtwpns.com/mixbox/examples/gradients",
+  "captured": "2026-09-29T14:30:38.824Z",
+  "canvas": {
+    "x": 356.5,
+    "y": 136,
+    "width": 650,
+    "height": 465
+  },
+  "cases": [
+    {
+      "pair": "yellow_blue",
+      "a": "#ffdc00",
+      "b": "#1446ff",
+      "file": "yellow_blue.jpg"
+    },
+    {
+      "pair": "red_blue",
+      "a": "#e61e28",
+      "b": "#1446ff",
+      "file": "red_blue.jpg"
+    },
+    {
+      "pair": "red_yellow",
+      "a": "#e61e28",
+      "b": "#ffdc00",
+      "file": "red_yellow.jpg"
+    },
+    {
+      "pair": "cyan_magenta",
+      "a": "#00bed2",
+      "b": "#dc00a0",
+      "file": "cyan_magenta.jpg"
+    },
+    {
+      "pair": "magenta_yellow",
+      "a": "#dc00a0",
+      "b": "#ffdc00",
+      "file": "magenta_yellow.jpg"
+    },
+    {
+      "pair": "black_white",
+      "a": "#000000",
+      "b": "#ffffff",
+      "file": "black_white.jpg"
+    },
+    {
+      "pair": "red_green",
+      "a": "#e61e28",
+      "b": "#1eaa37",
+      "file": "red_green.jpg"
+    },
+    {
+      "pair": "blue_orange",
+      "a": "#1446ff",
+      "b": "#ff8200",
+      "file": "blue_orange.jpg"
+    },
+    {
+      "pair": "yellow_purple",
+      "a": "#ffdc00",
+      "b": "#8c1eb4",
+      "file": "yellow_purple.jpg"
+    },
+    {
+      "pair": "blue_white",
+      "a": "#1446ff",
+      "b": "#ffffff",
+      "file": "blue_white.jpg"
+    },
+    {
+      "pair": "red_white",
+      "a": "#e61e28",
+      "b": "#ffffff",
+      "file": "red_white.jpg"
+    },
+    {
+      "pair": "extreme_yellow_blue",
+      "a": "#ffff00",
+      "b": "#0000ff",
+      "file": "extreme_yellow_blue.jpg"
+    },
+    {
+      "pair": "official_default",
+      "a": "#002185",
+      "b": "#fcd200",
+      "file": "official_default.jpg"
+    }
+  ]
+}

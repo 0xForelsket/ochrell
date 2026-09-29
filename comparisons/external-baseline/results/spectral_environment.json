@@ -1,0 +1,276 @@
+{
+  "version": "3.0.0",
+  "node": "v24.19.0",
+  "settings": {
+    "version": "3.0.0",
+    "tinting_strength": 1,
+    "gamut_mapping": "map"
+  },
+  "checks": [
+    {
+      "pair": "yellow_blue",
+      "t": 0,
+      "input": "#ffdc00",
+      "output": [
+        255,
+        220,
+        0
+      ]
+    },
+    {
+      "pair": "yellow_blue",
+      "t": 1,
+      "input": "#1446ff",
+      "output": [
+        20,
+        70,
+        255
+      ]
+    },
+    {
+      "pair": "red_blue",
+      "t": 0,
+      "input": "#e61e28",
+      "output": [
+        230,
+        30,
+        40
+      ]
+    },
+    {
+      "pair": "red_blue",
+      "t": 1,
+      "input": "#1446ff",
+      "output": [
+        20,
+        70,
+        255
+      ]
+    },
+    {
+      "pair": "red_yellow",
+      "t": 0,
+      "input": "#e61e28",
+      "output": [
+        230,
+        30,
+        40
+      ]
+    },
+    {
+      "pair": "red_yellow",
+      "t": 1,
+      "input": "#ffdc00",
+      "output": [
+        255,
+        220,
+        0
+      ]
+    },
+    {
+      "pair": "cyan_magenta",
+      "t": 0,
+      "input": "#00bed2",
+      "output": [
+        0,
+        190,
+        210
+      ]
+    },
+    {
+      "pair": "cyan_magenta",
+      "t": 1,
+      "input": "#dc00a0",
+      "output": [
+        220,
+        0,
+        160
+      ]
+    },
+    {
+      "pair": "magenta_yellow",
+      "t": 0,
+      "input": "#dc00a0",
+      "output": [
+        220,
+        0,
+        160
+      ]
+    },
+    {
+      "pair": "magenta_yellow",
+      "t": 1,
+      "input": "#ffdc00",
+      "output": [
+        255,
+        220,
+        0
+      ]
+    },
+    {
+      "pair": "black_white",
+      "t": 0,
+      "input": "#000000",
+      "output": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "pair": "black_white",
+      "t": 1,
+      "input": "#ffffff",
+      "output": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "pair": "red_green",
+      "t": 0,
+      "input": "#e61e28",
+      "output": [
+        230,
+        30,
+        40
+      ]
+    },
+    {
+      "pair": "red_green",
+      "t": 1,
+      "input": "#1eaa37",
+      "output": [
+        30,
+        170,
+        55
+      ]
+    },
+    {
+      "pair": "blue_orange",
+      "t": 0,
+      "input": "#1446ff",
+      "output": [
+        20,
+        70,
+        255
+      ]
+    },
+    {
+      "pair": "blue_orange",
+      "t": 1,
+      "input": "#ff8200",
+      "output": [
+        255,
+        130,
+        0
+      ]
+    },
+    {
+      "pair": "yellow_purple",
+      "t": 0,
+      "input": "#ffdc00",
+      "output": [
+        255,
+        220,
+        0
+      ]
+    },
+    {
+      "pair": "yellow_purple",
+      "t": 1,
+      "input": "#8c1eb4",
+      "output": [
+        140,
+        30,
+        180
+      ]
+    },
+    {
+      "pair": "blue_white",
+      "t": 0,
+      "input": "#1446ff",
+      "output": [
+        20,
+        70,
+        255
+      ]
+    },
+    {
+      "pair": "blue_white",
+      "t": 1,
+      "input": "#ffffff",
+      "output": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "pair": "red_white",
+      "t": 0,
+      "input": "#e61e28",
+      "output": [
+        230,
+        30,
+        40
+      ]
+    },
+    {
+      "pair": "red_white",
+      "t": 1,
+      "input": "#ffffff",
+      "output": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "pair": "extreme_yellow_blue",
+      "t": 0,
+      "input": "#ffff00",
+      "output": [
+        255,
+        255,
+        0
+      ]
+    },
+    {
+      "pair": "extreme_yellow_blue",
+      "t": 1,
+      "input": "#0000ff",
+      "output": [
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "pair": "official_default",
+      "t": 0,
+      "input": "#002185",
+      "output": [
+        0,
+        33,
+        133
+      ]
+    },
+    {
+      "pair": "official_default",
+      "t": 1,
+      "input": "#fcd200",
+      "output": [
+        252,
+        210,
+        0
+      ]
+    }
+  ],
+  "package_lock_sha256": "2c0f16e00750a036118110e8b3244e5a332a8bdb188bf59c38a3a8c8798b6af3",
+  "package_entry_sha256": "dbaa1a8b44d2c734b48b6d44777b1f182c9740e9220d2cbded02002c8e6d271a",
+  "source": "https://registry.npmjs.org/spectral.js/-/spectral.js-3.0.0.tgz",
+  "api": "spectral.mix([a,1-t],[b,t]).toGamut({method:\"map\"}).sRGB; native RGB8 output",
+  "max_endpoint_rgb8_error": 0
+}

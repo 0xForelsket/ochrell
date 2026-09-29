@@ -1,0 +1,14 @@
+{
+  "summary": "All 25 core Rust tests, 4 native bridge tests, 7 Python integration tests, 17 Ochrell surface/planner gates and 36 existing Mixbox harness gates pass. The optional native comparator passes the same 4 bridge/math tests. Complete scene replay matches RGB and height bit-for-bit; split snapshot/resume and batched/single-stroke replay are exact in integration tests.",
+  "scene_rgb_sha256": "fa43102b7fddf4e0cfbc74a0339c51fe33e042cfeb3f4dd1204b774330ecfdb0",
+  "scene_replay_exact": true,
+  "gates": {
+    "legacy": 36,
+    "ochrell": 17
+  },
+  "limitations": [
+    "C compiler path not exercised on this host; existing Rust port used",
+    "No browser/GPU/live interactive or real-paint accuracy claim",
+    "Repository-wide cargo fmt --check reports pre-existing generated coefficient formatting; changed Rust files pass rustfmt"
+  ]
+}

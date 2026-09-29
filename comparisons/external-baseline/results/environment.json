@@ -1,0 +1,10 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "matplotlib": "3.10.8",
+  "colour-science": "0.4.6",
+  "Pillow": "12.3.0",
+  "rust": "1.75.0",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "source_archive_sha256": "f40f800f6d0810ae68fe28aa12d225c84ca3258552d1c5ae787a014df7dba610"
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "beta": 0,
+    "white": 1,
+    "green_fraction": 0.8359375,
+    "tint_hue_median": 2.687316417996265,
+    "tint_hue_p95": 11.333512890806896,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0,
+    "white": 2,
+    "green_fraction": 0.837890625,
+    "tint_hue_median": 3.7631502330945503,
+    "tint_hue_p95": 14.8280382351207,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0,
+    "white": 4,
+    "green_fraction": 0.83984375,
+    "tint_hue_median": 4.747314346842623,
+    "tint_hue_p95": 18.107535190678483,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.125,
+    "white": 1,
+    "green_fraction": 0.837890625,
+    "tint_hue_median": 2.59429109955991,
+    "tint_hue_p95": 10.812844195690964,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.125,
+    "white": 2,
+    "green_fraction": 0.837890625,
+    "tint_hue_median": 3.6155425557434437,
+    "tint_hue_p95": 14.282886301606117,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.125,
+    "white": 4,
+    "green_fraction": 0.84375,
+    "tint_hue_median": 4.500074509788376,
+    "tint_hue_p95": 17.161548191130233,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.25,
+    "white": 1,
+    "green_fraction": 0.83984375,
+    "tint_hue_median": 2.4129974295510297,
+    "tint_hue_p95": 10.380418759402868,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.25,
+    "white": 2,
+    "green_fraction": 0.841796875,
+    "tint_hue_median": 3.2819235877605974,
+    "tint_hue_p95": 13.372238697674739,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.25,
+    "white": 4,
+    "green_fraction": 0.841796875,
+    "tint_hue_median": 4.07619204041404,
+    "tint_hue_p95": 15.907808407947044,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.5,
+    "white": 1,
+    "green_fraction": 0.7890625,
+    "tint_hue_median": 1.742468115599404,
+    "tint_hue_p95": 8.863568731685643,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.5,
+    "white": 2,
+    "green_fraction": 0.794921875,
+    "tint_hue_median": 2.3718686210526254,
+    "tint_hue_p95": 11.012541860386111,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.5,
+    "white": 4,
+    "green_fraction": 0.796875,
+    "tint_hue_median": 2.910978600600307,
+    "tint_hue_p95": 13.007610753772587,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.75,
+    "white": 1,
+    "green_fraction": 0.6484375,
+    "tint_hue_median": 1.0115533882262806,
+    "tint_hue_p95": 8.154600813337685,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.75,
+    "white": 2,
+    "green_fraction": 0.646484375,
+    "tint_hue_median": 1.2833151164315197,
+    "tint_hue_p95": 9.47045889988847,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 0.75,
+    "white": 4,
+    "green_fraction": 0.658203125,
+    "tint_hue_median": 1.5480856780096741,
+    "tint_hue_p95": 10.353791994988532,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 1,
+    "white": 1,
+    "green_fraction": 0.33203125,
+    "tint_hue_median": 1.5477132017486601,
+    "tint_hue_p95": 12.449163056966386,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 1,
+    "white": 2,
+    "green_fraction": 0.33984375,
+    "tint_hue_median": 1.8037573708537746,
+    "tint_hue_p95": 14.09649116612864,
+    "tint_luminance_monotone_fraction": 1.0
+  },
+  {
+    "beta": 1,
+    "white": 4,
+    "green_fraction": 0.3515625,
+    "tint_hue_median": 1.9672226299434623,
+    "tint_hue_p95": 15.017707078844182,
+    "tint_luminance_monotone_fraction": 1.0
+  }
+]

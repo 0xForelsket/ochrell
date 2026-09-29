@@ -1,0 +1,7 @@
+Original source code, documentation and synthetic pigment design parameters:
+MIT OR Apache-2.0, at your option. See LICENSE-MIT and LICENSE-APACHE.
+
+Bundled standard colorimetric data and derived data assets:
+CC BY-SA 4.0 with CIE attribution. See data/README.md and data/COLOUR-LICENSE.
+This exception includes CIE-derived integration arrays and generated LUTs;
+the package-wide Cargo license describes the source code, not every dataset.
