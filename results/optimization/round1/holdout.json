@@ -1,0 +1,75 @@
+{
+  "seed": 1907,
+  "candidate": "split_both",
+  "quality": {
+    "exact": true,
+    "cases": {
+      "reconstruction": {
+        "samples": 8192,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 4.926074010571e-05
+      },
+      "mixture": {
+        "samples": 8192,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.05132920179387
+      },
+      "white": {
+        "samples": 8192,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.01625558157913
+      },
+      "black": {
+        "samples": 8192,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.02966747409284
+      },
+      "weighted": {
+        "samples": 8192,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.05073582123837
+      },
+      "grouped": {
+        "samples": 8192,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.05073354609248
+      },
+      "full_rgb": {
+        "samples": 8192,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.05132797305805
+      },
+      "repeated256": {
+        "samples": 128,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.02600508082933
+      },
+      "tiny4096": {
+        "samples": 128,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.02250995205816
+      },
+      "imported_extreme": {
+        "samples": 8,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 7.793273715567e-06
+      },
+      "canonical": {
+        "samples": 3,
+        "changed_rgb": 0,
+        "changed_state": 0,
+        "max_reference_de_ok100": 0.008909025383462
+      }
+    }
+  }
+}

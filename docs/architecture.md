@@ -26,6 +26,12 @@ A `Color` is unassociated encoded sRGB with no alpha. Hosts handle profiles, alp
 
 ## Performance and integration
 
+The unreleased kernel separates per-band optical evaluation from the ordered RGB
+projection, allowing compiler auto-vectorization of independent bands while
+retaining the original reduction order. See `optimization-round1.md` for exact
+output checks, CPU measurements and retained losing candidates. This does not
+change the latent layout, numerical model or reference wavelength grid.
+
 Caching saves two spectral encodes per operation. A fast latent occupies 340 bytes; its memory cost may be unsuitable for every canvas pixel. Tile-level caches, brush-color caches or a later compressed state can be more appropriate. The original 44-byte legacy state remains available, with different numerical behavior.
 
 `Latent::try_from_parts` and its reference counterpart now validate imported

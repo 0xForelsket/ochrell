@@ -42,6 +42,12 @@ Preserving K/S states retains the inferred material; an RGB decode/re-encode rou
 
 ## What changed
 
+The unreleased [first optimization round](docs/optimization-round1.md) separates
+independent optical calculations from RGB accumulation. It preserves the v0.2
+model and recorded output bits while improving core CPU throughput in alternating
+local benchmarks. Raw candidates, rejection and reproduction commands are kept
+separate from the frozen v0.2 paper and integration measurements.
+
 The new default replaces nonlinear palette inversion and the 33³ encoder LUT with an explicit continuous spectral reconstruction. Three independently fitted primary spectra generate complementary anchors; a declared optical-strength prior controls absorption/scattering and white behavior. The reference uses 81 bands/f64; the default uses 41 bands/f32 optics. Both use stack arrays. Default construction has no table parse.
 
 On the recorded host, complete mixing reaches about 1.4 million operations/s and cached mixing about 4.4 million/s. The new default is slower than the legacy LUT, and its latent is larger (340 versus 44 bytes). See [measured benchmarks](docs/benchmarks.md) rather than treating these figures as cross-platform guarantees.

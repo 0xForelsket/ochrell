@@ -1,0 +1,16 @@
+diff --git a/src/optical.rs b/src/optical.rs
+index c254991..3d74e7c 100644
+--- a/src/optical.rs
++++ b/src/optical.rs
+@@ -141,8 +141,9 @@ macro_rules! optical_kernel {
+             pub fn decode_linear(&self, z: $latent) -> [f64; 3] {
+                 let mut x: [$ty; 3] = [0.; 3];
+                 for i in 0..$n {
+-                    let q = z.k[i] / z.s[i];
+-                    let r = 1. / (1. + q + (q * (q + 2.)).sqrt());
++                    let k = z.k[i];
++                    let s = z.s[i];
++                    let r = s / (k + s + (k * (k + 2. * s)).sqrt());
+                     for ch in 0..3 {
+                         x[ch] += r * $rgb[i][ch];
+                     }

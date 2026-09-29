@@ -1,0 +1,36 @@
+diff --git a/src/optical.rs b/src/optical.rs
+index c254991..a8d7ec5 100644
+--- a/src/optical.rs
++++ b/src/optical.rs
+@@ -126,8 +126,10 @@ macro_rules! optical_kernel {
+                     let q = (1. - r[i]) * (1. - r[i]) / (2. * r[i]);
+                     s[i] = strength * (neutral_s / (1. + q)).sqrt();
+                     k[i] = q * s[i];
+-                    // KM inversion recovers r algebraically. Integrate r directly;
+-                    // f32 roundoff is checked against the full f64 reference.
++                }
++                // Separate independent K/S inference from the ordered projection.
++                // KM inversion recovers r algebraically; integrate r directly.
++                for i in 0..$n {
+                     for ch in 0..3 {
+                         raw[ch] += r[i] * $rgb[i][ch];
+                     }
+@@ -140,11 +142,15 @@ macro_rules! optical_kernel {
+             }
+             pub fn decode_linear(&self, z: $latent) -> [f64; 3] {
+                 let mut x: [$ty; 3] = [0.; 3];
+-                for i in 0..$n {
++                // Compute independent optics first; retain the original ordered
++                // colorimetric reduction and all floating-point expressions.
++                let reflectance: [$ty; $n] = std::array::from_fn(|i| {
+                     let q = z.k[i] / z.s[i];
+-                    let r = 1. / (1. + q + (q * (q + 2.)).sqrt());
++                    1. / (1. + q + (q * (q + 2.)).sqrt())
++                });
++                for i in 0..$n {
+                     for ch in 0..3 {
+-                        x[ch] += r * $rgb[i][ch];
++                        x[ch] += reflectance[i] * $rgb[i][ch];
+                     }
+                 }
+                 std::array::from_fn(|i| x[i] as f64 + z.residual[i] as f64)

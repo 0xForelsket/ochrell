@@ -1,0 +1,56 @@
+{
+  "selected": "split_both",
+  "base_commit": "17531c6b313a0a1aa4f7f501f7db40c088b337b2",
+  "exact_selection_records": 57611,
+  "exact_holdout_records": 57611,
+  "confirmation": {
+    "cached_mix_decode": {
+      "baseline_ns": 244.91899999999998,
+      "selected_ns": 142.2936,
+      "speedup": 1.7212228800170912,
+      "time_reduction_percent": 41.90177160612284
+    },
+    "decode": {
+      "baseline_ns": 210.0401,
+      "selected_ns": 129.1316,
+      "speedup": 1.6265584876203811,
+      "time_reduction_percent": 38.520501561368526
+    },
+    "decode_linear": {
+      "baseline_ns": 151.0466,
+      "selected_ns": 64.3668,
+      "speedup": 2.3466538650360125,
+      "time_reduction_percent": 57.38613116746754
+    },
+    "encode": {
+      "baseline_ns": 248.7032,
+      "selected_ns": 159.0943,
+      "speedup": 1.5632439377149276,
+      "time_reduction_percent": 36.030457187523126
+    },
+    "full_rgb": {
+      "baseline_ns": 722.0315,
+      "selected_ns": 432.36530000000005,
+      "speedup": 1.669957094151635,
+      "time_reduction_percent": 40.11822198892985
+    },
+    "interpolate": {
+      "baseline_ns": 44.7716,
+      "selected_ns": 48.8935,
+      "speedup": 0.9156963604569114,
+      "time_reduction_percent": -9.20650590999652
+    },
+    "update_stream": {
+      "baseline_ns": 280.1722,
+      "selected_ns": 179.4326,
+      "speedup": 1.5614342098370082,
+      "time_reduction_percent": 35.95631543743454
+    }
+  },
+  "reason": "Exact numerical gate and repeatable gains in cached/full RGB and streamed workloads; no model/state/API change",
+  "caveats": [
+    "unchanged interpolation control slower in this sample",
+    "state size unchanged",
+    "one compiler/host measured"
+  ]
+}

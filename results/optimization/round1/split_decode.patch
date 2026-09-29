@@ -1,0 +1,23 @@
+diff --git a/src/optical.rs b/src/optical.rs
+index c254991..b482f59 100644
+--- a/src/optical.rs
++++ b/src/optical.rs
+@@ -140,11 +140,15 @@ macro_rules! optical_kernel {
+             }
+             pub fn decode_linear(&self, z: $latent) -> [f64; 3] {
+                 let mut x: [$ty; 3] = [0.; 3];
+-                for i in 0..$n {
++                // Compute independent optics first; retain the original ordered
++                // colorimetric reduction and all floating-point expressions.
++                let reflectance: [$ty; $n] = std::array::from_fn(|i| {
+                     let q = z.k[i] / z.s[i];
+-                    let r = 1. / (1. + q + (q * (q + 2.)).sqrt());
++                    1. / (1. + q + (q * (q + 2.)).sqrt())
++                });
++                for i in 0..$n {
+                     for ch in 0..3 {
+-                        x[ch] += r * $rgb[i][ch];
++                        x[ch] += reflectance[i] * $rgb[i][ch];
+                     }
+                 }
+                 std::array::from_fn(|i| x[i] as f64 + z.residual[i] as f64)

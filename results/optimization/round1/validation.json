@@ -1,0 +1,15 @@
+{
+  "core_tests_passed": 26,
+  "basic_srgb8": [
+    101,
+    152,
+    94
+  ],
+  "selected_source_sha256": "3c6013549c088d124638d68520cae91eb441e99172e33b55a2047570a5a7bfda",
+  "coefficients_unchanged": true,
+  "renderer_checkpoint": "7fa7844",
+  "exact_quality_csv_payloads": true,
+  "runner_reproduction_smoke_passed": true,
+  "explicit_simd": false,
+  "state_bytes": 340
+}

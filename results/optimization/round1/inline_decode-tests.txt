@@ -1,0 +1,75 @@
+
+running 1 test
+test spectrum::tests::analytic_jacobian_agrees_with_central_differences ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 14 tests
+test canonical_hues ... ok
+test both_lut_interpolators_reproduce_affine_fields ... ok
+test color_validation ... ok
+test endpoints_identity_symmetry ... ok
+test km_inverse ... ok
+test continuity ... ok
+test gamut_identity_and_bounded ... ok
+test lut_validation ... ok
+test neutral_spectrum ... ok
+test reconstruction_grid ... ok
+test oklab_known ... ok
+test reference_reconstruction ... ok
+test weighted ... ok
+test transfer_roundtrip ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+
+running 7 tests
+test canonical_mixtures ... ok
+test black_endpoint_converges_despite_cuberoot_metric ... ok
+test channel_order_boundaries_are_continuous ... ok
+test f32_decoder_against_promoted_f64 ... ok
+test weighted_material_state_and_symmetry ... ok
+test endpoints_reconstruction_and_positive_optics ... ok
+test sampled_tint_luminance ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s
+
+
+running 2 tests
+test exact_components_survive_storage_and_future_tinting ... ok
+test invalid_storage_is_rejected ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+
+running 1 test
+test src\lib.rs - (line 3) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.78s
+
+   Compiling ochrell v0.2.0 (C:\Users\sdhui\projects\ochrell)
+    Finished `release` profile [optimized] target(s) in 13.24s
+     Running unittests src\lib.rs (target\release\deps\ochrell-510862e1769f9f86.exe)
+     Running unittests src\bin\experiments.rs (target\release\deps\experiments-7496eaa20b773c7e.exe)
+     Running unittests src\bin\generate-lut.rs (target\release\deps\generate_lut-d4c8e3835b91edfd.exe)
+     Running unittests src\bin\revision-experiments.rs (target\release\deps\revision_experiments-ca360d8030c53879.exe)
+     Running tests\numerics.rs (target\release\deps\numerics-71330493577019fe.exe)
+     Running tests\optical.rs (target\release\deps\optical-9417810ff1c442e3.exe)
+     Running tests\storage.rs (target\release\deps\storage-ee5c29e454914d88.exe)
+   Doc-tests ochrell

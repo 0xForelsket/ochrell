@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased - optimization round 1
+
+- Separate independent per-wavelength optics from ordered RGB integration in
+  the fast and reference kernels. No equation, coefficient, state format or API
+  changes. The fast path is bit-identical on the retained screening and holdout.
+- Record eight candidates, an alternating baseline/candidate confirmation,
+  rejected algebraic decoder and all raw evidence. See docs/optimization-round1.md.
+- Add an extreme-scale component-import regression test. State size remains
+  340 bytes; this round addresses CPU cost, not memory compression or transport.
+
 ## Unreleased - oil-paint integration
 
 - Add checked `Latent::try_from_parts` and `ReferenceLatent::try_from_parts`

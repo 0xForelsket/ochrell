@@ -1,0 +1,698 @@
+{
+  "environment": {
+    "seed": 20260930,
+    "holdout_seed": 1907,
+    "cpu_affinity": 0,
+    "iterations": 200000,
+    "repeats": 7,
+    "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)\nbinary: rustc\ncommit-hash: ed61e7d7e242494fb7057f2657300d9e77bb4fcb\ncommit-date: 2025-11-07\nhost: x86_64-pc-windows-msvc\nrelease: 1.91.1\nLLVM version: 21.1.2\n",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.11 (main, Jul 11 2025, 22:40:18) [MSC v.1944 64 bit (AMD64)]",
+    "base_commit": "17531c6b313a0a1aa4f7f501f7db40c088b337b2",
+    "profile": "release opt-level=3, lto=false, codegen-units=1; no explicit SIMD/fast-math; same flags for all candidates",
+    "probe_sha256": "3d5b0663e1eff52a3c6ebf1e90697c5043474e641446bf471d4085ca75643ea5",
+    "original_source_sha256": "9e770969a1e11368c1f89c2ac3be250587bdd79dfacd4cf6dfcd234e5e1e48e2"
+  },
+  "candidates": {
+    "baseline": {
+      "tests_pass": true,
+      "quality": {
+        "exact": true,
+        "cases": {
+          "reconstruction": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 4.926074010571e-05
+          },
+          "mixture": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "white": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01062294226454
+          },
+          "black": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02382641020106
+          },
+          "weighted": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "grouped": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "full_rgb": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "repeated256": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02720331169982
+          },
+          "tiny4096": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01702391162332
+          },
+          "imported_extreme": {
+            "samples": 8,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 7.793273715567e-06
+          },
+          "canonical": {
+            "samples": 3,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.008909025383462
+          }
+        }
+      },
+      "medians_ns": {
+        "cached_mix_decode": 398.2375,
+        "decode": 442.5965,
+        "decode_linear": 299.206,
+        "encode": 437.2015,
+        "full_rgb": 1288.5165,
+        "interpolate": 68.7765,
+        "update_stream": 521.858
+      },
+      "source_sha256": "9e770969a1e11368c1f89c2ac3be250587bdd79dfacd4cf6dfcd234e5e1e48e2",
+      "binary_sha256": "766f44fc24de29f8d2af77e737ca574a26ae6f70e6e185396671ac0cc06eb118"
+    },
+    "inline_decode": {
+      "tests_pass": true,
+      "quality": {
+        "exact": true,
+        "cases": {
+          "reconstruction": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 4.926074010571e-05
+          },
+          "mixture": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "white": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01062294226454
+          },
+          "black": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02382641020106
+          },
+          "weighted": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "grouped": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "full_rgb": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "repeated256": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02720331169982
+          },
+          "tiny4096": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01702391162332
+          },
+          "imported_extreme": {
+            "samples": 8,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 7.793273715567e-06
+          },
+          "canonical": {
+            "samples": 3,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.008909025383462
+          }
+        }
+      },
+      "medians_ns": {
+        "cached_mix_decode": 239.4335,
+        "decode": 231.0065,
+        "decode_linear": 146.325,
+        "encode": 234.1765,
+        "full_rgb": 662.4475,
+        "interpolate": 46.7655,
+        "update_stream": 272.917
+      },
+      "source_sha256": "929b0073725f09d9b1926d725cb51f119817c8acd5c89fb7f02528033414281b",
+      "binary_sha256": "20cf538777df32011c1b9b50de47fcd40febe9cfc8442bd5d272607c500026b1"
+    },
+    "inline_hot": {
+      "tests_pass": true,
+      "quality": {
+        "exact": true,
+        "cases": {
+          "reconstruction": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 4.926074010571e-05
+          },
+          "mixture": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "white": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01062294226454
+          },
+          "black": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02382641020106
+          },
+          "weighted": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "grouped": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "full_rgb": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "repeated256": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02720331169982
+          },
+          "tiny4096": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01702391162332
+          },
+          "imported_extreme": {
+            "samples": 8,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 7.793273715567e-06
+          },
+          "canonical": {
+            "samples": 3,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.008909025383462
+          }
+        }
+      },
+      "medians_ns": {
+        "cached_mix_decode": 197.309,
+        "decode": 188.586,
+        "decode_linear": 114.953,
+        "encode": 218.9655,
+        "full_rgb": 600.4515,
+        "interpolate": 30.2805,
+        "update_stream": 230.686
+      },
+      "source_sha256": "26daf54bae886d61ba451b96c3d93a91381bf50cf5e05c7ec4c8196448ca9c11",
+      "binary_sha256": "b1e381ea60d0ff690c570d55fb2e83b2c951c3067e0bd3486dcb2a6c83ab4aa4"
+    },
+    "split_decode": {
+      "tests_pass": true,
+      "quality": {
+        "exact": true,
+        "cases": {
+          "reconstruction": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 4.926074010571e-05
+          },
+          "mixture": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "white": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01062294226454
+          },
+          "black": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02382641020106
+          },
+          "weighted": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "grouped": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "full_rgb": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "repeated256": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02720331169982
+          },
+          "tiny4096": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01702391162332
+          },
+          "imported_extreme": {
+            "samples": 8,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 7.793273715567e-06
+          },
+          "canonical": {
+            "samples": 3,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.008909025383462
+          }
+        }
+      },
+      "medians_ns": {
+        "cached_mix_decode": 165.2725,
+        "decode": 147.0575,
+        "decode_linear": 72.7015,
+        "encode": 234.2355,
+        "full_rgb": 647.682,
+        "interpolate": 46.198,
+        "update_stream": 204.6315
+      },
+      "source_sha256": "f7e678e38760f708bd59bff7273490b8d7bae26c7f800c9097d6c29431f5751b",
+      "binary_sha256": "ba813fb417d4846850c81c7958c670289264a50f86d3853690f6fdf8a5edfb03"
+    },
+    "split_encode": {
+      "tests_pass": true,
+      "quality": {
+        "exact": true,
+        "cases": {
+          "reconstruction": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 4.926074010571e-05
+          },
+          "mixture": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "white": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01062294226454
+          },
+          "black": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02382641020106
+          },
+          "weighted": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "grouped": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "full_rgb": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "repeated256": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02720331169982
+          },
+          "tiny4096": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01702391162332
+          },
+          "imported_extreme": {
+            "samples": 8,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 7.793273715567e-06
+          },
+          "canonical": {
+            "samples": 3,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.008909025383462
+          }
+        }
+      },
+      "medians_ns": {
+        "cached_mix_decode": 257.479,
+        "decode": 270.7485,
+        "decode_linear": 206.514,
+        "encode": 191.9525,
+        "full_rgb": 666.469,
+        "interpolate": 52.584,
+        "update_stream": 328.9425
+      },
+      "source_sha256": "678c89293ca42a35572a38b5dc8197ba7a9e41f7517642ac0283ae93f86f440d",
+      "binary_sha256": "1d649183511a1eec2f08375f21d68e09213fd10adc9245c4ac1dc072bc8c8bad"
+    },
+    "split_both": {
+      "tests_pass": true,
+      "quality": {
+        "exact": true,
+        "cases": {
+          "reconstruction": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 4.926074010571e-05
+          },
+          "mixture": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "white": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01062294226454
+          },
+          "black": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02382641020106
+          },
+          "weighted": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "grouped": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "full_rgb": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "repeated256": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02720331169982
+          },
+          "tiny4096": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01702391162332
+          },
+          "imported_extreme": {
+            "samples": 8,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 7.793273715567e-06
+          },
+          "canonical": {
+            "samples": 3,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.008909025383462
+          }
+        }
+      },
+      "medians_ns": {
+        "cached_mix_decode": 131.7855,
+        "decode": 126.535,
+        "decode_linear": 59.7195,
+        "encode": 151.42,
+        "full_rgb": 425.2035,
+        "interpolate": 39.3205,
+        "update_stream": 187.774
+      },
+      "source_sha256": "3c6013549c088d124638d68520cae91eb441e99172e33b55a2047570a5a7bfda",
+      "binary_sha256": "967527c00747881a8e3e4c6ce57cd40e520862dfd8fe27a77414faf81dc9f078"
+    },
+    "split_both_inline": {
+      "tests_pass": true,
+      "quality": {
+        "exact": true,
+        "cases": {
+          "reconstruction": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 4.926074010571e-05
+          },
+          "mixture": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "white": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01062294226454
+          },
+          "black": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02382641020106
+          },
+          "weighted": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "grouped": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "full_rgb": {
+            "samples": 8192,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "repeated256": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02720331169982
+          },
+          "tiny4096": {
+            "samples": 128,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01702391162332
+          },
+          "imported_extreme": {
+            "samples": 8,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 7.793273715567e-06
+          },
+          "canonical": {
+            "samples": 3,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.008909025383462
+          }
+        }
+      },
+      "medians_ns": {
+        "cached_mix_decode": 153.1765,
+        "decode": 143.924,
+        "decode_linear": 71.8635,
+        "encode": 222.6205,
+        "full_rgb": 605.583,
+        "interpolate": 33.217,
+        "update_stream": 205.5375
+      },
+      "source_sha256": "5713d220de7941d05df7a5f92c32deb87ac2343721c974e6cab0d75524b5c58f",
+      "binary_sha256": "2024fdf31c9efcfbed5bbbe4724519f23de894d17c28ab1b566f87048bc098fa"
+    },
+    "algebraic_decode": {
+      "tests_pass": true,
+      "quality": {
+        "exact": false,
+        "cases": {
+          "reconstruction": {
+            "samples": 8192,
+            "changed_rgb": 5715,
+            "changed_state": 0,
+            "max_reference_de_ok100": 5.213226278669e-05
+          },
+          "mixture": {
+            "samples": 8192,
+            "changed_rgb": 5140,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "white": {
+            "samples": 8192,
+            "changed_rgb": 4134,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01062239998954
+          },
+          "black": {
+            "samples": 8192,
+            "changed_rgb": 4984,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02382641020106
+          },
+          "weighted": {
+            "samples": 8192,
+            "changed_rgb": 4738,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498235939121
+          },
+          "grouped": {
+            "samples": 8192,
+            "changed_rgb": 4675,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.03498351868952
+          },
+          "full_rgb": {
+            "samples": 8192,
+            "changed_rgb": 6624,
+            "changed_state": 5140,
+            "max_reference_de_ok100": 0.03920515383357
+          },
+          "repeated256": {
+            "samples": 128,
+            "changed_rgb": 81,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.02720331169982
+          },
+          "tiny4096": {
+            "samples": 128,
+            "changed_rgb": 69,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.01702410976862
+          },
+          "imported_extreme": {
+            "samples": 8,
+            "changed_rgb": 5,
+            "changed_state": 0,
+            "max_reference_de_ok100": 99.99999934735
+          },
+          "canonical": {
+            "samples": 3,
+            "changed_rgb": 0,
+            "changed_state": 0,
+            "max_reference_de_ok100": 0.008909025383462
+          }
+        }
+      },
+      "medians_ns": {
+        "cached_mix_decode": 168.1965,
+        "decode": 156.1975,
+        "decode_linear": 87.0175,
+        "encode": 195.904,
+        "full_rgb": 544.005,
+        "interpolate": 38.656,
+        "update_stream": 199.547
+      },
+      "source_sha256": "13860295381794ea5507f5641c4f80fce2cc3fc01a7e0eaa516190c0cc5891e7",
+      "binary_sha256": "de0867d4ec2476b74edaf68f33715ef8a1d8341607dbac8117db649961418d5c"
+    }
+  }
+}

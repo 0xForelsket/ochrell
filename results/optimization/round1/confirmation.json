@@ -1,0 +1,112 @@
+{
+  "cpu": 0,
+  "iterations": 500000,
+  "repeats": 9,
+  "screening_sha256": "9cc3850298d43f41e0f6a27e33612aff4fdde97526bbb1193861f07dc0ab141b",
+  "runs": [
+    {
+      "block": 0,
+      "candidate": "baseline",
+      "medians_ns": {
+        "cached_mix_decode": 232.0816,
+        "decode": 208.2468,
+        "decode_linear": 135.9142,
+        "encode": 246.6836,
+        "full_rgb": 743.7606,
+        "interpolate": 45.786,
+        "update_stream": 255.0228
+      }
+    },
+    {
+      "block": 1,
+      "candidate": "split_both",
+      "medians_ns": {
+        "cached_mix_decode": 119.8388,
+        "decode": 108.0274,
+        "decode_linear": 54.3954,
+        "encode": 136.503,
+        "full_rgb": 370.3594,
+        "interpolate": 33.0344,
+        "update_stream": 155.6248
+      }
+    },
+    {
+      "block": 2,
+      "candidate": "split_both",
+      "medians_ns": {
+        "cached_mix_decode": 151.3866,
+        "decode": 140.4584,
+        "decode_linear": 66.476,
+        "encode": 163.9776,
+        "full_rgb": 470.0742,
+        "interpolate": 59.749,
+        "update_stream": 191.0198
+      }
+    },
+    {
+      "block": 3,
+      "candidate": "baseline",
+      "medians_ns": {
+        "cached_mix_decode": 271.4086,
+        "decode": 210.6618,
+        "decode_linear": 161.6152,
+        "encode": 274.0882,
+        "full_rgb": 700.3024,
+        "interpolate": 52.5996,
+        "update_stream": 305.3216
+      }
+    },
+    {
+      "block": 4,
+      "candidate": "split_both",
+      "medians_ns": {
+        "cached_mix_decode": 184.4036,
+        "decode": 148.684,
+        "decode_linear": 76.6458,
+        "encode": 197.1474,
+        "full_rgb": 581.431,
+        "interpolate": 69.7334,
+        "update_stream": 259.6294
+      }
+    },
+    {
+      "block": 5,
+      "candidate": "baseline",
+      "medians_ns": {
+        "cached_mix_decode": 256.2098,
+        "decode": 209.4184,
+        "decode_linear": 148.3746,
+        "encode": 250.7228,
+        "full_rgb": 780.1974,
+        "interpolate": 43.7572,
+        "update_stream": 315.8656
+      }
+    },
+    {
+      "block": 6,
+      "candidate": "baseline",
+      "medians_ns": {
+        "cached_mix_decode": 233.6282,
+        "decode": 230.3438,
+        "decode_linear": 153.7186,
+        "encode": 236.8812,
+        "full_rgb": 663.7352,
+        "interpolate": 43.5686,
+        "update_stream": 250.487
+      }
+    },
+    {
+      "block": 7,
+      "candidate": "split_both",
+      "medians_ns": {
+        "cached_mix_decode": 133.2006,
+        "decode": 117.8048,
+        "decode_linear": 62.2576,
+        "encode": 154.211,
+        "full_rgb": 394.6564,
+        "interpolate": 38.038,
+        "update_stream": 167.8454
+      }
+    }
+  ]
+}

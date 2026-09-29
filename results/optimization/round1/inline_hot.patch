@@ -1,0 +1,41 @@
+diff --git a/src/optical.rs b/src/optical.rs
+index c254991..1474d09 100644
+--- a/src/optical.rs
++++ b/src/optical.rs
+@@ -67,6 +67,7 @@ macro_rules! optical_kernel {
+                 self
+             }
+             /// Convex optical-state mixture. NaN means zero; other t are clamped.
++            #[inline]
+             pub fn interpolate(self, b: Self, t: $ty) -> Self {
+                 let t = if t.is_nan() { 0. } else { t.clamp(0., 1.) };
+                 Self {
+@@ -110,6 +111,7 @@ macro_rules! optical_kernel {
+         #[derive(Clone, Copy, Debug, Default)]
+         pub struct $mixer;
+         impl $mixer {
++            #[inline]
+             pub fn encode(&self, c: Color) -> $latent {
+                 let x = c.linear();
+                 let weights = recipe(x);
+@@ -138,6 +140,7 @@ macro_rules! optical_kernel {
+                     residual: std::array::from_fn(|i| (x[i] - raw[i] as f64) as $ty),
+                 }
+             }
++            #[inline]
+             pub fn decode_linear(&self, z: $latent) -> [f64; 3] {
+                 let mut x: [$ty; 3] = [0.; 3];
+                 for i in 0..$n {
+@@ -149,10 +152,12 @@ macro_rules! optical_kernel {
+                 }
+                 std::array::from_fn(|i| x[i] as f64 + z.residual[i] as f64)
+             }
++            #[inline]
+             pub fn decode(&self, z: $latent) -> Color {
+                 Color::from_linear_gamut_mapped(self.decode_linear(z))
+             }
+             /// Clamp t to [0,1]; NaN means zero. Use try_mix for strict checking.
++            #[inline]
+             pub fn mix(&self, a: Color, b: Color, t: f32) -> Color {
+                 let t = crate::mixing::bounded_t(t);
+                 if t == 0. || a == b {
