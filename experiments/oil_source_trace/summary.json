@@ -1,0 +1,52 @@
+{
+  "status": "No source correction established; all hypothesized mappings are diagnostic only",
+  "case_count": 24,
+  "figure6_approximate_mse": {
+    "M1": 0.020347231460023676,
+    "M2": 0.007043744159000788,
+    "M3": 0.01274588479698871,
+    "M4": 0.01237142150910363,
+    "M5": 0.009368980520044675,
+    "M6": 0.031039897303715397,
+    "M7": 0.009744476132057821
+  },
+  "identity_trimmed_stored_all175_mse": {
+    "M1": 0.02205682961706512,
+    "M2": 0.022949305476733482,
+    "M3": 0.022407207248379194,
+    "M4": 0.022381352588989285,
+    "M5": 0.022652664586973056,
+    "M6": 0.021850215954471952,
+    "M7": 0.022679986219857055
+  },
+  "identity_M2_range": [
+    0.02109431124198589,
+    0.023906577305206015
+  ],
+  "identity_M2_to_M1_ratio_range": [
+    1.039559562253756,
+    1.0405360907425185
+  ],
+  "all_case_M2_less_than_M1_count": 0,
+  "all_case_both_reported_order_relations_count": 0,
+  "white_reflectance_by_order": {
+    "identity": 0.11205,
+    "lexical_decimal_0based": 0.027634,
+    "lexical_decimal_1based": 0.07214
+  },
+  "scalar_max_abs_difference": 1.1102230246251565e-16,
+  "source_sha256": "6d8cec6fb4fff5d4c24d18d1783422da8ef955d3e7ba7263179a84ed6c9b683e",
+  "hashes": {
+    "experiments/oil_source_trace/PLAN.md": "9f51b925487b07fe1836d183e8893f3567ce90ca093976fdb1318c267c76103c",
+    "experiments/oil_source_trace/trace.py": "6b573aa884dfc9d4ed212be17e687480462f9b8f8c53bda113bdc0aebfab3df3",
+    "experiments/oil_source_trace/extract_figure.py": "55562c2dcd8568f529041ae895f6619c7e3920a330345a3c4f3d3d4d342fc4e5",
+    "experiments/oil_public_data/audit.py": "3050b551348880003fc0058b91149b60bdffec8d724387d60965b76ec1b21a14",
+    "experiments/oil_source_trace/figure6-values.json": "1d15dd2c9e9e81cb2a714e3079d9982f744a69c7e380edd8c764a008d46dd6a1"
+  },
+  "notes": [
+    "No optimization or permanent source relabelling; hypothetical pairings are diagnostic only.",
+    "No input rows deleted and no fitted coefficients changed.",
+    "No hypothesis chosen by reconstruction score.",
+    "Graph values are approximate; comparison is not exact reproduction of original numeric results."
+  ]
+}

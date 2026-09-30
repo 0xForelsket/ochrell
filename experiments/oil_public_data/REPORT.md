@@ -11,6 +11,9 @@ post-fit checks raised unresolved source/baseline consistency concerns. The
 structural checks below still pass; they do not establish semantic sample
 identity. Read the [external results](../oil_external/REPORT.md) before treating
 this source as a validated benchmark. No data or labels were repaired.
+The [subsequent trace](../oil_source_trace/REPORT.md) confirms that the tested
+equations and preprocessing alternatives do not resolve the discrepancy; the
+original scan-to-sample mapping and reference endmember inputs remain needed.
 
 ## Selected source and inspected files
 

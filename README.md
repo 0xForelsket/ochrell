@@ -138,6 +138,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `experiments/oil_red_blue/REPORT.md` | Frozen-model red/blue correction diagnosis and calibration-coverage sensitivity |
 | `experiments/oil_public_data/REPORT.md` | Public measurement source audit and source-consistency checks |
 | `experiments/oil_external/REPORT.md` | Fixed-method test on a second measured palette; poor scores and unresolved source compatibility |
+| `experiments/oil_source_trace/REPORT.md` | Seven-model source-to-paper reconstruction, bounded ordering checks and the remaining provenance gap |
 | `data/README.md` | Dataset/license attribution and checksums |
 | `results/revision/` | Raw current results, environment, fit and ablations |
 | `paper/paper.md`, `.tex`, `.pdf` | Revised scientific paper |

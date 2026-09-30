@@ -33,6 +33,10 @@ public measurements, a [second-palette test](../experiments/oil_external/REPORT.
 retained the fixed algorithm but produced poor scores. A subsequent independent
 spreadsheet read and source-baseline check raised unresolved consistency concerns;
 the result remains provisional, with no relabelling, retuning or runtime promotion.
+A [source-to-paper audit](../experiments/oil_source_trace/REPORT.md) checked all
+seven published forward equations and 24 declared ordering/preprocessing cases.
+None reconciled the reported baseline ranking. A canonical sample mapping and
+reference endmember inputs remain missing; no guessed correction was adopted.
 
 ## Selected candidates
 

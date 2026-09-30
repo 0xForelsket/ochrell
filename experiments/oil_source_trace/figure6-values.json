@@ -1,0 +1,37 @@
+{
+  "method": "Vector bar widths from author-hosted PDF Figure 6a, calibrated by numeric tick text centers. Approximate graph-derived values, not original numerical results.",
+  "pdf_sha256": "cb49f755727a8b437f54dc55042b81b4b311b0e24848eacd3faf56cb34080a4e",
+  "page_one_based": 9,
+  "figure": "6a",
+  "tick_centers": [
+    [
+      0.0,
+      180.539673274668
+    ],
+    [
+      0.01,
+      222.64326545756387
+    ],
+    [
+      0.02,
+      264.7571462838383
+    ],
+    [
+      0.03,
+      306.87102711011266
+    ],
+    [
+      0.04,
+      348.98490793638706
+    ]
+  ],
+  "bar_width_derived_mse": {
+    "M1": 0.020347231460023676,
+    "M2": 0.007043744159000788,
+    "M3": 0.01274588479698871,
+    "M4": 0.01237142150910363,
+    "M5": 0.009368980520044675,
+    "M6": 0.031039897303715397,
+    "M7": 0.009744476132057821
+  }
+}

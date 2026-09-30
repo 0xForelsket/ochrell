@@ -7,6 +7,11 @@ result, not a clean verdict on generalization to correctly identified paints.**
 All scores, failures and source bytes are retained. Nothing was relabelled,
 removed, retuned or promoted to the runtime.
 
+Follow-up: the [source-to-paper trace](../oil_source_trace/REPORT.md) checks all
+seven forward models and 24 bounded ordering/preprocessing cases. None explains
+the published ranking. It identifies the remaining provenance questions without
+changing this study's frozen scores or treating a guessed mapping as a correction.
+
 The user chose existing public measurements. After a structural audit, we used
 the public supplement to [Grillini, Thomas and George (2021)](https://doi.org/10.3390/s21072471).
 It contains 175 measured samples and concentration labels. The
