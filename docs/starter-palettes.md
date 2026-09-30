@@ -27,6 +27,12 @@ each chromatic ratio and its white additions together. The empirical candidate's
 mean color advantage persisted (2.893 versus 3.932 DE00 on the same 16 multicolor
 samples), but the red/blue 1:1 group regressed and the spectral screens still
 failed. All samples remain previously exposed; the runtime/default is unchanged.
+The [red/blue diagnosis](../experiments/oil_red_blue/REPORT.md) separated the
+parent correction from white-pair effects. Following the user's preference for
+public measurements, a [second-palette test](../experiments/oil_external/REPORT.md)
+retained the fixed algorithm but produced poor scores. A subsequent independent
+spreadsheet read and source-baseline check raised unresolved consistency concerns;
+the result remains provisional, with no relabelling, retuning or runtime promotion.
 
 ## Selected candidates
 

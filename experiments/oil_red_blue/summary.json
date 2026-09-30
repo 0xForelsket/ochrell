@@ -1,0 +1,125 @@
+{
+  "status": "post-hoc frozen-model diagnosis; no fitting or new measurements",
+  "provenance_hashes": {
+    "experiments/oil_red_blue/PLAN.md": "4c3a00ef974182b7cbec063797d1781ac6e16b6d2a2825a3565d1c2c709347fa",
+    "experiments/oil_red_blue/diagnose.py": "22441c30b8638954207cb5226fe3462f1cfa20aed7c54d9c3aa39af919340151",
+    "target/measured-oils/grouped-ratios/frozen-models.json": "2a36ae1e2fd030bc2aacd14a77870a0ee8d93563e7ec83e369ab2ff295e28cd7",
+    "target/measured-oils/source/spectralDatasets.zip": "cda35e5ab968bb18a05127c1b9fb0b2bd3c4a4bb88d4bf4ae1e4b2bb5de07538",
+    "tools/measured_oils.py": "21f7e18f4c30cbfa9fcf1da801229942bc420afaec57ddd21d9a98510cc43137",
+    "tools/measured_oils_chromatic.py": "951daaddaed41ec95b221de3d0f767267dafab6d025dc129aa81b3ebb6f0a2fa",
+    "experiments/oil_parallel/interaction/run.py": "b6c4828856737393bc7b4561855acf35aa1dc340664d05c8ebd3726d509ce911",
+    "experiments/oil_parallel/validate_comparison.py": "f833991152dc92c00c840b8ed8009cb468d641c0d83d7777747bcb336e0b6409",
+    "experiments/oil_grouped/summary.json": "e60b8d9d74dbeee5b1067b609d76b1b9fbc720ffb1bec199bccfb74d5522a366",
+    "data/cie_380_780_1nm.csv": "153b2a573da2ab6c155ccb7c03ca21f16e938b030387e56565c7d03f6ad95f32"
+  },
+  "source_support": {
+    "rows": [
+      112,
+      113,
+      114,
+      115
+    ],
+    "distinct_normalized_recipes": 4,
+    "independent_replicates_identified": false
+  },
+  "model_disagreement_peaks": [
+    {
+      "white_fraction": 0,
+      "model_stage": "full",
+      "metric": "delta_e_2000",
+      "peak": 4.251988603235547,
+      "red_fraction_at_peak": 0.601
+    },
+    {
+      "white_fraction": 0,
+      "model_stage": "full",
+      "metric": "spectral_rmse",
+      "peak": 0.02902904378736585,
+      "red_fraction_at_peak": 0.931
+    },
+    {
+      "white_fraction": 0,
+      "model_stage": "km",
+      "metric": "delta_e_2000",
+      "peak": 2.1364996919815096,
+      "red_fraction_at_peak": 0.801
+    },
+    {
+      "white_fraction": 0,
+      "model_stage": "km",
+      "metric": "spectral_rmse",
+      "peak": 0.026207831343666204,
+      "red_fraction_at_peak": 0.9540000000000001
+    },
+    {
+      "white_fraction": 0.5,
+      "model_stage": "full",
+      "metric": "delta_e_2000",
+      "peak": 1.4957380833304845,
+      "red_fraction_at_peak": 0.639
+    },
+    {
+      "white_fraction": 0.5,
+      "model_stage": "full",
+      "metric": "spectral_rmse",
+      "peak": 0.015549783318026143,
+      "red_fraction_at_peak": 0.764
+    },
+    {
+      "white_fraction": 0.5,
+      "model_stage": "km",
+      "metric": "delta_e_2000",
+      "peak": 0.32842652403299305,
+      "red_fraction_at_peak": 0.481
+    },
+    {
+      "white_fraction": 0.5,
+      "model_stage": "km",
+      "metric": "spectral_rmse",
+      "peak": 0.009964706656493284,
+      "red_fraction_at_peak": 1.0
+    },
+    {
+      "white_fraction": 0.95,
+      "model_stage": "full",
+      "metric": "delta_e_2000",
+      "peak": 0.30187784864758915,
+      "red_fraction_at_peak": 0.266
+    },
+    {
+      "white_fraction": 0.95,
+      "model_stage": "full",
+      "metric": "spectral_rmse",
+      "peak": 0.002569808466714392,
+      "red_fraction_at_peak": 0.604
+    },
+    {
+      "white_fraction": 0.95,
+      "model_stage": "km",
+      "metric": "delta_e_2000",
+      "peak": 0.27104186657577706,
+      "red_fraction_at_peak": 0.243
+    },
+    {
+      "white_fraction": 0.95,
+      "model_stage": "km",
+      "metric": "spectral_rmse",
+      "peak": 0.00220235128231139,
+      "red_fraction_at_peak": 0.0
+    }
+  ],
+  "checks": {
+    "grid_count_per_model": 3003,
+    "independent_scalar_max_abs": 4.198030811863873e-15,
+    "pure_endpoint_max_abs": 0.0,
+    "all_predictions_finite_bounded": true,
+    "archived_metric_max_abs_difference": 5.329070518200751e-15
+  },
+  "proposal": {
+    "conditions": 15,
+    "currently_missing_conditions": 11,
+    "independent_mixture_swatches": 45,
+    "pure_anchor_swatches": 9,
+    "total_proposed_swatches": 54
+  }
+}

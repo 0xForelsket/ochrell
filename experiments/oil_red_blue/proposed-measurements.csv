@@ -1,0 +1,16 @@
+red_parts,blue_parts,white_parts,white_fraction,independent_preparations,existing_source_rows,purpose
+1,9,0,0.0,3,,new ratio/white condition
+1,9,10,0.5,3,,new ratio/white condition
+1,9,190,0.95,3,,new ratio/white condition
+1,3,0,0.0,3,,new ratio/white condition
+1,3,4,0.5,3,,new ratio/white condition
+1,3,76,0.95,3,,new ratio/white condition
+1,1,0,0.0,3,112,repeat existing condition
+1,1,2,0.5,3,114,repeat existing condition
+1,1,38,0.95,3,115,repeat existing condition
+3,1,0,0.0,3,,new ratio/white condition
+3,1,4,0.5,3,,new ratio/white condition
+3,1,76,0.95,3,,new ratio/white condition
+9,1,0,0.0,3,113,repeat existing condition
+9,1,10,0.5,3,,new ratio/white condition
+9,1,190,0.95,3,,new ratio/white condition

@@ -1,0 +1,7 @@
+{
+  "unique_fits": 10,
+  "scalar_max_abs": 3.6637359812630166e-15,
+  "pure_max_abs": 5.551115123125783e-17,
+  "excluded_target_perturbation_coefficient_change": 0.0,
+  "finite_bounded_all34_all_models": true
+}

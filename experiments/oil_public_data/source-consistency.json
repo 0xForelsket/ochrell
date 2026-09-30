@@ -1,0 +1,186 @@
+{
+  "status": "post-hoc source consistency concern, not an identified data correction",
+  "paper_reference": "https://doi.org/10.3390/s21072471",
+  "paper_figure_6_visual_reading": "M2 is substantially better than M1; M6 is worse than M1. Graph-only comparison, no exact numeric reproduction target supplied.",
+  "native_trimmed_support_nm": [
+    437.29,
+    963.91
+  ],
+  "as_labelled_forward_mse": {
+    "M1_additive": {
+      "all175": 0.02205682961706512,
+      "mixtures168": 0.022975864184442838
+    },
+    "M2_geometric": {
+      "all175": 0.022949305476733482,
+      "mixtures168": 0.023905526538264044
+    },
+    "M6_LIP_additive": {
+      "all175": 0.021850215954471952,
+      "mixtures168": 0.022760641619241614
+    },
+    "M7_LIP_subtractive": {
+      "all175": 0.022679986219857055,
+      "mixtures168": 0.023624985645684434
+    }
+  },
+  "white_label_diagnostic": {
+    "wavelength_nm": 548.99,
+    "white_reflectance": 0.11205,
+    "comparison_bC_reflectance": 0.47529
+  },
+  "limitations": "Different authors endmember extraction or preprocessing could contribute; alignment headers alone do not establish semantic correctness. No permutation search, relabelling, row removal or refit performed.",
+  "selected_mixture_pure_envelope": [
+    {
+      "sample": "Bw",
+      "max_outside_pure_envelope": 0.0020692946708463847,
+      "bands_above_diagnostic_cutoff_0_001": 4
+    },
+    {
+      "sample": "BW",
+      "max_outside_pure_envelope": 0.08284401253918494,
+      "bands_above_diagnostic_cutoff_0_001": 18
+    },
+    {
+      "sample": "bW",
+      "max_outside_pure_envelope": 0.0907048275862069,
+      "bands_above_diagnostic_cutoff_0_001": 14
+    },
+    {
+      "sample": "Bc",
+      "max_outside_pure_envelope": 0.03135410658307214,
+      "bands_above_diagnostic_cutoff_0_001": 21
+    },
+    {
+      "sample": "Bwc",
+      "max_outside_pure_envelope": 0.40418087774294675,
+      "bands_above_diagnostic_cutoff_0_001": 19
+    },
+    {
+      "sample": "bWc",
+      "max_outside_pure_envelope": 0.17190836990595612,
+      "bands_above_diagnostic_cutoff_0_001": 7
+    },
+    {
+      "sample": "Wc",
+      "max_outside_pure_envelope": 0.04711999999999998,
+      "bands_above_diagnostic_cutoff_0_001": 21
+    },
+    {
+      "sample": "BC",
+      "max_outside_pure_envelope": 0.280283605015674,
+      "bands_above_diagnostic_cutoff_0_001": 28
+    },
+    {
+      "sample": "bwC",
+      "max_outside_pure_envelope": 0.020821880877743004,
+      "bands_above_diagnostic_cutoff_0_001": 5
+    },
+    {
+      "sample": "WC",
+      "max_outside_pure_envelope": 0.339211222570533,
+      "bands_above_diagnostic_cutoff_0_001": 14
+    },
+    {
+      "sample": "bC",
+      "max_outside_pure_envelope": 0.6381329623824451,
+      "bands_above_diagnostic_cutoff_0_001": 31
+    },
+    {
+      "sample": "wC",
+      "max_outside_pure_envelope": 0.3056204702194356,
+      "bands_above_diagnostic_cutoff_0_001": 15
+    },
+    {
+      "sample": "By",
+      "max_outside_pure_envelope": 0.10625920689655172,
+      "bands_above_diagnostic_cutoff_0_001": 31
+    },
+    {
+      "sample": "Bwy",
+      "max_outside_pure_envelope": 0.3708312225705329,
+      "bands_above_diagnostic_cutoff_0_001": 18
+    },
+    {
+      "sample": "bWy",
+      "max_outside_pure_envelope": 0.3157649529780564,
+      "bands_above_diagnostic_cutoff_0_001": 15
+    },
+    {
+      "sample": "Wy",
+      "max_outside_pure_envelope": 0.03735462068965517,
+      "bands_above_diagnostic_cutoff_0_001": 26
+    },
+    {
+      "sample": "Bcy",
+      "max_outside_pure_envelope": 0.047675987460815056,
+      "bands_above_diagnostic_cutoff_0_001": 16
+    },
+    {
+      "sample": "Wcy",
+      "max_outside_pure_envelope": 0.35082213166144194,
+      "bands_above_diagnostic_cutoff_0_001": 20
+    },
+    {
+      "sample": "bCy",
+      "max_outside_pure_envelope": 0.30735965517241376,
+      "bands_above_diagnostic_cutoff_0_001": 18
+    },
+    {
+      "sample": "wCy",
+      "max_outside_pure_envelope": 0.33027448275862065,
+      "bands_above_diagnostic_cutoff_0_001": 26
+    },
+    {
+      "sample": "Cy",
+      "max_outside_pure_envelope": 0.0692694043887147,
+      "bands_above_diagnostic_cutoff_0_001": 21
+    },
+    {
+      "sample": "BY",
+      "max_outside_pure_envelope": 0.3661837931034483,
+      "bands_above_diagnostic_cutoff_0_001": 29
+    },
+    {
+      "sample": "bwY",
+      "max_outside_pure_envelope": 0.0264712225705329,
+      "bands_above_diagnostic_cutoff_0_001": 31
+    },
+    {
+      "sample": "WY",
+      "max_outside_pure_envelope": 0.10170369905956114,
+      "bands_above_diagnostic_cutoff_0_001": 31
+    },
+    {
+      "sample": "bcY",
+      "max_outside_pure_envelope": 0.018193843260188088,
+      "bands_above_diagnostic_cutoff_0_001": 23
+    },
+    {
+      "sample": "wcY",
+      "max_outside_pure_envelope": 0.030100282131661438,
+      "bands_above_diagnostic_cutoff_0_001": 16
+    },
+    {
+      "sample": "CY",
+      "max_outside_pure_envelope": 0.0656104921630094,
+      "bands_above_diagnostic_cutoff_0_001": 25
+    },
+    {
+      "sample": "bY",
+      "max_outside_pure_envelope": 0.023317115987460835,
+      "bands_above_diagnostic_cutoff_0_001": 6
+    },
+    {
+      "sample": "wY",
+      "max_outside_pure_envelope": 0.28963191222570533,
+      "bands_above_diagnostic_cutoff_0_001": 28
+    },
+    {
+      "sample": "cY",
+      "max_outside_pure_envelope": 0.3130368652037617,
+      "bands_above_diagnostic_cutoff_0_001": 17
+    }
+  ],
+  "envelope_caveat": "0.001 is a descriptive cutoff, not a measured noise estimate; finite layers and preparation differences can also leave this opaque fixed-pure envelope."
+}

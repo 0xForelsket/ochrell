@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "oil_grouped": "source and implementation hashes intact",
+    "oil_external": "source and implementation hashes intact",
+    "oil_red_blue": "source and implementation hashes intact"
+  },
+  "environment": {
+    "python": "3.12.11 (main, Jul 11 2025, 22:40:18) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "colour": "0.4.6",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "extra_pre_fit_checks": [
+    "BC/Bc/bC parent-tint grouping despite stored 0.33 rounding",
+    "truncated perfect-diffuser Lab = (100,0,0) within 1e-12"
+  ],
+  "post_fit_source_check": "independent openpyxl parity for all XLSX numeric cells and labels; source-baseline inconsistency retained separately"
+}

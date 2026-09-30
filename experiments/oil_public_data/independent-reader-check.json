@@ -1,0 +1,12 @@
+{
+  "reader": "openpyxl",
+  "reflectance_workbook_dimensions": [
+    187,
+    176
+  ],
+  "white_header_cell": "AI1",
+  "nearest_550_nm": 548.99,
+  "white_reflectance_near_550": 0.11205,
+  "bC_reflectance_near_550": 0.47529,
+  "full_table_values_and_label_parity": "exact for all concentration, wavelength and reflectance cells"
+}

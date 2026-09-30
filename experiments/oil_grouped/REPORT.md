@@ -146,6 +146,12 @@ measurement priority. Before another model change, inspect that trajectory and
 obtain additional ratios or independent data rather than tuning to the same
 red/blue failures. Keep the current runtime/default and paper implementation.
 
+Follow-up: the [frozen red/blue diagnosis](../oil_red_blue/REPORT.md) distinguishes
+the pair correction from white-tint effects. The user selected existing public
+measurements, leading to a [source audit](../oil_public_data/REPORT.md) and a
+[separate external test](../oil_external/REPORT.md). Their findings do not modify
+the frozen scores above.
+
 ## Reproduction
 
 From the repository root, using the existing scientific Python environment:

@@ -1,0 +1,147 @@
+{
+  "source_archive_sha256": "6d8cec6fb4fff5d4c24d18d1783422da8ef955d3e7ba7263179a84ed6c9b683e",
+  "files": {
+    "mockups_concentration.xlsx": {
+      "sha256": "3f20b10d180fb4638c3b60ea4b03a03f0dfdf3eb4c4d91c2ece788184ab27c7e",
+      "bytes": 13474
+    },
+    "mockups_reflectance.xlsx": {
+      "sha256": "22a615da8a404e0ebed53ce7b818853e59571f952aa89b19303dc365bd7670c9",
+      "bytes": 286100
+    },
+    "readme.txt": {
+      "sha256": "5c325884731e48147863ebae2b9b3056c6b523071f717844bbe41732985de77f",
+      "bytes": 793
+    }
+  },
+  "samples": 175,
+  "native_bands": 186,
+  "native_range_nm": [
+    405.37,
+    995.83
+  ],
+  "after_ten_edge_bands_each_side": {
+    "bands": 166,
+    "range_nm": [
+      437.29,
+      963.91
+    ]
+  },
+  "reflectance_range": [
+    0.016638,
+    0.82073
+  ],
+  "concentration_row_order": [
+    "V",
+    "O",
+    "B",
+    "W",
+    "C",
+    "Y",
+    "G"
+  ],
+  "labels_align_between_tables": true,
+  "max_stored_vs_nominal_mass_fraction_difference": 0.0033333333333334103,
+  "duplicate_normalized_recipes": 0,
+  "four_material_subset": {
+    "order": [
+      "Y",
+      "C",
+      "B",
+      "W"
+    ],
+    "paint_names_and_codes": {
+      "Y": [
+        "Naples Yellow",
+        "43125"
+      ],
+      "C": [
+        "Carmine",
+        "23403"
+      ],
+      "B": [
+        "Ultramarine Blue",
+        "45030"
+      ],
+      "W": [
+        "Kremer White",
+        "46360"
+      ]
+    },
+    "samples": 34,
+    "pure": 4,
+    "white_tint_anchors_including_pure": 13,
+    "chromatic_pairs": 9,
+    "multicolor": 12,
+    "labels": [
+      "B",
+      "Bw",
+      "BW",
+      "bW",
+      "W",
+      "Bc",
+      "Bwc",
+      "bWc",
+      "Wc",
+      "BC",
+      "bwC",
+      "WC",
+      "bC",
+      "wC",
+      "C",
+      "By",
+      "Bwy",
+      "bWy",
+      "Wy",
+      "Bcy",
+      "Wcy",
+      "bCy",
+      "wCy",
+      "Cy",
+      "BY",
+      "bwY",
+      "WY",
+      "bcY",
+      "wcY",
+      "CY",
+      "bY",
+      "wY",
+      "cY",
+      "Y"
+    ]
+  },
+  "possible_31_band_common_grid_nm": [
+    440,
+    450,
+    460,
+    470,
+    480,
+    490,
+    500,
+    510,
+    520,
+    530,
+    540,
+    550,
+    560,
+    570,
+    580,
+    590,
+    600,
+    610,
+    620,
+    630,
+    640,
+    650,
+    660,
+    670,
+    680,
+    690,
+    700,
+    710,
+    720,
+    730,
+    740
+  ],
+  "qualification": "A different pigment-mass-based palette and 45/0 imaging setup; not validation of Old Holland coefficients. No fits or model-error scoring performed."
+}
