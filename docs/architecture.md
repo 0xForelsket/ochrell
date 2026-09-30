@@ -2,15 +2,19 @@
 
 `PigmentMixer` / `FastPigmentMixer` now use a continuous reconstructed-spectrum model. The simple RGB API is unchanged; the latent representation is a breaking change appropriate to the 0.2 release. `ReferenceSpectralMixer` evaluates the same equations with 81 samples and f64, while the default evaluates 41 samples with f32 optical arithmetic. Neither default encoder uses an iterative inverse or 3D LUT.
 
-The [product direction](product-direction.md) adds a planned palette mode alongside
-this implementation: selected materials, persistent recipes and a prepared mixer.
-That mode will need its own spectral reference and versioned state/artifact format.
-It is not implemented here yet and does not change the current exports or defaults.
+The [product direction](product-direction.md) adds palette mode alongside this
+implementation. Its first [experimental reference](palette-reference.md) exposes
+Synthetic Four through `ochrell::palette`, with persistent recipes and an explicit
+palette fingerprint in saved states. LUT acceleration, target matching, custom
+palette import and renderer integration remain future work. Root exports and
+defaults are unchanged.
 
 ## Modules
 
 - `color` / `conversion`: checked bounded sRGB, transfer functions, OKLab and gamut mapping.
 - `optical`: new reconstruction recipe, separate K/S inference, latent interpolation, pair and weighted APIs.
+- `palette`, `palette_generated`: opt-in four-material f64 reference, independently
+  generated synthetic coefficients, palette-bound recipes and checked persistence.
 - `compact`: optional 204-byte, 24-knot approximation of full optical material,
   with persistent mixing, full-state expansion and versioned byte payloads.
 - `optical_generated`: immutable independently fitted spectra and quadrature generated from `config.toml` and attributed CIE data.

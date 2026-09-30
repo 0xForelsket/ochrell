@@ -17,3 +17,17 @@ The matrix values in `conversion.rs` are the publicly documented sRGB and OKLab 
 `optical_basis.csv` and `src/optical_generated.rs` are produced by `tools/optical_model.py` using only the above CIE-derived quadrature and the declared anchor-fit objective. Primary spectra are fitted independently; complementary spectra and neutral anchors are derived algebraically. `results/revision/generation.json` contains optimizer records and the exact basis checksum. `docs/coefficients.md` explains every new design parameter. These generated data assets retain the CC BY-SA 4.0 attribution/change notice. Original generator/runtime code is MIT OR Apache-2.0.
 
 The earlier LUT assets and synthetic palette remain for legacy reproduction and are not used by the new default mixer. The scattering normalization and white-strength parameter in v0.2 are mathematical priors, not measured paint properties. External engine observations live outside `data/` and are never inputs to model generation.
+
+## Experimental Synthetic Four palette
+
+`palettes/synthetic-four-v1.json` contains original analytic reflectance/strength
+definitions for the opt-in recipe reference. They are not measured paints and
+are not fitted to the Old Holland dataset, Mixbox, Spectral.js or the legacy
+palette. `tools/generate_palette.py` combines these definitions with the existing
+CIE CSV to generate `src/palette_generated.rs` and the adjacent palette manifest.
+
+The original JSON definitions and generator code use MIT OR Apache-2.0. The
+CIE-derived projection and combined generated data asset retain CC BY-SA 4.0
+attribution and change notices, consistent with the existing distribution.
+The manifest records source hashes and a palette fingerprint; no new external
+measurement is bundled. See [the reference contract](../docs/palette-reference.md).

@@ -1,0 +1,11 @@
+{
+  "palette_id": "ochrell-synthetic-four-v1",
+  "palette_sha256": "6c3cfa547ef41184fc5fd9a61098aaba586cf12e4362c8281c2bb18a8b2ee870",
+  "definition_sha256": "abd92e9c772baadc9fff508532eebb3e7815c7f79b1d8c0b43c2c13c3bf77eac",
+  "generator_sha256": "5868eeac19d7ab4ec6d36f68fdaa221ffd37a81c6405fd36b46281966782088b",
+  "cie_subset_sha256": "153b2a573da2ab6c155ccb7c03ca21f16e938b030387e56565c7d03f6ad95f32",
+  "generated_rust_sha256": "970ad63068042231a5e9ba5654bd86c1de13f14fb71487bad9763cdbf11a3737",
+  "provenance": "Original synthetic smoothstep spectra; no measured paint or comparator fitting",
+  "projection": "CIE 1931 2 degree / D65, 380-780 nm / 5 nm trapezoid, neutral normalized linear sRGB",
+  "data_license": "CIE-derived quadrature and combined generated asset: CC BY-SA 4.0; retain data/README.md notices"
+}

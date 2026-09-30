@@ -16,6 +16,8 @@ pub mod lut;
 pub mod mixing;
 pub mod optical;
 mod optical_generated;
+pub mod palette;
+mod palette_generated;
 pub mod pigment;
 pub mod spectrum;
 pub use color::{Color, MixError};

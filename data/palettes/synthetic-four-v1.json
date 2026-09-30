@@ -1,0 +1,37 @@
+{
+  "id": "ochrell-synthetic-four-v1",
+  "description": "Independent synthetic recipe baseline; not calibrated to a paint manufacturer or historical palette.",
+  "amount_basis": "relative synthetic material amounts",
+  "optical_prior": "s = strength / sqrt(1 + q), k = q * s, q = (1-r)^2 / (2*r)",
+  "grid": {"start_nm": 380, "end_nm": 780, "step_nm": 5},
+  "paints": [
+    {
+      "name": "yellow",
+      "strength": 1.0,
+      "floor": 0.04,
+      "rising": [[460, 540, 0.86]],
+      "falling": []
+    },
+    {
+      "name": "red",
+      "strength": 1.0,
+      "floor": 0.04,
+      "rising": [[560, 640, 0.80]],
+      "falling": [[410, 470, 0.12]]
+    },
+    {
+      "name": "blue",
+      "strength": 1.0,
+      "floor": 0.03,
+      "rising": [[650, 720, 0.04]],
+      "falling": [[460, 580, 0.72]]
+    },
+    {
+      "name": "white",
+      "strength": 2.0,
+      "floor": 0.94,
+      "rising": [],
+      "falling": []
+    }
+  ]
+}

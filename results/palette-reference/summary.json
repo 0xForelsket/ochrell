@@ -1,0 +1,33 @@
+{
+  "palette_id": "ochrell-synthetic-four-v1",
+  "samples": 1418,
+  "corpus": "4 pure paints, 6 pair ramps with 65 steps, 1024 seeded random recipes; seed 1907",
+  "max_abs_error": {
+    "reflectance": 2.4216739724636227e-15,
+    "linear_rgb": 2.831068712794149e-15,
+    "display_srgb": 2.9793457478888286e-08
+  },
+  "limits": {
+    "reflectance": 2e-12,
+    "linear_rgb": 2e-12,
+    "display_srgb": 2e-07
+  },
+  "out_of_gamut_raw_recipes": 100,
+  "interpretation": "Implementation agreement with independent equations, not physical validation or speed measurement",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.11",
+  "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)\nbinary: rustc\ncommit-hash: ed61e7d7e242494fb7057f2657300d9e77bb4fcb\ncommit-date: 2025-11-07\nhost: x86_64-pc-windows-msvc\nrelease: 1.91.1\nLLVM version: 21.1.2",
+  "source_sha256": {
+    "src/palette.rs": "b64b6b6aba7bbd9803eeb7dbe698af55fe3d038b6dce0165e42498e5b6f9f77c",
+    "src/palette_generated.rs": "970ad63068042231a5e9ba5654bd86c1de13f14fb71487bad9763cdbf11a3737",
+    "src/kubelka_munk.rs": "e6ae5f1f65d1e2ec9a4a13b6cbec6ea04681b1bf403915e2f01f9d8fbcdfe50f",
+    "src/conversion.rs": "17f39f577b87d4efff28284adbb848145fba9bcf129ec45daed210f8a878af7d",
+    "src/color.rs": "46bb54d821cdf737cbb512bc5e8b54eab874d30cbe345dafcfa45ed5ef356645",
+    "examples/palette_probe.rs": "eadc7df1635d80610108826ffc7597bb8ad70005bba3f2650910b7add6d56a1b",
+    "tools/check_palette.py": "e089ad044bb6c9217e22985b298fffa87fb572a8f58491f8b159c980f8738d36",
+    "tools/generate_palette.py": "5868eeac19d7ab4ec6d36f68fdaa221ffd37a81c6405fd36b46281966782088b",
+    "data/palettes/synthetic-four-v1.json": "abd92e9c772baadc9fff508532eebb3e7815c7f79b1d8c0b43c2c13c3bf77eac",
+    "data/cie_380_780_1nm.csv": "153b2a573da2ab6c155ccb7c03ca21f16e938b030387e56565c7d03f6ad95f32"
+  },
+  "probe_csv_sha256": "66552fb6ff98344b9201dfbfdd0ab5688f626e695c0f9901ab92d7904db38e7c"
+}

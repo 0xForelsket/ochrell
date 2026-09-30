@@ -5,6 +5,10 @@ with the four-tube Old Holland oil subset and an independent synthetic baseline.
 This refines the [product direction](product-direction.md). Neither is a shipped
 palette yet; preparation, validation and a default change remain separate steps.
 
+Implementation update: [Synthetic Four](palette-reference.md) now has an
+experimental direct reference and recipe persistence. The measured oil track
+and its holdout partition below remain unchanged and unfitted.
+
 ## Selected candidates
 
 | Priority | Working name | Materials | Role |

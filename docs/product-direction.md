@@ -5,6 +5,10 @@ designed and validated. This document records the product discussion following
 the Ochrell/Mixbox performance review. It does not announce a shipped palette
 API, generated mixer, new physical calibration, or default change.
 
+Implementation update: the first [Synthetic Four reference](palette-reference.md)
+is available as an opt-in recipe API. Acceleration, target-color matching,
+measured calibration and renderer integration remain subsequent work.
+
 ## Decision
 
 Extend Ochrell into a library that lets a person or an agent choose a palette,
