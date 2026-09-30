@@ -31,3 +31,8 @@ CIE-derived projection and combined generated data asset retain CC BY-SA 4.0
 attribution and change notices, consistent with the existing distribution.
 The manifest records source hashes and a palette fingerprint; no new external
 measurement is bundled. See [the reference contract](../docs/palette-reference.md).
+
+Prepared forward LUTs generated from this reference use the same combined-data
+attribution and CC BY-SA 4.0 terms. No binary LUT is bundled in this stage; the
+host can generate and save one through `palette_lut::PaletteLut`. Its payload
+retains the exact palette fingerprint; see [format and results](../docs/palette-lut.md).

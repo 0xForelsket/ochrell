@@ -6,8 +6,9 @@ the Ochrell/Mixbox performance review. It does not announce a shipped palette
 API, generated mixer, new physical calibration, or default change.
 
 Implementation update: the first [Synthetic Four reference](palette-reference.md)
-is available as an opt-in recipe API. Acceleration, target-color matching,
-measured calibration and renderer integration remain subsequent work.
+is available as an opt-in recipe API, now with an explicit
+[prepared forward decoder](palette-lut.md). Target-color matching, measured
+calibration and renderer integration remain subsequent work.
 
 ## Decision
 

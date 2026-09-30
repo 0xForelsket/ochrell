@@ -1,0 +1,82 @@
+{
+  "resolution": 65,
+  "mapping": "recipe-sqrt",
+  "seed": 314159,
+  "payload_bytes": 3296020,
+  "families": {
+    "pure": {
+      "count": 4,
+      "mean_de_ok100": 0.0,
+      "p95_de_ok100": 0.0,
+      "max_de_ok100": 0.0,
+      "max_raw_channel": 1.7277218211653178e-08,
+      "max_luminance_drop": 0.0,
+      "passes": true
+    },
+    "pairs": {
+      "count": 3078,
+      "mean_de_ok100": 0.003341429249127812,
+      "p95_de_ok100": 0.0071768037295399005,
+      "max_de_ok100": 0.01581717537864066,
+      "max_raw_channel": 0.0007302421228392308,
+      "max_luminance_drop": 0.0,
+      "passes": true
+    },
+    "interior": {
+      "count": 4096,
+      "mean_de_ok100": 0.011450182412206814,
+      "p95_de_ok100": 0.018516333078667537,
+      "max_de_ok100": 0.03735292246980204,
+      "max_raw_channel": 0.0020784664754955884,
+      "max_luminance_drop": 0.0,
+      "passes": true
+    },
+    "faces": {
+      "count": 4096,
+      "mean_de_ok100": 0.007731555117916852,
+      "p95_de_ok100": 0.01271222047349083,
+      "max_de_ok100": 0.03771036895937687,
+      "max_raw_channel": 0.0018023948440812898,
+      "max_luminance_drop": 0.0,
+      "passes": true
+    },
+    "edge_bias": {
+      "count": 2048,
+      "mean_de_ok100": 0.009351029378383046,
+      "p95_de_ok100": 0.03687744208074089,
+      "max_de_ok100": 0.07019085912325368,
+      "max_raw_channel": 0.0026750994745897705,
+      "max_luminance_drop": 0.0,
+      "passes": true
+    },
+    "white_tints": {
+      "count": 4112,
+      "mean_de_ok100": 0.008388454061931085,
+      "p95_de_ok100": 0.016224423097127294,
+      "max_de_ok100": 0.0450669959536067,
+      "max_raw_channel": 0.0016974670052363194,
+      "max_luminance_drop": 0.0,
+      "passes": true
+    },
+    "chains": {
+      "count": 4096,
+      "mean_de_ok100": 0.012453352548532927,
+      "p95_de_ok100": 0.01626393128935602,
+      "max_de_ok100": 0.021246300641602777,
+      "max_raw_channel": 0.0003760294890997884,
+      "max_luminance_drop": 0.0,
+      "passes": true
+    },
+    "tiny_updates": {
+      "count": 16384,
+      "mean_de_ok100": 0.0030742915502195906,
+      "p95_de_ok100": 0.006797345509358136,
+      "max_de_ok100": 0.032286647988548876,
+      "max_raw_channel": 0.001253087697155375,
+      "max_luminance_drop": 0.0,
+      "passes": true
+    }
+  },
+  "passes": true,
+  "raw_csv_sha256": "d3247e2b9c6c3b2428a9a520c0e58efb56d09ad50186843044e288326dc9bd18"
+}

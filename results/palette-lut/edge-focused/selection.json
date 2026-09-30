@@ -1,0 +1,5 @@
+{
+  "resolution": null,
+  "spacing": "edge",
+  "rule": "smallest of 17, 33, 65 passing all predeclared family and memory limits"
+}

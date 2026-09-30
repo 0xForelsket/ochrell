@@ -1,0 +1,91 @@
+# Forward palette LUT experiment
+
+Baseline: `dcf4fb1`, Synthetic Four direct reference. Scope: accelerate recipe
+decoding only. Keep the palette definition, reference coefficients, OPR1 recipe
+bytes, material mixing and default RGB APIs unchanged. No measured paint data,
+target-color solver or renderer changes belong to this experiment.
+
+## Representation
+
+For normalized proportions (a,b,c,d), use cumulative coordinates
+(u,v,w)=(a,a+b,a+b+c), with 0 <= u <= v <= w <= 1. A uniform cube grid has a
+valid ordered region whose nodes map back to (u,v-u,w-v,1-w). Generate raw linear
+RGB from the direct reference at those nodes. Store three f32 channels per node;
+negative or above-one RGB must survive until the existing display gamut map.
+
+Use tetrahedral interpolation in the cube grid. Cumulative ordering means the
+positive-weight vertices remain in the valid recipe region; zero-weight vertices
+on shared boundaries must not influence output. Store the cube densely initially
+for straightforward indexing, leaving unused nodes zero. This is a declared
+memory tradeoff, not a claim that dense storage is optimal.
+
+Palette preparation is explicit. The prepared object is tied to its palette,
+and persistent table bytes include format, palette fingerprint, resolution and
+an integrity check. Bound allocation and validate length, checksum and finite
+values on import. Decoding never changes a recipe or rebuilds one from RGB.
+
+## Acceptance declared before screening
+
+Screen resolutions 17, 33 and 65; retain every candidate result. Use a fresh seed
+20261001 for screening and seed 314159 for independent confirmation after selecting
+the smallest passing candidate. Do not widen these budgets to rescue a failure.
+
+- For each sampled family: mean <=0.03, P95 <=0.10 and maximum <=0.50 in
+  delta E OKLab * 100, comparing displayed LUT and reference results.
+- Maximum raw linear RGB channel difference <=0.01 in each family.
+- Pure-paint maximum raw channel error <=2e-7 and perceptual error <=0.001.
+- White-tint raw luminance must not decrease by more than 1e-6 per step.
+- Recipe bytes and future reference mixes are unchanged by any decode or LUT
+  save/load; long chains and tiny updates preserve the original material exactly.
+- Payload <=4 MiB. Exact round-trip table bytes, invalid imports and palette
+  mismatch must be tested. A checksum detects accidental corruption, not malicious
+  table fabrication or physical validity.
+- Same-process alternating benchmarks must improve both complete display decode
+  and cached mix+decode medians over the direct palette reference. Report raw
+  linear decode separately, preparation/load times and table size. No comparison
+  with historical Mixbox timing and no end-to-end renderer speed claim.
+
+Families include all six pure-paint pair ramps, all four simplex faces, interior
+recipes, edge/vertex-biased tiny fractions, white-tint ramps of mixed paints,
+256-step mixed-paint chains and 4096 updates at t=0.0001. Check affine interpolation
+independently of the optical model and test continuity across cell/tetrahedron
+boundaries. The metric limits are engineering budgets against this synthetic
+reference, not measured-paint accuracy or universal visibility thresholds.
+
+If no candidate passes, retain the direct reference and report the failure.
+The API remains opt-in even if a candidate passes. This stage need not bundle a
+binary LUT: a reproducible build/load path and recorded selection are sufficient
+to establish the preparation workflow before a distribution format is promoted.
+
+## Second screen, declared after uniform-grid failure
+
+All uniform grids failed. At 65 samples per axis, white-tint mean error was
+0.06555 and edge-biased mean error 0.06857 delta E OKLab * 100; maximum raw
+channel error reached 0.04654. Preserve these results and exact experiment
+sources in `results/palette-lut/uniform`. No holdout was evaluated in that screen.
+
+Keep the same resolutions, seeds, corpus families, 4 MiB budget and error limits.
+Add an edge-focused grid with knots x_i=(1-cos(pi*i/(n-1)))/2, explicit endpoints
+zero and one. Each cumulative coordinate uses these same monotonically ordered
+knots. Locate its interval by binary search and interpolate using physical local
+coordinates, retaining the tetrahedral construction. This increases resolution
+near pure-material vertices, particularly white, without adding more nodes.
+The prepared artifact must store exact knots so loading does not regenerate
+platform math. Measure the extra lookup cost; do not infer throughput from the
+smaller sample spacing. Selection still precedes the untouched holdout seed.
+
+## Third screen, declared after cumulative-edge-grid failure
+
+Cosine knots improved pure-paint edges but did not adequately resolve small
+ingredient amounts along the interior of simplex faces. All candidates still
+failed; retain this screen under `results/palette-lut/edge-focused`. At 65 nodes,
+the maximum face error was 1.14287 delta E OKLab * 100 and 0.05961 raw channel.
+No holdout has yet been consumed.
+
+Screen the same resolutions with a component-wise recipe transform:
+z_i=sqrt(c_i)/sum_j sqrt(c_j). Use uniform cumulative coordinates of z for the
+LUT, and invert at grid nodes with c_i=z_i^2/sum_j z_j^2. This concentrates nodes
+near every zero-ingredient face, not just endpoints of cumulative coordinates.
+Interpolation occurs in the transformed coordinates; material still remains c.
+Keep every existing error, memory and timing gate unchanged. The transform adds
+four square roots to each lookup, so its actual timing must be measured.

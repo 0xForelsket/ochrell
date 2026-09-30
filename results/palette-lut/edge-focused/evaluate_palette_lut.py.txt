@@ -1,0 +1,108 @@
+"""Screen four-material forward LUTs, confirm a candidate, retain raw evidence.
+
+Uses the public Rust API for both reference and LUT. Budgets and seeds are
+declared in docs/palette-lut-plan.md. No external dataset or plotting dependency.
+"""
+import argparse
+import csv
+import gzip
+import hashlib
+import io
+import json
+import math
+import os
+from pathlib import Path
+import platform
+import statistics
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def write_json(path, value):
+    path.write_bytes((json.dumps(value, indent=2)+'\n').encode())
+
+
+def quality(executable, resolution, seed, out, spacing):
+    output = subprocess.check_output([str(executable), 'quality', str(resolution), str(seed), spacing], text=True)
+    raw = output.encode()
+    (out/f'quality-{resolution}-{seed}.csv.gz').write_bytes(gzip.compress(raw, mtime=0))
+    families = {}
+    for row in csv.DictReader(io.StringIO(output)):
+        values = {k: float(row[k]) for k in ('de_ok100','raw_error','luminance_drop')}
+        if not all(math.isfinite(v) and v>=0 for v in values.values()):
+            raise ValueError('Invalid numerical quality record')
+        families.setdefault(row['family'], []).append(values)
+    summary = {}
+    for name, rows in families.items():
+        errors = sorted(row['de_ok100'] for row in rows)
+        entry = {'count': len(rows), 'mean_de_ok100': statistics.mean(errors),
+                 'p95_de_ok100': errors[int(.95*(len(errors)-1))], 'max_de_ok100': max(errors),
+                 'max_raw_channel': max(r['raw_error'] for r in rows),
+                 'max_luminance_drop': max(r['luminance_drop'] for r in rows)}
+        entry['passes'] = entry['mean_de_ok100'] <= .03 and entry['p95_de_ok100'] <= .10 and entry['max_de_ok100'] <= .50 and entry['max_raw_channel'] <= .01
+        if name == 'pure':
+            entry['passes'] &= entry['max_raw_channel'] <= 2e-7 and entry['max_de_ok100'] <= .001
+        if name == 'white_tints':
+            entry['passes'] &= entry['max_luminance_drop'] <= 1e-6
+        summary[name] = entry
+    expected = {'pure','pairs','interior','faces','edge_bias','white_tints','chains','tiny_updates'}
+    if set(summary) != expected:
+        raise ValueError('Missing quality families')
+    payload = resolution**3*12+resolution*8
+    return {'resolution': resolution, 'spacing': spacing, 'seed': seed, 'payload_bytes': payload, 'families': summary,
+            'passes': payload <= 4*1024**2 and all(v['passes'] for v in summary.values()),
+            'raw_csv_sha256': hashlib.sha256(raw).hexdigest()}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--out', type=Path, default=ROOT/'target/palette-lut')
+    parser.add_argument('--iterations', type=int, default=300000)
+    parser.add_argument('--repeats', type=int, default=10)
+    parser.add_argument('--spacing', choices=('uniform','edge'), default='uniform')
+    args = parser.parse_args()
+    if args.iterations <= 0 or args.repeats < 4:
+        parser.error('positive iterations and at least four repeats are required')
+    args.out.mkdir(parents=True, exist_ok=True)
+    cargo = os.environ.get('CARGO', 'cargo')
+    subprocess.run([cargo,'build','--release','--offline','--example','palette_lut_eval'], cwd=ROOT, check=True)
+    executable = ROOT/'target/release/examples'/('palette_lut_eval.exe' if os.name=='nt' else 'palette_lut_eval')
+    results = [quality(executable, n, 20261001, args.out, args.spacing) for n in (17,33,65)]
+    write_json(args.out/'screening.json', results)
+    candidates = [r for r in results if r['passes']]
+    selection = {'resolution': candidates[0]['resolution'] if candidates else None,
+                 'spacing': args.spacing,
+                 'rule': 'smallest of 17, 33, 65 passing all predeclared family and memory limits'}
+    write_json(args.out/'selection.json', selection)
+    if candidates:
+        n = selection['resolution']
+        holdout = quality(executable, n, 314159, args.out, args.spacing)
+        write_json(args.out/'holdout.json', holdout)
+        timing = subprocess.check_output([str(executable),'bench',str(n),str(args.iterations),str(args.repeats),args.spacing], text=True)
+        (args.out/'benchmark.csv').write_bytes(timing.encode())
+        rows = list(csv.DictReader(io.StringIO(timing)))
+        operations = {}
+        for row in rows:
+            operations.setdefault(row['operation'], []).append(float(row['ns']))
+        timing_summary = {name: {'median': statistics.median(values), 'min': min(values), 'max': max(values)} for name,values in operations.items()}
+        speedups = {name: timing_summary['reference_'+name]['median']/timing_summary['lut_'+name]['median'] for name in ('linear','display','mix_display')}
+        result = {'selected_resolution': n, 'holdout_passes': holdout['passes'], 'operations': timing_summary, 'speedups': speedups,
+                  'accepted': holdout['passes'] and speedups['display'] > 1 and speedups['mix_display'] > 1}
+    else:
+        result = {'selected_resolution': None, 'accepted': False, 'reason': 'No candidate met predeclared numerical/memory limits'}
+    paths = ['src/palette_lut.rs','src/palette.rs','src/palette_generated.rs','src/conversion.rs','src/color.rs','examples/palette_lut_eval.rs','tools/evaluate_palette_lut.py','docs/palette-lut-plan.md']
+    result['environment'] = {'platform': platform.platform(), 'python': platform.python_version(),
+                             'rustc': subprocess.check_output(['rustc','-Vv'], text=True).strip(),
+                             'profile': 'release, single thread, LTO off, codegen-units=1; warmup discarded; rotated operation order',
+                             'iterations': args.iterations, 'repeats': args.repeats,
+                             'rustflags': os.environ.get('RUSTFLAGS', ''),
+                             'source_sha256': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths},
+                             'executable_sha256': hashlib.sha256(executable.read_bytes()).hexdigest()}
+    write_json(args.out/'summary.json', result)
+    print(json.dumps({'output': str(args.out), 'screening': [{k:r[k] for k in ('resolution','passes','payload_bytes')} for r in results],
+                      'result': {k:v for k,v in result.items() if k != 'environment'}}, indent=2))
+
+
+if __name__=='__main__':
+    main()

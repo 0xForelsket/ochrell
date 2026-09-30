@@ -15,8 +15,10 @@ virtual paints, load or generate an accelerated mixer, and paint with persistent
 recipes through code or a host application's UI. Agents can specify paint
 proportions directly or ask the library to match a target color within the palette.
 An experimental [Synthetic Four reference](docs/palette-reference.md) now supports
-named paints, persistent recipes and checked save/load. LUT preparation,
-target-color matching and renderer integration remain planned. The current
+named paints, persistent recipes and checked save/load. An opt-in
+[prepared forward LUT](docs/palette-lut.md) accelerates recipe decoding, with
+measured generation time and approximation errors. Target-color matching and
+renderer integration remain planned. The current
 spectral mode remains supported and the library default is unchanged. A future
 painting-app default would use a bundled prepared palette only after quality,
 performance and saved-state compatibility are verified.
@@ -115,6 +117,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `src/optical.rs` | Default continuous spectral model, fast and reference kernels |
 | `src/compact.rs` | Opt-in compact material storage, interpolation and serialization |
 | `src/palette.rs` | Opt-in Synthetic Four recipe API and direct spectral reference |
+| `src/palette_lut.rs` | Explicit forward LUT preparation, decoding and checked artifacts |
 | `tools/generate_palette.py`, `tools/check_palette.py` | Independent palette generation, numerical verification and swatches |
 | `tools/optical_model.py` | Independent coefficient generation and Python reference |
 | `docs/research.md`, `docs/math.md` | Literature, equations, assumptions |
@@ -124,6 +127,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `docs/product-direction.md` | Agreed palette workflow, code-driven painting, compatibility and delivery plan |
 | `docs/starter-palettes.md` | Selected starter palettes, dataset audit and first reference experiment |
 | `docs/palette-reference.md` | Experimental recipe API, synthetic definitions, persistence and measured checks |
+| `docs/palette-lut.md` | Forward decoder selection, accuracy, preparation cost and timings |
 | `data/README.md` | Dataset/license attribution and checksums |
 | `results/revision/` | Raw current results, environment, fit and ablations |
 | `paper/paper.md`, `.tex`, `.pdf` | Revised scientific paper |

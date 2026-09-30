@@ -4,6 +4,10 @@ This stage implements the independent Synthetic Four reference selected in
 [starter-palettes.md](starter-palettes.md). It adds an opt-in module; the root
 RGB mixer, compact state, frozen experiments and renderer are unchanged.
 
+Subsequent stage: an opt-in [forward LUT](palette-lut.md) now uses this unchanged
+reference. The contract and initial measurements below describe the direct
+reference stage; prepared decoding is a separate API and artifact.
+
 ## Contract declared before validation
 
 - Four named paints: yellow, red, blue and white. Recipes contain four normalized

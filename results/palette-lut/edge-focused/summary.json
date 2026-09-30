@@ -1,0 +1,25 @@
+{
+  "selected_resolution": null,
+  "accepted": false,
+  "reason": "No candidate met predeclared numerical/memory limits",
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.11",
+    "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)\nbinary: rustc\ncommit-hash: ed61e7d7e242494fb7057f2657300d9e77bb4fcb\ncommit-date: 2025-11-07\nhost: x86_64-pc-windows-msvc\nrelease: 1.91.1\nLLVM version: 21.1.2",
+    "profile": "release, single thread, LTO off, codegen-units=1; warmup discarded; rotated operation order",
+    "iterations": 300000,
+    "repeats": 10,
+    "rustflags": "",
+    "source_sha256": {
+      "src/palette_lut.rs": "a6889936e9bf45671624e3eb00351b9725f5f9a0714176e96420501c2ec5ce40",
+      "src/palette.rs": "b64b6b6aba7bbd9803eeb7dbe698af55fe3d038b6dce0165e42498e5b6f9f77c",
+      "src/palette_generated.rs": "970ad63068042231a5e9ba5654bd86c1de13f14fb71487bad9763cdbf11a3737",
+      "src/conversion.rs": "17f39f577b87d4efff28284adbb848145fba9bcf129ec45daed210f8a878af7d",
+      "src/color.rs": "46bb54d821cdf737cbb512bc5e8b54eab874d30cbe345dafcfa45ed5ef356645",
+      "examples/palette_lut_eval.rs": "90468ab8e28462171b8d69f14b3523f74329c1d7987805747f0340b851987f12",
+      "tools/evaluate_palette_lut.py": "dc72d66d7310af775f1d2dfc7146d61076180a1bf89330ea12cd6d2a3d3319d8",
+      "docs/palette-lut-plan.md": "ba985ddfcb5b48b45c703d25c67167c6e153c5938bde5f8c360ff015de628c59"
+    },
+    "executable_sha256": "30e2d4015efc99a63d559dca9ae455e9c70f9d15854a85b9505563f4af1968d4"
+  }
+}

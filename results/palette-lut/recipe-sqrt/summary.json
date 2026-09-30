@@ -1,0 +1,77 @@
+{
+  "selected_resolution": 65,
+  "holdout_passes": true,
+  "operations": {
+    "build": {
+      "median": 20329750.0,
+      "min": 19334500.0,
+      "max": 22465600.0
+    },
+    "load": {
+      "median": 18926750.0,
+      "min": 16775600.000000002,
+      "max": 19842800.0
+    },
+    "payload_bytes": {
+      "median": 3296020.0,
+      "min": 3296020.0,
+      "max": 3296020.0
+    },
+    "lut_linear": {
+      "median": 35.5338335,
+      "min": 31.075667,
+      "max": 52.816667
+    },
+    "reference_display": {
+      "median": 481.14666650000004,
+      "min": 424.365333,
+      "max": 550.224667
+    },
+    "lut_display": {
+      "median": 79.58933300000001,
+      "min": 64.264,
+      "max": 104.16
+    },
+    "reference_mix_display": {
+      "median": 509.0795,
+      "min": 452.342333,
+      "max": 601.726333
+    },
+    "lut_mix_display": {
+      "median": 131.488,
+      "min": 115.009667,
+      "max": 173.910667
+    },
+    "reference_linear": {
+      "median": 411.7995,
+      "min": 383.762333,
+      "max": 496.588333
+    }
+  },
+  "speedups": {
+    "linear": 11.588941001820139,
+    "display": 6.045366236452817,
+    "mix_display": 3.871680305427111
+  },
+  "accepted": true,
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.11",
+    "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)\nbinary: rustc\ncommit-hash: ed61e7d7e242494fb7057f2657300d9e77bb4fcb\ncommit-date: 2025-11-07\nhost: x86_64-pc-windows-msvc\nrelease: 1.91.1\nLLVM version: 21.1.2",
+    "profile": "release, single thread, LTO off, codegen-units=1; warmup discarded; rotated operation order",
+    "iterations": 300000,
+    "repeats": 10,
+    "rustflags": "",
+    "source_sha256": {
+      "src/palette_lut.rs": "9e272ecc007f312ede7272879ad4fb6772b3f369fd750701835a4a41645b3b15",
+      "src/palette.rs": "b64b6b6aba7bbd9803eeb7dbe698af55fe3d038b6dce0165e42498e5b6f9f77c",
+      "src/palette_generated.rs": "970ad63068042231a5e9ba5654bd86c1de13f14fb71487bad9763cdbf11a3737",
+      "src/conversion.rs": "17f39f577b87d4efff28284adbb848145fba9bcf129ec45daed210f8a878af7d",
+      "src/color.rs": "46bb54d821cdf737cbb512bc5e8b54eab874d30cbe345dafcfa45ed5ef356645",
+      "examples/palette_lut_eval.rs": "d3a52e67c51f1902ea4e7742a3b5a7b59045f668339d3c40acd0260b4477c166",
+      "tools/evaluate_palette_lut.py": "05677040891d8b60637d83cfc1cec37364b777eb853c2747d1c7d1516f6f6cb8",
+      "docs/palette-lut-plan.md": "10a81a90370f71e435ba67ce930b5afe76746b85da4aa3023fd05a60157d493c"
+    },
+    "executable_sha256": "77acd041ed89ee9171b75cd1ea1ea19dbdbdbc48ac2951d547bf846b476880d0"
+  }
+}

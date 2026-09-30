@@ -5,8 +5,9 @@
 The [product direction](product-direction.md) adds palette mode alongside this
 implementation. Its first [experimental reference](palette-reference.md) exposes
 Synthetic Four through `ochrell::palette`, with persistent recipes and an explicit
-palette fingerprint in saved states. LUT acceleration, target matching, custom
-palette import and renderer integration remain future work. Root exports and
+palette fingerprint in saved states. The [forward LUT](palette-lut.md) is available
+as an explicit prepared decoder. Target matching, custom palette import and
+renderer integration remain future work. Root exports and
 defaults are unchanged.
 
 ## Modules
@@ -15,6 +16,8 @@ defaults are unchanged.
 - `optical`: new reconstruction recipe, separate K/S inference, latent interpolation, pair and weighted APIs.
 - `palette`, `palette_generated`: opt-in four-material f64 reference, independently
   generated synthetic coefficients, palette-bound recipes and checked persistence.
+- `palette_lut`: prepared raw-linear-RGB forward table with validated persistence;
+  material recipes remain independent of the approximation.
 - `compact`: optional 204-byte, 24-knot approximation of full optical material,
   with persistent mixing, full-state expansion and versioned byte payloads.
 - `optical_generated`: immutable independently fitted spectra and quadrature generated from `config.toml` and attributed CIE data.
