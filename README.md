@@ -130,6 +130,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `docs/palette-reference.md` | Experimental recipe API, synthetic definitions, persistence and measured checks |
 | `docs/palette-lut.md` | Forward decoder selection, accuracy, preparation cost and timings |
 | `docs/palette-workflow.md` | Target matching, custom palette loading, package format and validation |
+| `docs/measured-oils-results.md` | First Old Holland fit and held-out evaluation, reuse audit and limitations |
 | `data/README.md` | Dataset/license attribution and checksums |
 | `results/revision/` | Raw current results, environment, fit and ablations |
 | `paper/paper.md`, `.tex`, `.pdf` | Revised scientific paper |

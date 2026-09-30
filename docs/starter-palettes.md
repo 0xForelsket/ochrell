@@ -5,9 +5,11 @@ with the four-tube Old Holland oil subset and an independent synthetic baseline.
 This refines the [product direction](product-direction.md). Neither is a shipped
 palette yet; preparation, validation and a default change remain separate steps.
 
-Implementation update: [Synthetic Four](palette-reference.md) now has an
-experimental direct reference and recipe persistence. The measured oil track
-and its holdout partition below remain unchanged and unfitted.
+Implementation update: [Synthetic Four](palette-reference.md) has a direct
+reference and recipe persistence. The first [measured oil study](measured-oils-results.md)
+has now fitted the 21 designated samples and evaluated the 24 holdouts without
+retuning. It improved predictions but failed its predeclared quality screen.
+Dataset redistribution terms remain unresolved; no measured preset is bundled.
 
 ## Selected candidates
 
@@ -45,8 +47,9 @@ swatches on Arches oil paper and specular-excluded X-Rite Color i7 measurements.
 Use the paper's full paint names and the archive readme's column order together.
 Mixed White contains zinc and titanium white; do not substitute a generic white.
 
-The source archive was inspected in memory on 2026-09-30. No measurement files or
-generated coefficients were copied into this repository. Inspection verified:
+The initial source audit inspected the archive in memory on 2026-09-30. The
+subsequent measured-reference study uses ignored local research output; no
+measurements or fitted coefficients are bundled. The initial audit verified:
 
 | Item | Result |
 |---|---|
@@ -89,11 +92,12 @@ terms alone do not establish the terms for its separate data archive. The
 research candidate is selected; redistribution of measurements or fitted
 artifacts is unresolved, not approved by that selection.
 
-Before bundling, obtain or locate explicit terms covering the source data and
-derived coefficients/LUTs, including use in commercial applications, required
-attribution, and any change or share-alike notices. Keep the response or published
-terms with the eventual provenance record. No author has been contacted in this
-work; sending a message requires a separate user instruction.
+Explicit terms covering the source data and derived coefficients/LUTs would help
+resolve release uncertainty, including commercial use and attribution. The
+[subsequent audit and correction](measured-oils-reuse.md) distinguish that
+precaution from an established legal requirement: missing terms alone do not
+demonstrate that permission is necessary for our independently implemented model.
+Keep any eventual clarification with provenance. No author has been contacted.
 
 If the needed terms cannot be established, proceed with the independent
 synthetic track and evaluate other measured sources. Do not describe the
@@ -108,8 +112,8 @@ neither alternative replaces the selected oil candidate automatically.
 ## First measured-reference experiment
 
 The purpose is to assess whether a declared homogeneous K-M model predicts this
-subset before accelerating it. This section defines the next experiment, not
-completed validation. Freeze the following partition before fitting:
+subset before accelerating it. The following partition was frozen before the
+first fit and is retained here as its design record:
 
 | Role | Source mixtures | Rows |
 |---|---|---:|

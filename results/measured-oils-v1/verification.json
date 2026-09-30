@@ -1,0 +1,121 @@
+{
+  "independent_scalar_km_max_abs_error": 2.8345381597461028e-15,
+  "model_sha256_after_evaluation": "11f40f621328b52b158326e849ce3f40823941dbbbc04e75ea724dd0bbdb0175",
+  "fit_rows_verified": true,
+  "holdout_rows": 24,
+  "verification_implementation_sha256": "1e5737e023544ba485a2681d3f9d1ee4bc3c7b503eb516d468f6feb6b921d5a5",
+  "holdout_signed_spectral_bias": 0.009841779845712158,
+  "posthoc_fixed_pure_envelope_diagnostic": {
+    "diagnostic_threshold_reflectance": 0.001,
+    "roles": {
+      "fit_tints": {
+        "count": 17,
+        "violations": [
+          {
+            "source_row": 6,
+            "family": "Y+W",
+            "max_outside_envelope": 0.00539999999999996,
+            "bands_over_threshold": 19,
+            "worst_wavelength_nm": 660
+          },
+          {
+            "source_row": 19,
+            "family": "R+W",
+            "max_outside_envelope": 0.010700000000000043,
+            "bands_over_threshold": 2,
+            "worst_wavelength_nm": 400
+          },
+          {
+            "source_row": 37,
+            "family": "B+W",
+            "max_outside_envelope": 0.0045000000000000595,
+            "bands_over_threshold": 4,
+            "worst_wavelength_nm": 460
+          }
+        ]
+      },
+      "holdout": {
+        "count": 24,
+        "violations": [
+          {
+            "source_row": 60,
+            "family": "Y+B",
+            "max_outside_envelope": 0.007599999999999996,
+            "bands_over_threshold": 9,
+            "worst_wavelength_nm": 480
+          },
+          {
+            "source_row": 66,
+            "family": "Y+R",
+            "max_outside_envelope": 0.011,
+            "bands_over_threshold": 12,
+            "worst_wavelength_nm": 460
+          },
+          {
+            "source_row": 69,
+            "family": "Y+R",
+            "max_outside_envelope": 0.0030999999999999986,
+            "bands_over_threshold": 7,
+            "worst_wavelength_nm": 460
+          },
+          {
+            "source_row": 71,
+            "family": "Y+R",
+            "max_outside_envelope": 0.015799999999999998,
+            "bands_over_threshold": 19,
+            "worst_wavelength_nm": 540
+          },
+          {
+            "source_row": 84,
+            "family": "Y+R",
+            "max_outside_envelope": 0.0014999999999999944,
+            "bands_over_threshold": 3,
+            "worst_wavelength_nm": 460
+          },
+          {
+            "source_row": 86,
+            "family": "Y+R",
+            "max_outside_envelope": 0.07790000000000008,
+            "bands_over_threshold": 27,
+            "worst_wavelength_nm": 700
+          },
+          {
+            "source_row": 112,
+            "family": "R+B",
+            "max_outside_envelope": 0.020900000000000002,
+            "bands_over_threshold": 16,
+            "worst_wavelength_nm": 520
+          },
+          {
+            "source_row": 113,
+            "family": "R+B",
+            "max_outside_envelope": 0.015700000000000002,
+            "bands_over_threshold": 14,
+            "worst_wavelength_nm": 520
+          },
+          {
+            "source_row": 172,
+            "family": "Y+R+B",
+            "max_outside_envelope": 0.005399999999999995,
+            "bands_over_threshold": 7,
+            "worst_wavelength_nm": 460
+          },
+          {
+            "source_row": 174,
+            "family": "Y+R+B",
+            "max_outside_envelope": 0.015199999999999998,
+            "bands_over_threshold": 12,
+            "worst_wavelength_nm": 460
+          },
+          {
+            "source_row": 176,
+            "family": "Y+R+B",
+            "max_outside_envelope": 0.013699999999999997,
+            "bands_over_threshold": 8,
+            "worst_wavelength_nm": 460
+          }
+        ]
+      }
+    }
+  }
+}
