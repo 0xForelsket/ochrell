@@ -1,0 +1,28 @@
+{
+  "Y+R": {
+    "withheld_target_perturbation_max_change": 0,
+    "unseen_pair_equals_fold_base": true,
+    "train_rows": 24,
+    "test_rows": 5
+  },
+  "Y+B": {
+    "withheld_target_perturbation_max_change": 0,
+    "unseen_pair_equals_fold_base": true,
+    "train_rows": 28,
+    "test_rows": 1
+  },
+  "R+B": {
+    "withheld_target_perturbation_max_change": 0,
+    "unseen_pair_equals_fold_base": true,
+    "train_rows": 27,
+    "test_rows": 2
+  },
+  "simplex_boundaries": {
+    "count": 2606,
+    "min": 0.019391170352000157,
+    "max": 0.9143,
+    "finite": true,
+    "correction_min": -0.05115354608430067,
+    "correction_max": 0.04531168042832817
+  }
+}

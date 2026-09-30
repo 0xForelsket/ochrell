@@ -1,0 +1,10 @@
+{
+  "candidate": "spectral-Lab-hybrid",
+  "spectral_fraction": 0.5,
+  "color_fraction": 0.5,
+  "color_scale": 0.006666666666666667,
+  "parameters": 93,
+  "ablation": null,
+  "weight_rationale": "Equal importance at existing screen scales: 0.02 spectral reflectance and 3 color units. Lab Euclidean distance is a differentiable surrogate, not DE00.",
+  "settings": "config/measured-oils-v1.json"
+}

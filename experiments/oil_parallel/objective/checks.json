@@ -1,0 +1,6 @@
+{
+  "jacobian_max_abs": 1.3218086523871138e-11,
+  "lab_parity_max_abs": 8.348877145181177e-14,
+  "synthetic_recovery_max_abs": 4.595109889593552e-06,
+  "scalar_max_abs": 5.412337245047638e-16
+}

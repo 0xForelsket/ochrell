@@ -16,6 +16,12 @@ performance on the now-exposed evaluation mixtures. V1 remains the baseline.
 A [chromatic-pair calibration study](measured-oils-v3-results.md) subsequently
 improved conditioning and some pair predictions but worsened the multicolor
 assessment. It also remains an exploratory result without runtime promotion.
+A [three-agent experimental comparison](../experiments/oil_parallel/REPORT.md)
+then found bounded empirical pair interactions most promising on the same
+16 multicolor cases. The color-aware objective improved color at a spectral and
+excluded-pair cost; the assumed finite-layer model was rejected. The empirical
+candidate still fails the spectral screens, and reused samples do not supply
+independent validation. No measured model has been promoted to the runtime.
 
 ## Selected candidates
 

@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-30",
+  "baseline_commit": "16de957c54325b38a4a381262c21a067a065d221",
+  "requested_model": "gpt-6.1-sol",
+  "agents": [
+    {"task": "oil_physical", "directory": "physical", "direction": "finite-layer optical model"},
+    {"task": "oil_objective", "directory": "objective", "direction": "spectral and perceptual fitting objective"},
+    {"task": "oil_interaction", "directory": "interaction", "direction": "bounded empirical spectral interactions"}
+  ],
+  "coordinator_responsibility": "Check common splits, numerical validity and result interpretation; preserve all outcomes and create a comparative report.",
+  "shared_evaluation": "29 calibration / 16 multicolor assessment, plus whole-pair-family exclusion for eight pairs",
+  "evidence_status": "exploratory; all assessment samples were previously exposed",
+  "frozen_reference_metrics": {
+    "primary16_mean_de00": {"v1": 3.6770506078109775, "v3": 3.91497603325137},
+    "primary16_mean_spectral_rmse": {"v1": 0.0263860773862344, "v3": 0.02849472642447321},
+    "pair_cv8_mean_de00": {"v1": 4.012308471807322, "v3": 3.72329736843305},
+    "pair_family_macro_mean_de00": {"v1": 4.545997395156186, "v3": 4.218135739756073}
+  }
+}
