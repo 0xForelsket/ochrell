@@ -132,6 +132,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `docs/palette-workflow.md` | Target matching, custom palette loading, package format and validation |
 | `docs/measured-oils-results.md` | First Old Holland fit and held-out evaluation, reuse audit and limitations |
 | `docs/measured-oils-revision-results.md` | Training-only diagnosis and a rejected constrained revision; exploratory comparison |
+| `docs/measured-oils-v3-results.md` | Chromatic-pair calibration and whole-family exclusion; conditioning versus prediction |
 | `data/README.md` | Dataset/license attribution and checksums |
 | `results/revision/` | Raw current results, environment, fit and ablations |
 | `paper/paper.md`, `.tex`, `.pdf` | Revised scientific paper |

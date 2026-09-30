@@ -13,6 +13,9 @@ Dataset redistribution terms remain unresolved; no measured preset is bundled.
 The subsequent [calibration diagnosis and one constrained revision](measured-oils-revision-results.md)
 found negligible smoothing error and rejected the revision after it worsened
 performance on the now-exposed evaluation mixtures. V1 remains the baseline.
+A [chromatic-pair calibration study](measured-oils-v3-results.md) subsequently
+improved conditioning and some pair predictions but worsened the multicolor
+assessment. It also remains an exploratory result without runtime promotion.
 
 ## Selected candidates
 

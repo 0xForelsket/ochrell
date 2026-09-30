@@ -1,0 +1,10 @@
+{
+  "experiment": "old-holland-four-chromatic-calibration-v3",
+  "model": "unchanged v1 fixed-pure homogeneous opaque KM",
+  "fitting_settings": "config/measured-oils-v1.json",
+  "primary_fit": "original 21 calibration samples plus all eight chromatic pairs",
+  "primary_evaluation": "16 three- and four-paint mixtures",
+  "pair_family_cross_validation": ["Y+R", "Y+B", "R+B"],
+  "evaluation_status": "exploratory development data; no new independent holdout",
+  "sensitivity_diagnostic": "per-wavelength singular values of data-only reflectance Jacobian with respect to three log scattering coefficients at frozen v1 parameters"
+}

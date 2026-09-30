@@ -1,0 +1,14 @@
+{
+  "white_tints21": {
+    "median_condition": 7.405624006186617,
+    "max_condition": 25.663471556176937,
+    "700nm_smallest_singular_value": 0.008783344352337723,
+    "700nm_condition": 19.368793097936358
+  },
+  "with_pairs29": {
+    "median_condition": 2.4329612343962723,
+    "max_condition": 4.679678147334446,
+    "700nm_smallest_singular_value": 0.07183282797240832,
+    "700nm_condition": 2.9058655499789197
+  }
+}

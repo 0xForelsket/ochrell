@@ -1,14 +1,16 @@
 # Product direction: prepare a palette, then paint with its materials
 
-Date: 2026-09-30. Status: agreed product direction; implementation remains to be
-designed and validated. This document records the product discussion following
+Date: 2026-09-30. Status: agreed product direction; subsequent implementation
+updates are linked below. This document records the product discussion following
 the Ochrell/Mixbox performance review. It does not announce a shipped palette
 API, generated mixer, new physical calibration, or default change.
 
 Implementation update: the first [Synthetic Four reference](palette-reference.md)
 is available as an opt-in recipe API, now with an explicit
-[prepared forward decoder](palette-lut.md). Target-color matching, measured
-calibration and renderer integration remain subsequent work.
+[prepared forward decoder](palette-lut.md). [Target matching and custom palettes](palette-workflow.md)
+and native recipe painting in the sibling renderer are implemented as opt-in
+capabilities. [Measured oil calibration studies](measured-oils-v3-results.md)
+remain research candidates; no measured preset or default promotion is established.
 
 ## Decision
 
