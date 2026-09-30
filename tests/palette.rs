@@ -9,7 +9,7 @@ fn close(a: [f64; 4], b: [f64; 4], tolerance: f64) {
 #[test]
 fn amounts_are_checked_and_normalized_without_overflow() {
     let p = synthetic_four();
-    assert_eq!(p.paint_names(), &["yellow", "red", "blue", "white"]);
+    assert_eq!(p.paint_names(), ["yellow", "red", "blue", "white"]);
     assert_eq!(p.paint("missing").unwrap_err(), PaletteError::UnknownPaint);
     for bad in [f64::NAN, f64::INFINITY, f64::NEG_INFINITY, -1.] {
         assert_eq!(

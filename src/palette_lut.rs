@@ -18,6 +18,7 @@ use crate::{
     palette::{Palette, Recipe},
     Color,
 };
+use std::borrow::Cow;
 
 pub const MAX_RESOLUTION: usize = 129;
 const HEADER: usize = 44;
@@ -61,7 +62,7 @@ impl std::error::Error for LutError {}
 /// reference; querying is allocation-free and does not alter the recipe.
 #[derive(Debug)]
 pub struct PaletteLut<'a> {
-    palette: &'a Palette,
+    palette: Cow<'a, Palette>,
     resolution: usize,
     mapping: LutMapping,
     knots: Vec<f64>,
@@ -91,7 +92,7 @@ impl<'a> PaletteLut<'a> {
         knots[0] = 0.;
         knots[resolution - 1] = 1.;
         let mut lut = Self {
-            palette,
+            palette: Cow::Borrowed(palette),
             resolution,
             mapping,
             knots,
@@ -136,12 +137,22 @@ impl<'a> PaletteLut<'a> {
     pub fn mapping(&self) -> LutMapping {
         self.mapping
     }
-    pub fn palette(&self) -> &'a Palette {
-        self.palette
+    pub fn palette(&self) -> &Palette {
+        &self.palette
+    }
+    /// Own the palette and table for hosts whose mixer must have a static lifetime.
+    pub fn into_owned(self) -> PaletteLut<'static> {
+        PaletteLut {
+            palette: Cow::Owned(self.palette.into_owned()),
+            resolution: self.resolution,
+            mapping: self.mapping,
+            knots: self.knots,
+            values: self.values,
+        }
     }
 
     pub fn decode_linear(&self, recipe: &Recipe<'_>) -> Result<[f64; 3], LutError> {
-        if !core::ptr::eq(self.palette, recipe.palette()) {
+        if self.palette.fingerprint() != recipe.palette().fingerprint() {
             return Err(LutError::PaletteMismatch);
         }
         let original = recipe.proportions();
@@ -291,7 +302,7 @@ impl<'a> PaletteLut<'a> {
             values.push(row);
         }
         Ok(Self {
-            palette,
+            palette: Cow::Borrowed(palette),
             resolution,
             mapping,
             knots,

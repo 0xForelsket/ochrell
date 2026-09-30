@@ -118,6 +118,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `src/compact.rs` | Opt-in compact material storage, interpolation and serialization |
 | `src/palette.rs` | Opt-in Synthetic Four recipe API and direct spectral reference |
 | `src/palette_lut.rs` | Explicit forward LUT preparation, decoding and checked artifacts |
+| `src/palette_match.rs`, `src/palette_package.rs` | Bounded target matching and custom optical palette packages |
 | `tools/generate_palette.py`, `tools/check_palette.py` | Independent palette generation, numerical verification and swatches |
 | `tools/optical_model.py` | Independent coefficient generation and Python reference |
 | `docs/research.md`, `docs/math.md` | Literature, equations, assumptions |
@@ -128,6 +129,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `docs/starter-palettes.md` | Selected starter palettes, dataset audit and first reference experiment |
 | `docs/palette-reference.md` | Experimental recipe API, synthetic definitions, persistence and measured checks |
 | `docs/palette-lut.md` | Forward decoder selection, accuracy, preparation cost and timings |
+| `docs/palette-workflow.md` | Target matching, custom palette loading, package format and validation |
 | `data/README.md` | Dataset/license attribution and checksums |
 | `results/revision/` | Raw current results, environment, fit and ablations |
 | `paper/paper.md`, `.tex`, `.pdf` | Revised scientific paper |

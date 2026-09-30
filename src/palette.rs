@@ -16,6 +16,27 @@
 //! ```
 
 use crate::{palette_generated as data, Color};
+use std::borrow::Cow;
+#[path = "palette_package.rs"]
+mod package;
+
+/// Coefficients must have been calibrated consistently with the chosen amount basis.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum AmountBasis {
+    Relative,
+    Mass,
+    Volume,
+}
+
+/// Human-readable identity and attribution stored with custom optical data.
+pub struct PaletteMetadata<'a> {
+    pub id: &'a str,
+    pub paint_names: [&'a str; PAINT_COUNT],
+    pub amount_basis: AmountBasis,
+    pub provenance: &'a str,
+}
+
+const BUILTIN_PROVENANCE: &str = "Original independent synthetic smoothstep spectra; CIE-derived D65 projection. See data/README.md.";
 
 pub const PAINT_COUNT: usize = 4;
 pub const SAMPLES: usize = 81;
@@ -35,6 +56,11 @@ pub enum PaletteError {
     PaletteMismatch,
     InvalidRecipe,
     InvalidFormat,
+    InvalidPalette,
+    UnsupportedGrid,
+    InvalidChecksum,
+    InvalidTarget,
+    InvalidMetric,
 }
 
 impl core::fmt::Display for PaletteError {
@@ -48,29 +74,43 @@ impl core::fmt::Display for PaletteError {
                 "recipe must contain four finite nonnegative proportions summing to one"
             }
             Self::InvalidFormat => "expected an OPR1 recipe with exactly 68 bytes",
+            Self::InvalidPalette => "invalid palette metadata or optical coefficients",
+            Self::UnsupportedGrid => "palette requires 81 bands at 380-780 nm / 5 nm and the supported CIE/D65 projection",
+            Self::InvalidChecksum => "palette package checksum does not match",
+            Self::InvalidTarget => "target linear RGB must be finite and in [0, 1]",
+            Self::InvalidMetric => "color metric produced a nonfinite value",
         })
     }
 }
 impl std::error::Error for PaletteError {}
 
-/// An immutable reference definition. Arbitrary-palette import is not yet exposed.
+/// An immutable, owned or built-in four-material reference definition.
 ///
 /// Its generated fingerprint identifies paint order, optical coefficients and
 /// color projection. Changing the reference requires a new identity.
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct Palette {
-    id: &'static str,
+    id: Cow<'static, str>,
     fingerprint: [u8; 32],
-    names: [&'static str; PAINT_COUNT],
+    names: [Cow<'static, str>; PAINT_COUNT],
+    amount_basis: AmountBasis,
+    provenance: Cow<'static, str>,
     k: [[f64; PAINT_COUNT]; SAMPLES],
     s: [[f64; PAINT_COUNT]; SAMPLES],
     rgb: [[f64; 3]; SAMPLES],
 }
 
 static SYNTHETIC_FOUR: Palette = Palette {
-    id: data::ID,
+    id: Cow::Borrowed(data::ID),
     fingerprint: data::FINGERPRINT,
-    names: data::NAMES,
+    names: [
+        Cow::Borrowed(data::NAMES[0]),
+        Cow::Borrowed(data::NAMES[1]),
+        Cow::Borrowed(data::NAMES[2]),
+        Cow::Borrowed(data::NAMES[3]),
+    ],
+    amount_basis: AmountBasis::Relative,
+    provenance: Cow::Borrowed(BUILTIN_PROVENANCE),
     k: data::K,
     s: data::S,
     rgb: data::RGB,
@@ -83,7 +123,7 @@ pub fn synthetic_four() -> &'static Palette {
 
 impl Palette {
     pub fn id(&self) -> &str {
-        self.id
+        &self.id
     }
 
     pub fn fingerprint(&self) -> [u8; 32] {
@@ -91,8 +131,20 @@ impl Palette {
     }
 
     /// Order used by `recipe` and stored concentration arrays.
-    pub fn paint_names(&self) -> &[&str; PAINT_COUNT] {
-        &self.names
+    pub fn paint_names(&self) -> [&str; PAINT_COUNT] {
+        std::array::from_fn(|i| self.names[i].as_ref())
+    }
+    pub fn amount_basis(&self) -> AmountBasis {
+        self.amount_basis
+    }
+    pub fn provenance(&self) -> &str {
+        &self.provenance
+    }
+    pub fn absorption(&self) -> &[[f64; PAINT_COUNT]; SAMPLES] {
+        &self.k
+    }
+    pub fn scattering(&self) -> &[[f64; PAINT_COUNT]; SAMPLES] {
+        &self.s
     }
 
     pub fn paint(&self, name: &str) -> Result<Recipe<'_>, PaletteError> {
@@ -214,7 +266,7 @@ impl<'a> Recipe<'a> {
     }
 
     fn check_palette(self, other: Self) -> Result<(), PaletteError> {
-        if core::ptr::eq(self.palette, other.palette) {
+        if self.palette.fingerprint == other.palette.fingerprint {
             Ok(())
         } else {
             Err(PaletteError::PaletteMismatch)
@@ -285,9 +337,11 @@ mod tests {
         // A and B have the same pure K/S=1 but B has 100x optical strength.
         // Their equal-amount white tints must differ even though pure colors match.
         let palette = Palette {
-            id: "analytic-test",
+            id: Cow::Borrowed("analytic-test"),
             fingerprint: [0; 32],
-            names: ["a", "b", "white", "duplicate-white"],
+            names: ["a", "b", "white", "duplicate-white"].map(Cow::Borrowed),
+            amount_basis: AmountBasis::Relative,
+            provenance: Cow::Borrowed("Analytic test fixture"),
             k: [[1., 100., 0., 0.]; SAMPLES],
             s: [[1., 100., 1., 1.]; SAMPLES],
             rgb: data::RGB,
