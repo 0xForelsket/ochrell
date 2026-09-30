@@ -10,6 +10,9 @@ reference and recipe persistence. The first [measured oil study](measured-oils-r
 has now fitted the 21 designated samples and evaluated the 24 holdouts without
 retuning. It improved predictions but failed its predeclared quality screen.
 Dataset redistribution terms remain unresolved; no measured preset is bundled.
+The subsequent [calibration diagnosis and one constrained revision](measured-oils-revision-results.md)
+found negligible smoothing error and rejected the revision after it worsened
+performance on the now-exposed evaluation mixtures. V1 remains the baseline.
 
 ## Selected candidates
 

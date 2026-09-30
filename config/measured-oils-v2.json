@@ -1,0 +1,18 @@
+{
+  "experiment": "old-holland-four-soft-pure-v2",
+  "calibration_samples": 21,
+  "evaluation_status": "exploratory reuse of 24 previously exposed v1 holdouts",
+  "pure_shift_basis": "five clamped cubic B-spline controls per paint; internal knot 550 nm",
+  "pure_shift_max_abs": 0.02,
+  "pure_reflectance_floor": 0.0001,
+  "pure_anchor_weight": 1.0,
+  "pure_color_screen_max_delta_e_2000": 1.0,
+  "log_scattering_bounds": [-9.210340371976184, 9.210340371976184],
+  "initial_log_scattering": [0.0, -2.302585092994046, 2.302585092994046],
+  "curvature_weight": 0.0001,
+  "amplitude_weight": 0.00000001,
+  "max_nfev": 2000,
+  "ftol": 1e-10,
+  "xtol": 1e-10,
+  "gtol": 1e-10
+}
