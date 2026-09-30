@@ -1,0 +1,18 @@
+{
+  "seed": 271828,
+  "targets_per_palette": 1024,
+  "acceptance_max_ok100": 0.1,
+  "status": "passed",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)\nbinary: rustc\ncommit-hash: ed61e7d7e242494fb7057f2657300d9e77bb4fcb\ncommit-date: 2025-11-07\nhost: x86_64-pc-windows-msvc\nrelease: 1.91.1\nLLVM version: 21.1.2\n",
+  "source_sha256": {
+    "src/palette.rs": "c6be103ef528eb9af723f93ba8dfa4a137e96a2c6e9e6e670d37a4fee2e096f7",
+    "src/palette_match.rs": "32ff673d6bf579a768012a3a3728a9d663daed117b0db236529c466e4093321b",
+    "src/palette_package.rs": "ff8324abf21be6e11ab397d097c45241d2158d3ad646364515cac5db6b54431b",
+    "src/palette_lut.rs": "0a34e1a5deee372a5cfe7e2939bb02acca44d096cb282eb2a23f303b96c6558b",
+    "src/sha256.rs": "ca96598d1e759357928b7913a07ca235c59d4c42c94aaa041b870c26bfac36ad",
+    "examples/palette_workflow.rs": "bf1a3baa521b1911a1ecf93261da596e2185b873b2445460f96c640d60d7f625",
+    "tests/palette_workflow.rs": "30dafb0d3f0e5626c0dbcd6e1595024f5e7426a560e01d74ffbf332001f32d09"
+  },
+  "validation": "57 release tests including docs passed on Rust 1.91.1 and 1.75.0; wasm32 compile passed; independent reference 1418 probes passed"
+}
