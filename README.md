@@ -8,6 +8,16 @@ An independent Rust library for RGB-in, pigment-like mixing, RGB-out. It uses sm
 
 Previously distributed as `pigment-mix`. Update the dependency name and Rust imports to `ochrell`; the mixing API and numerical model are unchanged by this rename. Frozen experiment logs, external comparison captures, and archived papers retain their original names for provenance.
 
+## Product direction
+
+The next direction is [palette-based painting](docs/product-direction.md): choose
+virtual paints, load or generate an accelerated mixer, and paint with persistent
+recipes through code or a host application's UI. Agents can specify paint
+proportions directly or ask the library to match a target color within the palette.
+This is planned work. The current spectral mode remains supported and the library
+default is unchanged. A future painting-app default would use a bundled prepared
+palette only after quality, performance and saved-state compatibility are verified.
+
 ## Use
 
 Rust 1.75 or later; no runtime dependencies.
@@ -99,6 +109,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `docs/architecture.md`, `docs/coefficients.md` | API design and parameter provenance |
 | `docs/revision-report.md`, `docs/benchmarks.md` | Measured improvements and tradeoffs |
 | `docs/revision-decisions.md` | Candidate selection and failed approaches |
+| `docs/product-direction.md` | Agreed palette workflow, code-driven painting, compatibility and delivery plan |
 | `data/README.md` | Dataset/license attribution and checksums |
 | `results/revision/` | Raw current results, environment, fit and ablations |
 | `paper/paper.md`, `.tex`, `.pdf` | Revised scientific paper |

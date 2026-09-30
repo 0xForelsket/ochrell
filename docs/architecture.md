@@ -2,6 +2,11 @@
 
 `PigmentMixer` / `FastPigmentMixer` now use a continuous reconstructed-spectrum model. The simple RGB API is unchanged; the latent representation is a breaking change appropriate to the 0.2 release. `ReferenceSpectralMixer` evaluates the same equations with 81 samples and f64, while the default evaluates 41 samples with f32 optical arithmetic. Neither default encoder uses an iterative inverse or 3D LUT.
 
+The [product direction](product-direction.md) adds a planned palette mode alongside
+this implementation: selected materials, persistent recipes and a prepared mixer.
+That mode will need its own spectral reference and versioned state/artifact format.
+It is not implemented here yet and does not change the current exports or defaults.
+
 ## Modules
 
 - `color` / `conversion`: checked bounded sRGB, transfer functions, OKLab and gamut mapping.
