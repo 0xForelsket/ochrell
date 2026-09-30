@@ -14,6 +14,11 @@ independent coordinator checks and regenerate the figure from the repository roo
 & target/measured-oils/venv/Scripts/python.exe experiments/oil_parallel/plot_comparison.py
 ```
 
+The subsequent [grouped recipe study](../oil_grouped/REPORT.md) tests the same
+empirical model with each chromatic ratio and all its white additions excluded
+together. It preserves this round's frozen results and reports the stricter split
+separately.
+
 ## Shared comparison contract
 
 - Preserve v1, v2 and v3, all existing source files and frozen artifacts. Each

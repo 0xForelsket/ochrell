@@ -1,0 +1,54 @@
+{
+  "unique_fits": 9,
+  "pure_max_abs": 1.1102230246251565e-16,
+  "independent_scalar_max_abs": 2.8345381597461028e-15,
+  "perturbed_target_coefficient_max_abs": 0.0,
+  "finite_bounded_all_models_all45": true,
+  "folds": {
+    "ratio-60": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    },
+    "ratio-66": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    },
+    "ratio-69": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    },
+    "ratio-71": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    },
+    "ratio-84": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    },
+    "ratio-86": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    },
+    "ratio-112": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    },
+    "ratio-113": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    },
+    "ratio-172": {
+      "scalar_max_abs": 2.8345381597461028e-15,
+      "pure_max_abs": 1.1102230246251565e-16,
+      "nontraining_target_perturbation_coefficient_change": 0.0
+    }
+  }
+}

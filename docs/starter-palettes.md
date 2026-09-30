@@ -22,6 +22,11 @@ then found bounded empirical pair interactions most promising on the same
 excluded-pair cost; the assumed finite-layer model was rejected. The empirical
 candidate still fails the spectral screens, and reused samples do not supply
 independent validation. No measured model has been promoted to the runtime.
+A [grouped recipe assessment](../experiments/oil_grouped/REPORT.md) then excluded
+each chromatic ratio and its white additions together. The empirical candidate's
+mean color advantage persisted (2.893 versus 3.932 DE00 on the same 16 multicolor
+samples), but the red/blue 1:1 group regressed and the spectral screens still
+failed. All samples remain previously exposed; the runtime/default is unchanged.
 
 ## Selected candidates
 
