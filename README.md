@@ -18,6 +18,10 @@ This is planned work. The current spectral mode remains supported and the librar
 default is unchanged. A future painting-app default would use a bundled prepared
 palette only after quality, performance and saved-state compatibility are verified.
 
+The selected [starter research palettes](docs/starter-palettes.md) are a
+four-tube Old Holland oil subset and an independent synthetic baseline. The
+measured candidate still needs data-rights clarification and model validation.
+
 ## Use
 
 Rust 1.75 or later; no runtime dependencies.
@@ -110,6 +114,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `docs/revision-report.md`, `docs/benchmarks.md` | Measured improvements and tradeoffs |
 | `docs/revision-decisions.md` | Candidate selection and failed approaches |
 | `docs/product-direction.md` | Agreed palette workflow, code-driven painting, compatibility and delivery plan |
+| `docs/starter-palettes.md` | Selected starter palettes, dataset audit and first reference experiment |
 | `data/README.md` | Dataset/license attribution and checksums |
 | `results/revision/` | Raw current results, environment, fit and ablations |
 | `paper/paper.md`, `.tex`, `.pdf` | Revised scientific paper |

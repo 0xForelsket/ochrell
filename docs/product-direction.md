@@ -25,6 +25,11 @@ implementation, not a requirement that every palette use the same table shape.
 Choosing different paint materials should change mixing behavior, including
 tints and mixture trajectories, rather than just changing displayed swatches.
 
+The selected [starter palette tracks](starter-palettes.md) are a four-tube Old
+Holland oil study subset and an independent synthetic four-material baseline.
+The measured dataset's distribution terms and fitted model remain to be resolved.
+The full eight-tube Monet-inspired study palette is a later research track.
+
 ## Why this direction
 
 Current Ochrell reconstructs a spectrum from RGB and assigns absorption and
@@ -65,9 +70,9 @@ serve as the new palette's physical ground truth.
 ## User and agent workflow
 
 1. **Choose a palette.** Select named materials from an available library, load a
-   shared palette, or specify synthetic materials. Historical palettes, including
-   a Monet-inspired palette, are candidate presets rather than an already chosen
-   or calibrated launch palette.
+   shared palette, or specify synthetic materials. The starter research tracks
+   are selected in [starter-palettes.md](starter-palettes.md); a historically
+   calibrated launch palette is not yet established.
 2. **Inspect its behavior.** Preview source paints, pair mixtures, white tints,
    dark mixtures and achievable colors. Show whether materials are measured,
    reconstructed or deliberately synthetic.
