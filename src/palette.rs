@@ -20,6 +20,8 @@ use crate::{palette_generated as data, Color};
 use std::borrow::Cow;
 #[path = "palette_package.rs"]
 mod package;
+#[path = "palette_window.rs"]
+mod window;
 
 /// Coefficients must have been calibrated consistently with the chosen amount basis.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -85,7 +87,7 @@ impl core::fmt::Display for PaletteError {
             }
             Self::InvalidFormat => "invalid recipe format, paint count or payload length",
             Self::InvalidPalette => "invalid palette metadata or optical coefficients",
-            Self::UnsupportedGrid => "palette requires 81 bands at 380-780 nm / 5 nm and the supported CIE/D65 projection",
+            Self::UnsupportedGrid => "unsupported spectral grid or CIE/D65 projection (expected 81 bands at 380/5 nm or 31 at 400/10 nm)",
             Self::InvalidChecksum => "palette package checksum does not match",
             Self::InvalidTarget => "target linear RGB must be finite and in [0, 1]",
             Self::InvalidMetric => "color metric produced a nonfinite value",
@@ -112,15 +114,16 @@ impl std::error::Error for PaletteError {}
 /// # Ok(()) }
 /// ```
 #[derive(Clone, Debug)]
-pub struct PaletteN<const N: usize> {
+pub struct PaletteN<const N: usize, const B: usize = SAMPLES> {
     id: Cow<'static, str>,
     fingerprint: [u8; 32],
     names: [Cow<'static, str>; N],
     amount_basis: AmountBasis,
     provenance: Cow<'static, str>,
-    k: [[f64; N]; SAMPLES],
-    s: [[f64; N]; SAMPLES],
-    rgb: [[f64; 3]; SAMPLES],
+    k: [[f64; N]; B],
+    s: [[f64; N]; B],
+    rgb: [[f64; 3]; B],
+    pair_controls: Vec<[f64; 4]>,
 }
 
 static SYNTHETIC_FOUR: Palette = Palette {
@@ -137,6 +140,7 @@ static SYNTHETIC_FOUR: Palette = Palette {
     k: data::K,
     s: data::S,
     rgb: data::RGB,
+    pair_controls: Vec::new(),
 };
 
 /// The built-in independent synthetic reference. No allocation or startup fit.
@@ -144,7 +148,21 @@ pub fn synthetic_four() -> &'static Palette {
     &SYNTHETIC_FOUR
 }
 
-impl<const N: usize> PaletteN<N> {
+impl<const N: usize, const B: usize> PaletteN<N, B> {
+    /// Supported grids: 81 bands at 380-780/5 nm, or 31 at 400-700/10 nm.
+    pub fn spectral_grid(&self) -> (usize, usize, usize) {
+        if B == 31 {
+            (400, 10, B)
+        } else {
+            (START_NM, STEP_NM, B)
+        }
+    }
+    pub fn pair_controls(&self) -> &[[f64; 4]] {
+        &self.pair_controls
+    }
+    pub fn display_projection(&self) -> &[[f64; 3]; B] {
+        &self.rgb
+    }
     pub fn paint_count(&self) -> usize {
         N
     }
@@ -167,14 +185,14 @@ impl<const N: usize> PaletteN<N> {
     pub fn provenance(&self) -> &str {
         &self.provenance
     }
-    pub fn absorption(&self) -> &[[f64; N]; SAMPLES] {
+    pub fn absorption(&self) -> &[[f64; N]; B] {
         &self.k
     }
-    pub fn scattering(&self) -> &[[f64; N]; SAMPLES] {
+    pub fn scattering(&self) -> &[[f64; N]; B] {
         &self.s
     }
 
-    pub fn paint(&self, name: &str) -> Result<RecipeN<'_, N>, PaletteError> {
+    pub fn paint(&self, name: &str) -> Result<RecipeN<'_, N, B>, PaletteError> {
         let index = self
             .names
             .iter()
@@ -192,7 +210,7 @@ impl<const N: usize> PaletteN<N> {
     ///
     /// Units are relative synthetic amounts for the built-in palette, not grams
     /// or paint volume. Zero components are allowed, but the total must be positive.
-    pub fn recipe(&self, amounts: [f64; N]) -> Result<RecipeN<'_, N>, PaletteError> {
+    pub fn recipe(&self, amounts: [f64; N]) -> Result<RecipeN<'_, N, B>, PaletteError> {
         Ok(RecipeN {
             palette: self,
             proportions: normalize(amounts)?,
@@ -203,7 +221,7 @@ impl<const N: usize> PaletteN<N> {
     ///
     /// The fingerprint is a compatibility identifier, not a checksum of the
     /// recipe payload. Hosts needing corruption detection must checksum storage.
-    pub fn recipe_from_bytes(&self, bytes: &[u8]) -> Result<RecipeN<'_, N>, PaletteError> {
+    pub fn recipe_from_bytes(&self, bytes: &[u8]) -> Result<RecipeN<'_, N, B>, PaletteError> {
         let offset = if N == 4 { 36 } else { 40 };
         if bytes.len() != offset + 8 * N {
             return Err(PaletteError::InvalidFormat);
@@ -250,13 +268,13 @@ impl<const N: usize> PaletteN<N> {
 /// This f64 reference includes a palette borrow. It is not a promised compact
 /// canvas layout. Hosts store paint amount, coverage and transport separately.
 #[derive(Clone, Copy, Debug)]
-pub struct RecipeN<'a, const N: usize> {
-    palette: &'a PaletteN<N>,
+pub struct RecipeN<'a, const N: usize, const B: usize = SAMPLES> {
+    palette: &'a PaletteN<N, B>,
     proportions: [f64; N],
 }
 
-impl<'a, const N: usize> RecipeN<'a, N> {
-    pub fn palette(&self) -> &'a PaletteN<N> {
+impl<'a, const N: usize, const B: usize> RecipeN<'a, N, B> {
+    pub fn palette(&self) -> &'a PaletteN<N, B> {
         self.palette
     }
 
@@ -318,8 +336,21 @@ impl<'a, const N: usize> RecipeN<'a, N> {
         }
     }
 
-    /// Infinite-thickness reflectance on the declared reference grid.
-    pub fn reflectance(&self) -> [f64; SAMPLES] {
+    /// K-M reflectance with any declared empirical pair correction, on this grid.
+    pub fn reflectance(&self) -> [f64; B] {
+        let mut controls = [0.; 4];
+        if !self.palette.pair_controls.is_empty() {
+            let mut pair = 0;
+            for i in 0..N {
+                for j in i + 1..N {
+                    let weight = 4. * self.proportions[i] * self.proportions[j];
+                    for (a, value) in controls.iter_mut().zip(self.palette.pair_controls[pair]) {
+                        *a += weight * value;
+                    }
+                    pair += 1;
+                }
+            }
+        }
         std::array::from_fn(|band| {
             let mut k = 0.;
             let mut s = 0.;
@@ -327,7 +358,28 @@ impl<'a, const N: usize> RecipeN<'a, N> {
                 k += self.proportions[paint] * self.palette.k[band][paint];
                 s += self.proportions[paint] * self.palette.s[band][paint];
             }
-            crate::kubelka_munk::reflectance(k / s)
+            let r = crate::kubelka_munk::reflectance(k / s);
+            if self.palette.pair_controls.is_empty() {
+                return r;
+            }
+            let t = band as f64 / (B - 1) as f64;
+            let basis = [
+                (1. - t).powi(3),
+                3. * t * (1. - t).powi(2),
+                3. * t * t * (1. - t),
+                t.powi(3),
+            ];
+            let shift: f64 = controls.iter().zip(basis).map(|(a, b)| a * b).sum();
+            if shift == 0. || r == 0. || r == 1. {
+                return r;
+            }
+            let x = r.ln() - (-r).ln_1p() + shift;
+            if x >= 0. {
+                1. / (1. + (-x).exp())
+            } else {
+                let e = x.exp();
+                e / (1. + e)
+            }
         })
     }
 
@@ -364,7 +416,7 @@ impl<'a, const N: usize> RecipeN<'a, N> {
     }
 }
 
-impl RecipeN<'_, 4> {
+impl<const B: usize> RecipeN<'_, 4, B> {
     /// Original fixed-size OPR1 API, unchanged for four-paint callers.
     pub fn to_le_bytes(&self) -> [u8; RECIPE_BYTES] {
         let mut out = [0; RECIPE_BYTES];
@@ -407,6 +459,7 @@ mod tests {
             k: [[1., 100., 0., 0.]; SAMPLES],
             s: [[1., 100., 1., 1.]; SAMPLES],
             rgb: data::RGB,
+            pair_controls: Vec::new(),
         };
         let a = palette.paint("a").unwrap();
         let b = palette.paint("b").unwrap();

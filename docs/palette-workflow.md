@@ -81,8 +81,9 @@ incompatible recipes/tables, malformed lengths, grid, projection, coefficients
 and checksums; SHA-256 includes standard known-answer tests.
 
 Native renderer support is developed in the sibling oilpaint-renderer repository.
-Browser/TypeScript exposure, a unified measured Old Holland preset and changing
-the default remain separate milestones.
+Browser/TypeScript exposure and changing the default remain separate milestones.
+A [unified Old Holland Eight model](../experiments/oil_unified_eight/REPORT.md)
+is now fitted and packaged locally as an experimental native-window palette.
 
 ## Palettes with up to sixteen paints
 
@@ -110,8 +111,8 @@ println!("{:?}, error {}", matched.recipe.proportions(), matched.error_ok100);
 To create such a package, call `PaletteN::<N>::from_optics` with N distinct
 material names and `[81][N]` K/S arrays. The same coefficient bounds, grid,
 amount-basis declaration and exact CIE/D65 projection apply. A larger recipe
-does not provide missing optical measurements. This change neither imports
-Old Holland measurements nor implements its experimental empirical correction.
+does not provide missing optical measurements. The eight-paint measured model
+uses the subsequent native-window extension below.
 
 For N != 4, OPP2 inserts a little-endian u32 count after the magic, followed by
 the existing package fields with N names and N columns in each optical array.
@@ -145,3 +146,40 @@ grouping, matching at 8/10/16 paints, malformed counts and high-index components
 unchanged four-paint tests, and exact native canvas replay at 8/10/16 paints.
 Fixtures are explicitly synthetic; these are implementation checks, not a new
 physical-paint accuracy result.
+
+## Native measured-window models
+
+`PaletteN<N,B>` and `ColorMatcherN<N,B>` now accept B=31 as well as the default
+B=81. B=31 means 400-700 nm at 10 nm; B=81 keeps 380-780 nm at 5 nm. The supported
+CIE/D65 projection is fixed for each grid and verified on import. No interpolation,
+tail padding or extrapolation is implicit. `spectral_grid()` returns
+`(start_nm, step_nm, samples)` and `reflectance()` returns exactly B samples.
+
+`from_optics_with_pair_correction` accepts either no controls (plain K-M), or
+four cubic Bernstein controls for every pair, in lexicographic pair order. Each
+control is finite and bounded to [-0.8,0.8]. The model applies a reflectance-logit
+shift weighted by `4*c_i*c_j`; it vanishes at every pure endpoint. These controls
+are an empirical model component, not absorption or scattering measurements.
+The package identity includes them and color matching evaluates the full model.
+
+Native-window or corrected models use OPP3: magic, u32 paint count, sample count,
+start/step nm, amount basis and model kind (0=opaque K-M, 1=empirical pairs), then
+the existing length-prefixed strings, K/S/projection arrays, u32 pair count and
+four f64 controls per pair, followed by SHA-256. Every integer/f64 is little-endian.
+Plain 81-band packages still write OPP1/OPP2 exactly. Recipes keep their existing
+formats, bound to the complete palette/model identity; a grid or model change
+therefore cannot silently reuse another recipe's meaning.
+
+The local Old Holland packages are `target/measured-oils/unified-eight/`:
+`old-holland-eight-km.opp` and `old-holland-eight-empirical.opp`. Load with
+`PaletteN::<8,31>::from_bytes`; in the renderer use
+`PaletteMixerN::<8,false,31>::from_palette_bytes` and `PaletteJobN<8,false,31>`.
+The renderer's `old_holland_eight` example renders both explicit and target-matched
+recipes, with exact saved replay on the tested host. Cross-platform bit parity
+of the empirical logarithm/exponential path has not been established.
+
+The display is explicitly a 400-700 nm windowed preview, using the same
+neutral-normalized RGB convention as the original runtime on that window.
+The measured assessment separately reports unclipped windowed XYZ/Lab DE00.
+These local experimental packages do not change the default, certify real-paint
+accuracy, add browser exposure or establish a redistribution decision.

@@ -1,0 +1,20 @@
+{
+  "fit_sha256": "c96f11c194b38a007849c5db427fbe492f3f67958df5b7bdd61a5b465bb932fc",
+  "empirical_package_sha256": "9d21533abbe7a4d3a947ac96f322e3b804f1b08910579a903a0cdb1d69eb4001",
+  "evidence": "closest_found_to_black=[0.13642117, 0.13142478, 0.14618383]; recipe=[0.0, 0.0, 0.10302221, 0.416333, 0.0, 0.4806448, 0.0, 0.0]; error_ok100=25.294241326900423\ntarget-matched: 256x320, 94 strokes, 112.858 ms paint, 58179 bytes bundle, all canvas planes replay bit-identical\nexplicit-recipes: 256x320, 94 strokes, 122.965 ms paint, 58179 bytes bundle, all canvas planes replay bit-identical\n",
+  "files": {
+    "explicit-recipes-hashes.txt": "79bc86f0ed76fdd26b619691bb0fa6751ac84af23b5044141e8a8a81a359fe67",
+    "explicit-recipes.opj": "1be65ece0b07c8ee8d0caa3a3cd684c3782e6d66712b78782c0dc90170488709",
+    "explicit-recipes.png": "ffe3cf201c0624c6625811bafa9de80cf7b5315007acc9e3d82df775667cf737",
+    "target-matched-hashes.txt": "1932ede25e868ef151ae557a7fdaf5baee0cac8c03cfb15374238843dccb7345",
+    "target-matched.opj": "57f76b195dd1f50c7986a0701362ddf58c7fcfde0823ccd5b6beed423cd764c9",
+    "target-matched.png": "651a9301d3922a7dc87b64a9efdcb1c1af7b225d597e7696834a2bbc444ba507",
+    "verification.txt": "04418885e3d02765ca61a1e31198f9d942d7d6ca89bdfa84ddc4ec444034905a"
+  },
+  "renderer_source_hashes": {
+    "oilpaint-renderer\\crates\\oil-mix\\src\\palette.rs": "150889855562c5ff410cf5f03eab71b5d4aad60c08b2d33d0298030dbacf1aab",
+    "oilpaint-renderer\\crates\\oil-palette\\src\\lib.rs": "c96da8e88587e310b032627daa15edfba70fc731eb5a735b6cc4835ec47297b5",
+    "oilpaint-renderer\\crates\\oil-palette\\src\\codec.rs": "c58b6b175ac95a30958b3c23f2e81aa2734890b468dee032f025d04874f45ee9",
+    "oilpaint-renderer\\crates\\oil-palette\\examples\\old_holland_eight.rs": "f4fa1c63739ce47501bd5bb8408cbb5bbd150ba83a0052f9ed706275474d5bcd"
+  }
+}

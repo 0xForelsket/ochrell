@@ -27,7 +27,10 @@ performance and saved-state compatibility are verified.
 
 The selected [starter research palettes](docs/starter-palettes.md) are a
 four-tube Old Holland oil subset and an independent synthetic baseline. The
-measured candidate still needs data-rights clarification and model validation.
+subsequent [unified Old Holland Eight study](experiments/oil_unified_eight/REPORT.md)
+provides local experimental packages with native 31-band decoding and empirical
+pair corrections, verified in the native renderer. Accuracy limitations and the
+release decision remain documented separately; the default is unchanged.
 
 Try the opt-in reference with `cargo run --release --offline --example palette`.
 Its materials are independently synthetic, with no claim of real-paint calibration.
@@ -141,6 +144,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `experiments/oil_public_data/REPORT.md` | Public measurement source audit and source-consistency checks |
 | `experiments/oil_external/REPORT.md` | Original header-paired external test; superseded for accuracy interpretation by the inferred-mapping study |
 | `experiments/oil_source_recovery/REPORT.md` | Frozen inferred 175-sample mapping, near reproduction of published baselines and quantified label ambiguity |
+| `experiments/oil_unified_eight/REPORT.md` | Unified eight-paint fit, 183-mixture assessment and local native-window runtime packages |
 | `experiments/oil_anchor_base/REPORT.md` | Pure/white-only base calibration ablation: selected spectral gains but worse cohort mean and color error |
 | `experiments/oil_failure_cases/REPORT.md` | Frozen failure diagnosis: incompatible opaque calibration data and yellow-rich optical extrapolation |
 | `experiments/oil_ternary_transfer/REPORT.md` | Frozen 35-ternary comparison across 25 palettes: modest spectral gains, stronger color gains and tail regressions |

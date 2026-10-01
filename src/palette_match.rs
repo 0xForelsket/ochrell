@@ -25,15 +25,15 @@ struct Seed<const N: usize> {
 
 /// Prepare once per palette. Host-supplied cube root permits portable arithmetic
 /// without imposing a math dependency on Ochrell. Target search is a cold path.
-pub struct ColorMatcherN<'a, const N: usize> {
-    palette: Cow<'a, PaletteN<N>>,
+pub struct ColorMatcherN<'a, const N: usize, const B: usize = 81> {
+    palette: Cow<'a, PaletteN<N, B>>,
     cbrt: fn(f64) -> f64,
     seeds: Vec<Seed<N>>,
 }
 
 #[derive(Clone, Copy, Debug)]
-pub struct ColorMatchN<'a, const N: usize> {
-    pub recipe: RecipeN<'a, N>,
+pub struct ColorMatchN<'a, const N: usize, const B: usize = 81> {
+    pub recipe: RecipeN<'a, N, B>,
     /// Gamut-mapped achieved linear RGB, before any platform sRGB transfer.
     pub achieved_linear: [f64; 3],
     pub error_ok100: f64,
@@ -44,20 +44,23 @@ pub struct ColorMatchN<'a, const N: usize> {
 pub type ColorMatcher<'a> = ColorMatcherN<'a, 4>;
 pub type ColorMatch<'a> = ColorMatchN<'a, 4>;
 
-impl<const N: usize> ColorMatchN<'_, N> {
+impl<const N: usize, const B: usize> ColorMatchN<'_, N, B> {
     pub fn color(&self) -> Color {
         Color::from_linear_gamut_mapped(self.achieved_linear)
     }
 }
 
-impl<'a, const N: usize> ColorMatcherN<'a, N> {
-    pub fn new(palette: &'a PaletteN<N>) -> Result<Self, PaletteError> {
+impl<'a, const N: usize, const B: usize> ColorMatcherN<'a, N, B> {
+    pub fn new(palette: &'a PaletteN<N, B>) -> Result<Self, PaletteError> {
         Self::with_cbrt(palette, f64::cbrt)
     }
 
     /// `cbrt` must implement cube root consistently, including negative values.
     /// A renderer can pass its portable implementation and provide linear targets.
-    pub fn with_cbrt(palette: &'a PaletteN<N>, cbrt: fn(f64) -> f64) -> Result<Self, PaletteError> {
+    pub fn with_cbrt(
+        palette: &'a PaletteN<N, B>,
+        cbrt: fn(f64) -> f64,
+    ) -> Result<Self, PaletteError> {
         let mut seeds = Vec::new();
         for amounts in seed_recipes::<N>() {
             let recipe = palette.recipe(amounts)?;
@@ -73,24 +76,24 @@ impl<'a, const N: usize> ColorMatcherN<'a, N> {
         })
     }
 
-    pub fn into_owned(self) -> ColorMatcherN<'static, N> {
+    pub fn into_owned(self) -> ColorMatcherN<'static, N, B> {
         ColorMatcherN {
             palette: Cow::Owned(self.palette.into_owned()),
             cbrt: self.cbrt,
             seeds: self.seeds,
         }
     }
-    pub fn palette(&self) -> &PaletteN<N> {
+    pub fn palette(&self) -> &PaletteN<N, B> {
         &self.palette
     }
-    pub fn match_color(&self, target: Color) -> Result<ColorMatchN<'_, N>, PaletteError> {
+    pub fn match_color(&self, target: Color) -> Result<ColorMatchN<'_, N, B>, PaletteError> {
         self.match_linear(target.linear())
     }
 
     /// Best recipe found by a stable bounded multistart search in displayed
     /// OKLab. Unreachable colors return their achieved color and nonzero error.
     /// This does not assert a unique inverse or a certified global optimum.
-    pub fn match_linear(&self, target: [f64; 3]) -> Result<ColorMatchN<'_, N>, PaletteError> {
+    pub fn match_linear(&self, target: [f64; 3]) -> Result<ColorMatchN<'_, N, B>, PaletteError> {
         if target
             .iter()
             .any(|v| !v.is_finite() || !(0. ..=1.).contains(v))

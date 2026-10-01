@@ -1,0 +1,39 @@
+{
+  "packages": {
+    "frozen_fit_sha256": "c96f11c194b38a007849c5db427fbe492f3f67958df5b7bdd61a5b465bb932fc",
+    "packages": {
+      "km": {
+        "file": "old-holland-eight-km.opp",
+        "bytes": 5464,
+        "sha256": "99e16aac59fbbbb2b522766c5ca9210b481294a3189eaeefacb8fb71aae72b74",
+        "identity": "4d1225cab022983c3c2ee4fb6fb1cab13037c3a4c96eb3a3d3d23bb4099b2cdd"
+      },
+      "empirical": {
+        "file": "old-holland-eight-empirical.opp",
+        "bytes": 6367,
+        "sha256": "9d21533abbe7a4d3a947ac96f322e3b804f1b08910579a903a0cdb1d69eb4001",
+        "identity": "5eb9d60b8a80ab011d089c356a53add8cc5d4f6633cd439b3a7b43572fd7c397"
+      }
+    },
+    "recipe_count": 1318,
+    "recipes_sha256": "80e1104c47672df7f3507d5bbf35f4922fe48f13c2f1be19a01bad5d6cd4129d"
+  },
+  "checks": {
+    "km": {
+      "spectral_max_abs": 2.220446049250313e-16,
+      "linear_rgb_max_abs": 2.220446049250313e-16
+    },
+    "empirical": {
+      "spectral_max_abs": 3.3306690738754696e-16,
+      "linear_rgb_max_abs": 2.220446049250313e-16
+    }
+  },
+  "runtime_hashes": {
+    "experiments/oil_unified_eight/package.py": "c16eec27509b9775bf94b3a9bc774468d717c28aa528c761959d34cadccf3e01",
+    "tools/generate_window_projection.py": "c7313a5528b118fe47ab360b631416275af59299d37783281564c76ceefb97b8",
+    "src/palette_window.rs": "6fb24390fd3c69f53595fef50610b94beb53f24c7dce744efb1a26e54fc6e37e",
+    "src/palette.rs": "0b9d15edb04b87029e45df04b1be6f8cf2464fffdaef09f8c371d2a052923b7f",
+    "src/palette_package.rs": "e9231e4f5ef5ccf332a7f5ea84a48a6b9cf7874152f27d5f6d3f2832e4a21ba4",
+    "examples/measured_palette_probe.rs": "1ad47def8c0f212bb9d944dabc57b8626ee4357b6ca0a9564c092857aaad445e"
+  }
+}

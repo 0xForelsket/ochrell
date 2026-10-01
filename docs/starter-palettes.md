@@ -95,6 +95,16 @@ errors fall, but equal-palette means also worsen. All 25 fits and isolation chec
 passed, including exact reproduction of the archived pair controls when supplied
 their original bases. The all-binary-base method remains the research baseline;
 this exposed-data result adds no independent validation or runtime promotion.
+The [unified Old Holland Eight study](../experiments/oil_unified_eight/REPORT.md)
+then fits all eight paints jointly on 103 pure/binary samples and assesses the
+remaining 183 mixtures. The empirical model improves mean spectral error by
+5.04% and windowed color error by 22.01% over its shared K-M base, with residual
+tail failures. On the established 35-target cohort it improves over the previous
+palette-specific correction by 18.37% spectrally and 5.55% in color, using the
+larger unified calibration pool. Both models now have local OPP3 packages on
+the measured 31-band grid and verified native painting/replay. No measured
+eight-ingredient sample exists in this source, no spectral tails were invented,
+and no default or redistribution decision changed.
 
 ## Selected candidates
 

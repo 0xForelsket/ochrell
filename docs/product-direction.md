@@ -11,8 +11,10 @@ is available as an opt-in recipe API, now with an explicit
 and native recipe painting in the sibling renderer are implemented as opt-in
 capabilities. Palette recipes, matching, packages and native painting now support
 1-16 materials, including eight, ten and sixteen; the prepared LUT remains a
-four-material accelerator. [Measured oil calibration studies](measured-oils-v3-results.md)
-remain research candidates; no measured preset or default promotion is established.
+four-material accelerator. The [unified Old Holland Eight model](../experiments/oil_unified_eight/REPORT.md)
+now has local experimental native-window packages and verified native painting.
+Measured oil accuracy remains a research result; no default or distributed preset
+promotion is established.
 
 ## Decision
 
