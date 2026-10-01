@@ -69,6 +69,14 @@ An unscored cohort and next-study protocol are prepared. Another 57 Grillini
 ternaries expand pigment coverage but retain the same 2:1:1 recipe shape and
 inferred-label caveats. A purported 289-spectrum oil source reproduces all 286
 Old Holland spectra and cannot serve as an independent replication.
+The [completed 35-ternary comparison](../experiments/oil_ternary_transfer/REPORT.md)
+now shows that the original empirical correction improves mean spectral RMSE by
+3.83% and mean windowed DE00 by 17.40% over K-M across the 25 additional palettes.
+It improves 23 of 35 rows spectrally, while worsening p95 spectral error by 35.5%.
+Fixed attenuation reduces that tail but is worse than the original correction in
+mean spectral and color error. The earlier three-mixture failure does not justify
+universal suppression. All 25 fits and excluded-target perturbation checks passed;
+the next research target is the specific correction and base-model failures.
 
 ## Selected candidates
 
