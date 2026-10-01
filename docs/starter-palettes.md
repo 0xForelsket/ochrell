@@ -77,6 +77,15 @@ Fixed attenuation reduces that tail but is worse than the original correction in
 mean spectral and color error. The earlier three-mixture failure does not justify
 universal suppression. All 25 fits and excluded-target perturbation checks passed;
 the next research target is the specific correction and base-model failures.
+The [selected failure diagnosis](../experiments/oil_failure_cases/REPORT.md) now
+traces row 205 mainly to a Scarlet/Alizarin darkening correction learned from a
+binary spectrum that falls below both measured pure paints, which fixed-pure
+opaque K-M cannot represent. Rows 197/199 require much lower effective red/green
+blend weight against yellow than their frozen fit uses, beyond measured binary
+ratio coverage. Other frozen palettes give strongly different yellow/viridian
+scattering ratios. These are calibration-transfer/model-compatibility findings,
+not proof of a physical cause or an optimizer failure. A pure/white-only base
+calibration ablation is proposed; no refit was performed during the diagnosis.
 
 ## Selected candidates
 
