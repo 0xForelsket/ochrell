@@ -1,7 +1,8 @@
 # Target colors and custom palette packages
 
-Palette mode now supports loading owned optical definitions and finding recipes
-for requested colors. Both remain opt-in. The existing RGB model is unchanged.
+Palette mode supports loading owned optical definitions and finding recipes for
+requested colors with **1-16 paints**. Both remain opt-in. The existing RGB model
+is unchanged. The original four-paint API below remains source compatible.
 
 ```rust
 use ochrell::{Color, palette::Palette, palette_lut::PaletteLut,
@@ -28,7 +29,7 @@ owned names in this experimental API.
 OPP1 stores the optical definition: magic, grid and amount codes (u32 little
 endian), six length-prefixed UTF-8 strings (id, provenance, four names), K, S and
 RGB projection arrays (f64 little endian, row-major), then SHA-256 of the body.
-Packages are bounded to 16,384 bytes. Custom identity is the body hash, covering
+Packages are bounded to 65,536 bytes. Custom identity is the body hash, covering
 metadata and exact coefficient bits. Exact copies of the built-in palette retain
 its published identity so existing OPR1 recipes and OPL1 tables continue to load.
 Checksums detect corruption; they do not authenticate the source or its rights.
@@ -80,5 +81,67 @@ incompatible recipes/tables, malformed lengths, grid, projection, coefficients
 and checksums; SHA-256 includes standard known-answer tests.
 
 Native renderer support is developed in the sibling oilpaint-renderer repository.
-Browser/TypeScript exposure, measured palette fitting, more than four paints and
-changing the default remain separate milestones.
+Browser/TypeScript exposure, a unified measured Old Holland preset and changing
+the default remain separate milestones.
+
+## Palettes with up to sixteen paints
+
+`PaletteN<N>`, `PaletteMetadataN<N>`, `RecipeN<N>` and `ColorMatcherN<N>` support
+1-16 materials. N is the host's compile-time paint count; state arrays contain
+exactly N components. `Palette`, `PaletteMetadata`, `Recipe` and `ColorMatcher`
+remain aliases for the original four-paint types. The existing built-in spectrum
+definitions, fingerprint, default mixer and four-paint LUT are unchanged.
+
+```rust
+use ochrell::{palette::PaletteN, palette_match::ColorMatcherN, Color};
+# fn example(bytes: &[u8]) -> Result<(), Box<dyn std::error::Error>> {
+let palette = PaletteN::<8>::from_bytes(bytes)?;
+let mixture = palette.recipe([1., 2., 0., 0., 1., 0., 0., 4.])?;
+let shown = mixture.decode();
+let saved_recipe = mixture.to_bytes();
+let restored = palette.recipe_from_bytes(&saved_recipe)?;
+assert_eq!(shown, restored.decode());
+let matcher = ColorMatcherN::new(&palette)?;
+let matched = matcher.match_color(Color::srgb8(80, 170, 120))?;
+println!("{:?}, error {}", matched.recipe.proportions(), matched.error_ok100);
+# Ok(()) }
+```
+
+To create such a package, call `PaletteN::<N>::from_optics` with N distinct
+material names and `[81][N]` K/S arrays. The same coefficient bounds, grid,
+amount-basis declaration and exact CIE/D65 projection apply. A larger recipe
+does not provide missing optical measurements. This change neither imports
+Old Holland measurements nor implements its experimental empirical correction.
+
+For N != 4, OPP2 inserts a little-endian u32 count after the magic, followed by
+the existing package fields with N names and N columns in each optical array.
+OPR2 stores magic, u32 count, 32-byte palette fingerprint and N f64 proportions;
+its size is `40 + 8*N` bytes. Four-paint packages and recipes still write OPP1
+and OPR1, including the old fixed-size `to_le_bytes` API. Loaders reject the wrong
+count, identity, malformed lengths and invalid coefficients or proportions;
+they never pad, truncate or reinterpret slots.
+
+The matcher keeps the exact original 165 seeds for N=4. Other sizes use N pure
+seeds, three ratios for each pair, the equal mixture and 32 deterministic interior
+seeds: `N + 3*N*(N-1)/2 + 33` seeds (409 at N=16). Search still uses six starts
+and at most 24,000 refinement evaluations, returns the achieved color and error,
+and makes no promise of a unique recipe or global optimum. The sampled regression
+checks exercise reachable colors and unmatched black with 8, 10 and 16 materials.
+
+`PaletteLut` remains four-paint only. Larger palettes decode their known recipes
+directly through K-M. No 7D/15D table is allocated, no RGB residual is added and
+no ingredient is dropped. Speedups measured for the four-paint LUT do not apply
+to this direct path; larger-palette acceleration remains future work.
+
+The sibling renderer exposes `PaletteMixerN::<N>::direct(palette)` and
+`PaletteJobN<N>` for direct recipe painting. `RecipeLoadN<N>` preserves every
+component through pickup, deposition and streaks. OPJ2 embeds the optical package,
+explicit direct-decoder tag, stroke geometry and all N-component loads. Legacy
+`PaletteMixer`, `PaletteJob` and OPJ1 retain their prepared four-paint behavior.
+See the renderer's `crates/oil-palette/README.md` for the native API and format.
+
+Verification covers scalar optical agreement, all eight input slots, amount-aware
+grouping, matching at 8/10/16 paints, malformed counts and high-index components,
+unchanged four-paint tests, and exact native canvas replay at 8/10/16 paints.
+Fixtures are explicitly synthetic; these are implementation checks, not a new
+physical-paint accuracy result.

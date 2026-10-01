@@ -1,25 +1,26 @@
-//! Checked OPP1 optical palette packages; child module of palette.
+//! Checked OPP1 (four paints) and OPP2 (explicit paint count) packages; child module of palette.
 use super::*;
 
-const MAX_PACKAGE_BYTES: usize = 16_384;
+const MAX_PACKAGE_BYTES: usize = 65_536;
 
-impl Palette {
-    /// Import four materials on the fixed 81-band reference grid. K must be in
+impl<const N: usize> PaletteN<N> {
+    /// Import 1-16 materials on the fixed 81-band reference grid. K must be in
     /// [0,1e100], S in [1e-100,1e100]. These broad numerical bounds keep all
     /// supported mixtures finite; they are not physical coefficient units.
     pub fn from_optics(
-        metadata: PaletteMetadata<'_>,
-        k: [[f64; PAINT_COUNT]; SAMPLES],
-        s: [[f64; PAINT_COUNT]; SAMPLES],
+        metadata: PaletteMetadataN<'_, N>,
+        k: [[f64; N]; SAMPLES],
+        s: [[f64; N]; SAMPLES],
     ) -> Result<Self, PaletteError> {
         let text_ok = |s: &str, max: usize| {
             !s.trim().is_empty() && s.len() <= max && !s.chars().any(char::is_control)
         };
-        if !text_ok(metadata.id, 128)
+        if !(1..=MAX_PAINTS).contains(&N)
+            || !text_ok(metadata.id, 128)
             || !text_ok(metadata.provenance, 4096)
             || metadata.paint_names.iter().any(|n| !text_ok(n, 64))
-            || (0..4)
-                .any(|i| (i + 1..4).any(|j| metadata.paint_names[i] == metadata.paint_names[j]))
+            || (0..N)
+                .any(|i| (i + 1..N).any(|j| metadata.paint_names[i] == metadata.paint_names[j]))
             || k.iter()
                 .flatten()
                 .any(|v| !v.is_finite() || !(0. ..=1e100).contains(v))
@@ -41,8 +42,9 @@ impl Palette {
         };
         // Preserve identities of the already-published built-in OPR1/OPL1 data.
         let builtin = synthetic_four();
-        p.fingerprint = if p.id == builtin.id
-            && p.names == builtin.names
+        p.fingerprint = if N == 4
+            && p.id == builtin.id
+            && p.names.iter().eq(builtin.names.iter())
             && p.amount_basis == builtin.amount_basis
             && p.provenance == builtin.provenance
             && same_bits(&p.k, &builtin.k)
@@ -57,7 +59,10 @@ impl Palette {
 
     fn package_body(&self) -> Vec<u8> {
         let mut out = Vec::new();
-        out.extend_from_slice(b"OPP1");
+        out.extend_from_slice(if N == 4 { b"OPP1" } else { b"OPP2" });
+        if N != 4 {
+            out.extend_from_slice(&(N as u32).to_le_bytes());
+        }
         for value in [
             SAMPLES as u32,
             START_NM as u32,
@@ -99,7 +104,12 @@ impl Palette {
     }
 
     pub fn from_bytes(bytes: &[u8]) -> Result<Self, PaletteError> {
-        if bytes.len() < 52 || bytes.len() > MAX_PACKAGE_BYTES || &bytes[..4] != b"OPP1" {
+        if !(1..=MAX_PAINTS).contains(&N)
+            || bytes.len() < 52
+            || bytes.len() > MAX_PACKAGE_BYTES
+            || (N == 4 && &bytes[..4] != b"OPP1")
+            || (N != 4 && &bytes[..4] != b"OPP2")
+        {
             return Err(PaletteError::InvalidPalette);
         }
         let end = bytes.len() - 32;
@@ -110,6 +120,9 @@ impl Palette {
             bytes: &bytes[4..end],
             position: 0,
         };
+        if N != 4 && reader.u32()? as usize != N {
+            return Err(PaletteError::InvalidPalette);
+        }
         if [reader.u32()?, reader.u32()?, reader.u32()?]
             != [SAMPLES as u32, START_NM as u32, STEP_NM as u32]
         {
@@ -123,13 +136,11 @@ impl Palette {
         };
         let id = reader.text(128)?;
         let provenance = reader.text(4096)?;
-        let names = [
-            reader.text(64)?,
-            reader.text(64)?,
-            reader.text(64)?,
-            reader.text(64)?,
-        ];
-        let mut k = [[0.; 4]; SAMPLES];
+        let mut names = [""; N];
+        for name in &mut names {
+            *name = reader.text(64)?;
+        }
+        let mut k = [[0.; N]; SAMPLES];
         let mut s = k;
         let mut rgb = [[0.; 3]; SAMPLES];
         for value in k
@@ -147,7 +158,7 @@ impl Palette {
             return Err(PaletteError::UnsupportedGrid);
         }
         Self::from_optics(
-            PaletteMetadata {
+            PaletteMetadataN {
                 id,
                 paint_names: names,
                 amount_basis: basis,
@@ -159,16 +170,58 @@ impl Palette {
     }
 }
 
-fn same_bits<const N: usize>(a: &[[f64; N]; SAMPLES], b: &[[f64; N]; SAMPLES]) -> bool {
-    a.iter()
-        .flatten()
-        .zip(b.iter().flatten())
-        .all(|(a, b)| a.to_bits() == b.to_bits())
+fn same_bits<const N: usize, const M: usize>(
+    a: &[[f64; N]; SAMPLES],
+    b: &[[f64; M]; SAMPLES],
+) -> bool {
+    N == M
+        && a.iter()
+            .flatten()
+            .zip(b.iter().flatten())
+            .all(|(a, b)| a.to_bits() == b.to_bits())
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn original_four_paint_package_bytes_are_unchanged() {
+        // SHA-256 of the OPP1 package generated on 2026-09-30, before N-paint support.
+        let hash = crate::sha256::digest(&synthetic_four().to_bytes());
+        let hex: String = hash.iter().map(|b| format!("{b:02x}")).collect();
+        assert_eq!(
+            hex,
+            "400e576d7b9fc508680a03706bb54f2742de29a618e990bf180f24d6aeb18d03"
+        );
+    }
+
+    #[test]
+    fn counted_packages_reject_rechecksummed_count_and_high_index_optics() {
+        let p = PaletteN::<8>::from_optics(
+            PaletteMetadataN {
+                id: "eight-parser-test",
+                paint_names: ["a", "b", "c", "d", "e", "f", "g", "h"],
+                amount_basis: AmountBasis::Relative,
+                provenance: "Synthetic constant test optics",
+            },
+            [[1.; 8]; SAMPLES],
+            [[1.; 8]; SAMPLES],
+        )
+        .unwrap();
+        let original = p.to_bytes();
+        let end = original.len() - 32;
+        for (offset, replacement) in [
+            (4, 7_u32.to_le_bytes().to_vec()),
+            (end - SAMPLES * 11 * 8 - 8, f64::NAN.to_le_bytes().to_vec()),
+            (end - SAMPLES * 3 * 8 - 8, 0_f64.to_le_bytes().to_vec()),
+        ] {
+            let mut bad = original.clone();
+            bad[offset..offset + replacement.len()].copy_from_slice(&replacement);
+            let hash = crate::sha256::digest(&bad[..end]);
+            bad[end..].copy_from_slice(&hash);
+            assert!(PaletteN::<8>::from_bytes(&bad).is_err());
+        }
+    }
     #[test]
     fn checksummed_invalid_packages_are_rejected() {
         let original = synthetic_four().to_bytes();

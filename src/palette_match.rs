@@ -1,4 +1,4 @@
-//! Bounded target-color search in a four-paint palette. No RGB residual is added.
+//! Bounded target-color search in a palette of 1-16 paints. No RGB residual is added.
 //!
 //! ```
 //! use ochrell::{Color, palette::synthetic_four, palette_match::ColorMatcher};
@@ -8,7 +8,7 @@
 //! ```
 use crate::{
     conversion,
-    palette::{Palette, PaletteError, Recipe},
+    palette::{PaletteError, PaletteN, RecipeN},
     Color,
 };
 use std::borrow::Cow;
@@ -18,22 +18,22 @@ const STARTS: usize = 6;
 const EVALUATIONS_PER_START: usize = 4000;
 
 #[derive(Clone, Copy, Debug)]
-struct Seed {
-    proportions: [f64; 4],
+struct Seed<const N: usize> {
+    proportions: [f64; N],
     metric: [f64; 3],
 }
 
 /// Prepare once per palette. Host-supplied cube root permits portable arithmetic
 /// without imposing a math dependency on Ochrell. Target search is a cold path.
-pub struct ColorMatcher<'a> {
-    palette: Cow<'a, Palette>,
+pub struct ColorMatcherN<'a, const N: usize> {
+    palette: Cow<'a, PaletteN<N>>,
     cbrt: fn(f64) -> f64,
-    seeds: Vec<Seed>,
+    seeds: Vec<Seed<N>>,
 }
 
 #[derive(Clone, Copy, Debug)]
-pub struct ColorMatch<'a> {
-    pub recipe: Recipe<'a>,
+pub struct ColorMatchN<'a, const N: usize> {
+    pub recipe: RecipeN<'a, N>,
     /// Gamut-mapped achieved linear RGB, before any platform sRGB transfer.
     pub achieved_linear: [f64; 3],
     pub error_ok100: f64,
@@ -41,36 +41,30 @@ pub struct ColorMatch<'a> {
     pub evaluations: usize,
 }
 
-impl ColorMatch<'_> {
+pub type ColorMatcher<'a> = ColorMatcherN<'a, 4>;
+pub type ColorMatch<'a> = ColorMatchN<'a, 4>;
+
+impl<const N: usize> ColorMatchN<'_, N> {
     pub fn color(&self) -> Color {
         Color::from_linear_gamut_mapped(self.achieved_linear)
     }
 }
 
-impl<'a> ColorMatcher<'a> {
-    pub fn new(palette: &'a Palette) -> Result<Self, PaletteError> {
+impl<'a, const N: usize> ColorMatcherN<'a, N> {
+    pub fn new(palette: &'a PaletteN<N>) -> Result<Self, PaletteError> {
         Self::with_cbrt(palette, f64::cbrt)
     }
 
     /// `cbrt` must implement cube root consistently, including negative values.
     /// A renderer can pass its portable implementation and provide linear targets.
-    pub fn with_cbrt(palette: &'a Palette, cbrt: fn(f64) -> f64) -> Result<Self, PaletteError> {
+    pub fn with_cbrt(palette: &'a PaletteN<N>, cbrt: fn(f64) -> f64) -> Result<Self, PaletteError> {
         let mut seeds = Vec::new();
-        for a in 0..=SEED_DIVISIONS {
-            for b in 0..=SEED_DIVISIONS - a {
-                for c in 0..=SEED_DIVISIONS - a - b {
-                    let recipe = palette.recipe([
-                        a as f64,
-                        b as f64,
-                        c as f64,
-                        (SEED_DIVISIONS - a - b - c) as f64,
-                    ])?;
-                    seeds.push(Seed {
-                        proportions: recipe.proportions(),
-                        metric: metric(conversion::gamut_map(recipe.decode_linear()), cbrt)?,
-                    });
-                }
-            }
+        for amounts in seed_recipes::<N>() {
+            let recipe = palette.recipe(amounts)?;
+            seeds.push(Seed {
+                proportions: recipe.proportions(),
+                metric: metric(conversion::gamut_map(recipe.decode_linear()), cbrt)?,
+            });
         }
         Ok(Self {
             palette: Cow::Borrowed(palette),
@@ -79,24 +73,24 @@ impl<'a> ColorMatcher<'a> {
         })
     }
 
-    pub fn into_owned(self) -> ColorMatcher<'static> {
-        ColorMatcher {
+    pub fn into_owned(self) -> ColorMatcherN<'static, N> {
+        ColorMatcherN {
             palette: Cow::Owned(self.palette.into_owned()),
             cbrt: self.cbrt,
             seeds: self.seeds,
         }
     }
-    pub fn palette(&self) -> &Palette {
+    pub fn palette(&self) -> &PaletteN<N> {
         &self.palette
     }
-    pub fn match_color(&self, target: Color) -> Result<ColorMatch<'_>, PaletteError> {
+    pub fn match_color(&self, target: Color) -> Result<ColorMatchN<'_, N>, PaletteError> {
         self.match_linear(target.linear())
     }
 
     /// Best recipe found by a stable bounded multistart search in displayed
     /// OKLab. Unreachable colors return their achieved color and nonzero error.
     /// This does not assert a unique inverse or a certified global optimum.
-    pub fn match_linear(&self, target: [f64; 3]) -> Result<ColorMatch<'_>, PaletteError> {
+    pub fn match_linear(&self, target: [f64; 3]) -> Result<ColorMatchN<'_, N>, PaletteError> {
         if target
             .iter()
             .any(|v| !v.is_finite() || !(0. ..=1.).contains(v))
@@ -133,8 +127,8 @@ impl<'a> ColorMatcher<'a> {
                     self.cbrt,
                 )?;
                 evaluations += 1;
-                let mut jac = [[0.; 4]; 3];
-                for axis in 0..4 {
+                let mut jac = [[0.; N]; 3];
+                for axis in 0..N {
                     let mut shifted = current;
                     shifted[axis] += 1e-5;
                     let other = metric(
@@ -146,10 +140,10 @@ impl<'a> ColorMatcher<'a> {
                         jac[ch][axis] = (other[ch] - value[ch]) / 1e-5;
                     }
                 }
-                let mut normal = [[0.; 4]; 4];
-                let mut rhs = [0.; 4];
-                for i in 0..4 {
-                    for j in 0..4 {
+                let mut normal = [[0.; N]; N];
+                let mut rhs = [0.; N];
+                for i in 0..N {
+                    for j in 0..N {
                         normal[i][j] = (0..3).map(|ch| jac[ch][i] * jac[ch][j]).sum();
                     }
                     normal[i][i] += 1e-9;
@@ -194,12 +188,12 @@ impl<'a> ColorMatcher<'a> {
             while step >= 1e-8 && evaluations - start_count < EVALUATIONS_PER_START {
                 let mut next = current;
                 let mut next_score = score;
-                for from in 0..4 {
+                for from in 0..N {
                     let delta = step.min(current[from]);
                     if delta == 0. {
                         continue;
                     }
-                    for to in 0..4 {
+                    for to in 0..N {
                         if evaluations - start_count >= EVALUATIONS_PER_START {
                             break;
                         }
@@ -240,7 +234,7 @@ impl<'a> ColorMatcher<'a> {
         let recipe = self.palette.recipe(best)?;
         let achieved_linear = conversion::gamut_map(recipe.decode_linear());
         let error_ok100 = 100. * distance(metric(achieved_linear, self.cbrt)?, wanted).sqrt();
-        Ok(ColorMatch {
+        Ok(ColorMatchN {
             recipe,
             achieved_linear,
             error_ok100,
@@ -270,10 +264,10 @@ fn distance(a: [f64; 3], b: [f64; 3]) -> f64 {
         .sum()
 }
 
-fn solve(mut a: [[f64; 4]; 4], mut b: [f64; 4]) -> [f64; 4] {
-    for i in 0..4 {
+fn solve<const N: usize>(mut a: [[f64; N]; N], mut b: [f64; N]) -> [f64; N] {
+    for i in 0..N {
         let mut pivot = i;
-        for j in i + 1..4 {
+        for j in i + 1..N {
             if a[j][i].abs() > a[pivot][i].abs() {
                 pivot = j;
             }
@@ -282,22 +276,63 @@ fn solve(mut a: [[f64; 4]; 4], mut b: [f64; 4]) -> [f64; 4] {
         b.swap(i, pivot);
         let scale = a[i][i];
         if scale.abs() < 1e-24 {
-            return [0.; 4];
+            return [0.; N];
         }
-        for j in i..4 {
+        for j in i..N {
             a[i][j] /= scale;
         }
         b[i] /= scale;
-        for row in 0..4 {
+        for row in 0..N {
             if row == i {
                 continue;
             }
             let factor = a[row][i];
-            for column in i..4 {
+            for column in i..N {
                 a[row][column] -= factor * a[i][column];
             }
             b[row] -= factor * b[i];
         }
     }
     b
+}
+
+// Retain the original four-paint seed order exactly. Larger palettes use a
+// bounded set of pure, pair and interior seeds rather than an exponential grid.
+fn seed_recipes<const N: usize>() -> Vec<[f64; N]> {
+    let mut seeds = Vec::new();
+    if N == 4 {
+        for a in 0..=SEED_DIVISIONS {
+            for b in 0..=SEED_DIVISIONS - a {
+                for c in 0..=SEED_DIVISIONS - a - b {
+                    let values = [a, b, c, SEED_DIVISIONS - a - b - c];
+                    seeds.push(std::array::from_fn(|i| values[i] as f64));
+                }
+            }
+        }
+    } else {
+        for i in 0..N {
+            let mut pure = [0.; N];
+            pure[i] = 1.;
+            seeds.push(pure);
+            for j in i + 1..N {
+                for amount in [0.25, 0.5, 0.75] {
+                    let mut pair = [0.; N];
+                    pair[i] = amount;
+                    pair[j] = 1. - amount;
+                    seeds.push(pair);
+                }
+            }
+        }
+        seeds.push([1.; N]);
+        let mut state = 0x6a09_e667_u32;
+        for _ in 0..32 {
+            seeds.push(std::array::from_fn(|_| {
+                state ^= state << 13;
+                state ^= state >> 17;
+                state ^= state << 5;
+                0.01 + state as f64 / u32::MAX as f64
+            }));
+        }
+    }
+    seeds
 }

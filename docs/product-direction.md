@@ -9,7 +9,9 @@ Implementation update: the first [Synthetic Four reference](palette-reference.md
 is available as an opt-in recipe API, now with an explicit
 [prepared forward decoder](palette-lut.md). [Target matching and custom palettes](palette-workflow.md)
 and native recipe painting in the sibling renderer are implemented as opt-in
-capabilities. [Measured oil calibration studies](measured-oils-v3-results.md)
+capabilities. Palette recipes, matching, packages and native painting now support
+1-16 materials, including eight, ten and sixteen; the prepared LUT remains a
+four-material accelerator. [Measured oil calibration studies](measured-oils-v3-results.md)
 remain research candidates; no measured preset or default promotion is established.
 
 ## Decision

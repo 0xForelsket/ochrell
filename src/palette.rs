@@ -1,7 +1,8 @@
-//! Opt-in, palette-bound four-material reference mixing.
+//! Opt-in, palette-bound material recipes (1-16 paints).
 //!
-//! This first version exposes an independent synthetic palette, not measured
-//! paint or a replacement for the root RGB mixer. It has no LUT or RGB residual.
+//! The built-in palette is independently synthetic; callers can import optical
+//! definitions with `PaletteN`. Recipes have no RGB residual. Four-paint LUTs
+//! remain an optional accelerator in `palette_lut`.
 //! See `docs/palette-reference.md` for the optical model and provenance.
 //!
 //! ```
@@ -29,16 +30,25 @@ pub enum AmountBasis {
 }
 
 /// Human-readable identity and attribution stored with custom optical data.
-pub struct PaletteMetadata<'a> {
+pub struct PaletteMetadataN<'a, const N: usize> {
     pub id: &'a str,
-    pub paint_names: [&'a str; PAINT_COUNT],
+    pub paint_names: [&'a str; N],
     pub amount_basis: AmountBasis,
     pub provenance: &'a str,
 }
 
 const BUILTIN_PROVENANCE: &str = "Original independent synthetic smoothstep spectra; CIE-derived D65 projection. See data/README.md.";
 
+/// Number of paints in the backwards-compatible built-in palette.
 pub const PAINT_COUNT: usize = 4;
+/// Bound package sizes and matching work, including eight-, ten- and sixteen-paint palettes.
+pub const MAX_PAINTS: usize = 16;
+/// Original four-paint API and storage remain compatible.
+pub type Palette = PaletteN<4>;
+/// Metadata for the original four-paint API.
+pub type PaletteMetadata<'a> = PaletteMetadataN<'a, 4>;
+/// Recipe for the original four-paint API.
+pub type Recipe<'a> = RecipeN<'a, 4>;
 pub const SAMPLES: usize = 81;
 pub const START_NM: usize = 380;
 pub const STEP_NM: usize = 5;
@@ -71,9 +81,9 @@ impl core::fmt::Display for PaletteError {
             Self::InvalidFraction => "mixing fraction must be finite and in [0, 1]",
             Self::PaletteMismatch => "recipe belongs to a different palette",
             Self::InvalidRecipe => {
-                "recipe must contain four finite nonnegative proportions summing to one"
+                "recipe must contain finite nonnegative proportions summing to one"
             }
-            Self::InvalidFormat => "expected an OPR1 recipe with exactly 68 bytes",
+            Self::InvalidFormat => "invalid recipe format, paint count or payload length",
             Self::InvalidPalette => "invalid palette metadata or optical coefficients",
             Self::UnsupportedGrid => "palette requires 81 bands at 380-780 nm / 5 nm and the supported CIE/D65 projection",
             Self::InvalidChecksum => "palette package checksum does not match",
@@ -84,19 +94,32 @@ impl core::fmt::Display for PaletteError {
 }
 impl std::error::Error for PaletteError {}
 
-/// An immutable, owned or built-in four-material reference definition.
+/// An immutable palette with N material slots; N must be in 1..=MAX_PAINTS.
 ///
 /// Its generated fingerprint identifies paint order, optical coefficients and
 /// color projection. Changing the reference requires a new identity.
+///
+/// ```
+/// use ochrell::{palette::PaletteN, palette_match::ColorMatcherN, Color};
+/// # fn eight_paints(bytes: &[u8]) -> Result<(), Box<dyn std::error::Error>> {
+/// let palette = PaletteN::<8>::from_bytes(bytes)?;
+/// let mixture = palette.recipe([1., 2., 0., 0., 1., 0., 0., 4.])?;
+/// let restored = palette.recipe_from_bytes(&mixture.to_bytes())?;
+/// assert_eq!(mixture.decode(), restored.decode());
+/// let matcher = ColorMatcherN::new(&palette)?;
+/// let found = matcher.match_color(Color::srgb8(80, 170, 120))?;
+/// println!("{:?}", found.recipe.proportions());
+/// # Ok(()) }
+/// ```
 #[derive(Clone, Debug)]
-pub struct Palette {
+pub struct PaletteN<const N: usize> {
     id: Cow<'static, str>,
     fingerprint: [u8; 32],
-    names: [Cow<'static, str>; PAINT_COUNT],
+    names: [Cow<'static, str>; N],
     amount_basis: AmountBasis,
     provenance: Cow<'static, str>,
-    k: [[f64; PAINT_COUNT]; SAMPLES],
-    s: [[f64; PAINT_COUNT]; SAMPLES],
+    k: [[f64; N]; SAMPLES],
+    s: [[f64; N]; SAMPLES],
     rgb: [[f64; 3]; SAMPLES],
 }
 
@@ -121,7 +144,11 @@ pub fn synthetic_four() -> &'static Palette {
     &SYNTHETIC_FOUR
 }
 
-impl Palette {
+impl<const N: usize> PaletteN<N> {
+    pub fn paint_count(&self) -> usize {
+        N
+    }
+
     pub fn id(&self) -> &str {
         &self.id
     }
@@ -131,7 +158,7 @@ impl Palette {
     }
 
     /// Order used by `recipe` and stored concentration arrays.
-    pub fn paint_names(&self) -> [&str; PAINT_COUNT] {
+    pub fn paint_names(&self) -> [&str; N] {
         std::array::from_fn(|i| self.names[i].as_ref())
     }
     pub fn amount_basis(&self) -> AmountBasis {
@@ -140,22 +167,22 @@ impl Palette {
     pub fn provenance(&self) -> &str {
         &self.provenance
     }
-    pub fn absorption(&self) -> &[[f64; PAINT_COUNT]; SAMPLES] {
+    pub fn absorption(&self) -> &[[f64; N]; SAMPLES] {
         &self.k
     }
-    pub fn scattering(&self) -> &[[f64; PAINT_COUNT]; SAMPLES] {
+    pub fn scattering(&self) -> &[[f64; N]; SAMPLES] {
         &self.s
     }
 
-    pub fn paint(&self, name: &str) -> Result<Recipe<'_>, PaletteError> {
+    pub fn paint(&self, name: &str) -> Result<RecipeN<'_, N>, PaletteError> {
         let index = self
             .names
             .iter()
             .position(|candidate| *candidate == name)
             .ok_or(PaletteError::UnknownPaint)?;
-        let mut proportions = [0.; PAINT_COUNT];
+        let mut proportions = [0.; N];
         proportions[index] = 1.;
-        Ok(Recipe {
+        Ok(RecipeN {
             palette: self,
             proportions,
         })
@@ -165,8 +192,8 @@ impl Palette {
     ///
     /// Units are relative synthetic amounts for the built-in palette, not grams
     /// or paint volume. Zero components are allowed, but the total must be positive.
-    pub fn recipe(&self, amounts: [f64; PAINT_COUNT]) -> Result<Recipe<'_>, PaletteError> {
-        Ok(Recipe {
+    pub fn recipe(&self, amounts: [f64; N]) -> Result<RecipeN<'_, N>, PaletteError> {
+        Ok(RecipeN {
             palette: self,
             proportions: normalize(amounts)?,
         })
@@ -176,15 +203,33 @@ impl Palette {
     ///
     /// The fingerprint is a compatibility identifier, not a checksum of the
     /// recipe payload. Hosts needing corruption detection must checksum storage.
-    pub fn recipe_from_bytes(&self, bytes: &[u8]) -> Result<Recipe<'_>, PaletteError> {
-        if bytes.len() != RECIPE_BYTES || &bytes[..4] != RECIPE_MAGIC {
+    pub fn recipe_from_bytes(&self, bytes: &[u8]) -> Result<RecipeN<'_, N>, PaletteError> {
+        let offset = if N == 4 { 36 } else { 40 };
+        if bytes.len() != offset + 8 * N {
             return Err(PaletteError::InvalidFormat);
         }
-        if bytes[4..36] != self.fingerprint {
+        let fingerprint_start = if N == 4 {
+            if &bytes[..4] != RECIPE_MAGIC {
+                return Err(PaletteError::InvalidFormat);
+            }
+            4
+        } else {
+            if &bytes[..4] != b"OPR2"
+                || u32::from_le_bytes(bytes[4..8].try_into().unwrap()) as usize != N
+            {
+                return Err(PaletteError::InvalidFormat);
+            }
+            8
+        };
+        if bytes[fingerprint_start..offset] != self.fingerprint {
             return Err(PaletteError::PaletteMismatch);
         }
         let proportions = std::array::from_fn(|i| {
-            f64::from_le_bytes(bytes[36 + 8 * i..44 + 8 * i].try_into().unwrap())
+            f64::from_le_bytes(
+                bytes[offset + 8 * i..offset + 8 * (i + 1)]
+                    .try_into()
+                    .unwrap(),
+            )
         });
         if proportions
             .iter()
@@ -193,7 +238,7 @@ impl Palette {
         {
             return Err(PaletteError::InvalidRecipe);
         }
-        Ok(Recipe {
+        Ok(RecipeN {
             palette: self,
             proportions,
         })
@@ -205,17 +250,17 @@ impl Palette {
 /// This f64 reference includes a palette borrow. It is not a promised compact
 /// canvas layout. Hosts store paint amount, coverage and transport separately.
 #[derive(Clone, Copy, Debug)]
-pub struct Recipe<'a> {
-    palette: &'a Palette,
-    proportions: [f64; PAINT_COUNT],
+pub struct RecipeN<'a, const N: usize> {
+    palette: &'a PaletteN<N>,
+    proportions: [f64; N],
 }
 
-impl<'a> Recipe<'a> {
-    pub fn palette(&self) -> &'a Palette {
+impl<'a, const N: usize> RecipeN<'a, N> {
+    pub fn palette(&self) -> &'a PaletteN<N> {
         self.palette
     }
 
-    pub fn proportions(&self) -> [f64; PAINT_COUNT] {
+    pub fn proportions(&self) -> [f64; N] {
         self.proportions
     }
 
@@ -255,7 +300,7 @@ impl<'a> Recipe<'a> {
             return Err(PaletteError::InvalidAmounts);
         }
         let total: f64 = items.iter().map(|(_, amount)| amount / scale).sum();
-        let mut proportions = [0.; PAINT_COUNT];
+        let mut proportions = [0.; N];
         for (recipe, amount) in items {
             let fraction = (amount / scale) / total;
             for (value, source) in proportions.iter_mut().zip(recipe.proportions) {
@@ -278,7 +323,7 @@ impl<'a> Recipe<'a> {
         std::array::from_fn(|band| {
             let mut k = 0.;
             let mut s = 0.;
-            for paint in 0..PAINT_COUNT {
+            for paint in 0..N {
                 k += self.proportions[paint] * self.palette.k[band][paint];
                 s += self.proportions[paint] * self.palette.s[band][paint];
             }
@@ -303,7 +348,24 @@ impl<'a> Recipe<'a> {
         Color::from_linear_gamut_mapped(self.decode_linear())
     }
 
-    /// Portable recipe payload, including format and exact palette identity.
+    /// Versioned recipe payload. Four-paint recipes preserve OPR1 bytes;
+    /// other sizes use OPR2 with an explicit count and palette identity.
+    pub fn to_bytes(&self) -> Vec<u8> {
+        let mut out = Vec::with_capacity(40 + 8 * N);
+        out.extend_from_slice(if N == 4 { RECIPE_MAGIC } else { b"OPR2" });
+        if N != 4 {
+            out.extend_from_slice(&(N as u32).to_le_bytes());
+        }
+        out.extend_from_slice(&self.palette.fingerprint);
+        for v in self.proportions {
+            out.extend_from_slice(&v.to_le_bytes());
+        }
+        out
+    }
+}
+
+impl RecipeN<'_, 4> {
+    /// Original fixed-size OPR1 API, unchanged for four-paint callers.
     pub fn to_le_bytes(&self) -> [u8; RECIPE_BYTES] {
         let mut out = [0; RECIPE_BYTES];
         out[..4].copy_from_slice(RECIPE_MAGIC);
@@ -315,7 +377,7 @@ impl<'a> Recipe<'a> {
     }
 }
 
-fn normalize(amounts: [f64; PAINT_COUNT]) -> Result<[f64; PAINT_COUNT], PaletteError> {
+fn normalize<const N: usize>(amounts: [f64; N]) -> Result<[f64; N], PaletteError> {
     if amounts.iter().any(|v| !v.is_finite() || *v < 0.) {
         return Err(PaletteError::InvalidAmounts);
     }

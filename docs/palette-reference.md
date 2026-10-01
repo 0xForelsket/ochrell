@@ -7,6 +7,9 @@ RGB mixer, compact state, frozen experiments and renderer are unchanged.
 Subsequent stage: an opt-in [forward LUT](palette-lut.md) now uses this unchanged
 reference. The contract and initial measurements below describe the direct
 reference stage; prepared decoding is a separate API and artifact.
+The shared [palette workflow](palette-workflow.md) now generalizes recipes,
+optical packages and matching to 1-16 paints while preserving this four-paint
+reference, identity and original storage formats.
 
 ## Contract declared before validation
 

@@ -17,8 +17,10 @@ proportions directly or ask the library to match a target color within the palet
 An experimental [Synthetic Four reference](docs/palette-reference.md) now supports
 named paints, persistent recipes and checked save/load. An opt-in
 [prepared forward LUT](docs/palette-lut.md) accelerates recipe decoding, with
-measured generation time and approximation errors. Target-color matching and
-renderer integration remain planned. The current
+measured generation time and approximation errors. [Custom palettes and target
+matching](docs/palette-workflow.md) support 1-16 paints, with native recipe
+painting and saved replay in the sibling renderer. Larger palettes use direct
+spectral decoding; the prepared LUT remains specific to four paints. The current
 spectral mode remains supported and the library default is unchanged. A future
 painting-app default would use a bundled prepared palette only after quality,
 performance and saved-state compatibility are verified.
