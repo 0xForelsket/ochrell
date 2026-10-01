@@ -1,0 +1,185 @@
+{
+  "status": "approximate numerical reconstruction with conditional label uncertainty",
+  "date": "2026-10-01",
+  "source_archive_sha256": "6d8cec6fb4fff5d4c24d18d1783422da8ef955d3e7ba7263179a84ed6c9b683e",
+  "pdf_sha256": "cb49f755727a8b437f54dc55042b81b4b311b0e24848eacd3faf56cb34080a4e",
+  "mapping_sha256": "9e31ac91fcaa334b8bc56e9d3ae501d7ebe79de932ca066dba84ba276f9d6a22",
+  "data": {
+    "samples": 175,
+    "bands": 166,
+    "band_range_nm": [
+      437.29,
+      963.91
+    ],
+    "fractions": "released rounded mass fractions",
+    "mean_population": "168 non-pure mixtures",
+    "best_worst_population": "all 175; exact pure ties assigned to first model M1"
+  },
+  "pure_identities": [
+    {
+      "paint": "V",
+      "canonical_index": 0,
+      "source_spectrum_index": 10,
+      "released_header": "voB"
+    },
+    {
+      "paint": "O",
+      "canonical_index": 4,
+      "source_spectrum_index": 40,
+      "released_header": "vBc"
+    },
+    {
+      "paint": "B",
+      "canonical_index": 14,
+      "source_spectrum_index": 24,
+      "released_header": "VW"
+    },
+    {
+      "paint": "W",
+      "canonical_index": 33,
+      "source_spectrum_index": 31,
+      "released_header": "oW"
+    },
+    {
+      "paint": "C",
+      "canonical_index": 64,
+      "source_spectrum_index": 100,
+      "released_header": "vcY"
+    },
+    {
+      "paint": "Y",
+      "canonical_index": 110,
+      "source_spectrum_index": 97,
+      "released_header": "owY"
+    },
+    {
+      "paint": "G",
+      "canonical_index": 174,
+      "source_spectrum_index": 120,
+      "released_header": "Vwg"
+    }
+  ],
+  "metrics": {
+    "M1": {
+      "published_vector_bar": 0.020345929339477726,
+      "reconstructed": 0.020344093203224525,
+      "absolute_difference": 1.8361362532012815e-06
+    },
+    "M2": {
+      "published_vector_bar": 0.007043293394777268,
+      "reconstructed": 0.007043676323417198,
+      "absolute_difference": 3.8292863992987064e-07
+    },
+    "M3": {
+      "published_vector_bar": 0.012745069124423965,
+      "reconstructed": 0.012745699478758633,
+      "absolute_difference": 6.30354334667238e-07
+    },
+    "M4": {
+      "published_vector_bar": 0.012370629800307216,
+      "reconstructed": 0.012369997774058743,
+      "absolute_difference": 6.320262484725558e-07
+    },
+    "M5": {
+      "published_vector_bar": 0.009368380952380951,
+      "reconstructed": 0.009368790184591694,
+      "absolute_difference": 4.0923221074351535e-07
+    },
+    "M6": {
+      "published_vector_bar": 0.031037910906298004,
+      "reconstructed": 0.03103723524254485,
+      "absolute_difference": 6.756637531551979e-07
+    },
+    "M7": {
+      "published_vector_bar": 0.009743852534562211,
+      "reconstructed": 0.009745231363667773,
+      "absolute_difference": 1.3788291055617796e-06
+    }
+  },
+  "largest_absolute_MSE_difference": 1.8361362532012815e-06,
+  "largest_relative_MSE_difference": 0.0001415075916503215,
+  "published_best_counts": [
+    7,
+    154,
+    2,
+    0,
+    0,
+    0,
+    12
+  ],
+  "reconstructed_best_counts": [
+    7,
+    154,
+    2,
+    0,
+    0,
+    0,
+    12
+  ],
+  "published_worst_counts": [
+    7,
+    0,
+    0,
+    0,
+    0,
+    168,
+    0
+  ],
+  "reconstructed_worst_counts": [
+    7,
+    0,
+    0,
+    0,
+    0,
+    168,
+    0
+  ],
+  "scalar_formula_max_difference": 1.1102230246251565e-16,
+  "M4_invariant": {
+    "published": 0.0026479631336405636,
+    "computed_without_mixture_observations": 0.0026477739785242564,
+    "absolute_difference": 1.891551163072172e-07
+  },
+  "ambiguity": [
+    {
+      "absolute_MSE_tolerance": 2e-06,
+      "tested_mutable_pairs": 81,
+      "ambiguous_pairs": 0,
+      "ambiguous_samples": 0,
+      "subset_YCBW_ambiguous_labels": [],
+      "unresolved_solver_cases": 0
+    },
+    {
+      "absolute_MSE_tolerance": 5e-06,
+      "tested_mutable_pairs": 81,
+      "ambiguous_pairs": 15,
+      "ambiguous_samples": 30,
+      "subset_YCBW_ambiguous_labels": [
+        "Bw",
+        "By",
+        "Wcy"
+      ],
+      "unresolved_solver_cases": 0
+    },
+    {
+      "absolute_MSE_tolerance": 1e-05,
+      "tested_mutable_pairs": 81,
+      "ambiguous_pairs": 24,
+      "ambiguous_samples": 48,
+      "subset_YCBW_ambiguous_labels": [
+        "Bw",
+        "By",
+        "Wcy",
+        "wCy",
+        "Cy"
+      ],
+      "unresolved_solver_cases": 0
+    }
+  ],
+  "limitations": [
+    "Published means and counts were used for reconstruction; their agreement is not a wholly independent validation.",
+    "Reported confidence-interval widths have not been reproduced; their calculation convention is not specified in the inspected paper.",
+    "No unrestricted proof of sample identity, corrected author release, or physical remeasurement.",
+    "No new oil-model fit or held-out performance result is claimed."
+  ]
+}

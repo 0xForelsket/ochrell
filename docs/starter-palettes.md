@@ -35,8 +35,14 @@ spreadsheet read and source-baseline check raised unresolved consistency concern
 the result remains provisional, with no relabelling, retuning or runtime promotion.
 A [source-to-paper audit](../experiments/oil_source_trace/REPORT.md) checked all
 seven published forward equations and 24 declared ordering/preprocessing cases.
-None reconciled the reported baseline ranking. A canonical sample mapping and
-reference endmember inputs remain missing; no guessed correction was adopted.
+None reconciled the reported baseline ranking. A subsequent [ordering reconstruction](../experiments/oil_source_recovery/REPORT.md)
+recovered an inferred 175-sample mapping that closely reproduces the seven
+published means and exactly reproduces the best/worst counts. These statistics
+helped select the mapping, and some assignments vary under looser tolerances;
+this is conditional source recovery, not author-confirmed ground truth. The
+earlier external scores cannot establish generalization under the released
+header pairing. The next comparison freezes the inferred mapping and unchanged
+fitting method, with explicit sensitivity to alternative assignments.
 
 ## Selected candidates
 
