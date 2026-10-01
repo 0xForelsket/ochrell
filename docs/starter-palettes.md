@@ -86,6 +86,15 @@ ratio coverage. Other frozen palettes give strongly different yellow/viridian
 scattering ratios. These are calibration-transfer/model-compatibility findings,
 not proof of a physical cause or an optimizer failure. A pure/white-only base
 calibration ablation is proposed; no refit was performed during the diagnosis.
+The [completed pure/white base ablation](../experiments/oil_anchor_base/REPORT.md)
+rejects that proposed global remedy. With the same pair-correction stage and all
+35 targets retained, mean spectral RMSE worsens by 9.17% and mean windowed DE00
+by 29.31% relative to the original correction. All three selected failures improve
+spectrally but worsen in color; 22 of 35 targets regress spectrally. Spectral tail
+errors fall, but equal-palette means also worsen. All 25 fits and isolation checks
+passed, including exact reproduction of the archived pair controls when supplied
+their original bases. The all-binary-base method remains the research baseline;
+this exposed-data result adds no independent validation or runtime promotion.
 
 ## Selected candidates
 
