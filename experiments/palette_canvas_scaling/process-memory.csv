@@ -1,0 +1,7 @@
+phase,width,observed_peak_working_set_bytes,exit_code
+baseline,512,26664960,0
+baseline,1024,84963328,0
+baseline,2048,320282624,0
+accelerated,512,26480640,0
+accelerated,1024,84402176,0
+accelerated,2048,320143360,0

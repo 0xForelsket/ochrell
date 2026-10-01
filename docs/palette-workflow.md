@@ -225,3 +225,22 @@ The warm pass takes 0.1624 ms after a separately recorded 1.355 s priming cost.
 New unique targets avoid no solver calls. Recipes, result bits, saved job bytes,
 all five canvas planes and blurred heights remain exact; cache contents are
 not serialized and painting does not access the cache. This is not a forward LUT.
+
+### Final-image painting
+
+The renderer also provides `job.paint_final(width)` for code-driven renders that
+need only the final image. It completes the same material simulation and then
+decodes each pixel that received paint once. The existing `paint(width, callback)`
+keeps layer previews. Both produce identical final pixels, material planes,
+statistics and saved replay on the verified prepared-four and 8/10/16-paint cases.
+The exact decoder/model is unchanged; no additional canvas plane is allocated.
+
+The [canvas-scaling report](../experiments/palette_canvas_scaling/REPORT.md)
+profiles the balanced eight-paint scenes at widths 512/1024/2048. The layered
+2048x2560, 94-stroke fixture improves from 6.525 s to 4.354 s (1.50x). Swatch
+gains are smaller because they revisit pixels less often. Its canvas buffers
+remain 300 MiB; the observed benchmark-process peak is about 305 MiB.
+All final-output hashes match the pre-change baseline, and all 31 existing
+native golden cases pass without changing engine version or saved formats.
+This avoids intermediate display work; further forward-decoder acceleration
+would still need its own exactness or approximation checks.

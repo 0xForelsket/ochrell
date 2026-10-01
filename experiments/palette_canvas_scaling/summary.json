@@ -1,0 +1,888 @@
+{
+  "groups": {
+    "baseline/fixed-recipes/512/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 231.5692,
+        "min": 231.0346,
+        "max": 235.42170000000002
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "baseline/fixed-recipes/512/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 40.3864,
+        "min": 39.235899999999994,
+        "max": 40.4707
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "accelerated/fixed-recipes/512/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 165.4571,
+        "min": 160.22639999999998,
+        "max": 172.69129999999998
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "accelerated/fixed-recipes/512/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 26.991899999999998,
+        "min": 25.8951,
+        "max": 27.9166
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "accelerated/fixed-recipes/512/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 131.6352,
+        "min": 129.8941,
+        "max": 132.3462
+      },
+      "blur_ms": null,
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "baseline/matched-targets/512/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 225.1041,
+        "min": 222.51319999999998,
+        "max": 225.33149999999998
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "baseline/matched-targets/512/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 36.4992,
+        "min": 36.28,
+        "max": 37.6579
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "accelerated/matched-targets/512/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 187.6365,
+        "min": 173.69799999999998,
+        "max": 187.6435
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "accelerated/matched-targets/512/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 31.5813,
+        "min": 25.919,
+        "max": 32.7826
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "accelerated/matched-targets/512/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 150.7491,
+        "min": 136.07639999999998,
+        "max": 205.4485
+      },
+      "blur_ms": null,
+      "deposits": 152827,
+      "touched_pixels": 125978,
+      "canvas_buffer_bytes": 18350080
+    },
+    "baseline/renderer-fixture/512/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 446.89410000000004,
+        "min": 443.9071,
+        "max": 470.4454
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 9.4332,
+        "min": 8.8337,
+        "max": 10.304
+      },
+      "deposits": 288232,
+      "touched_pixels": 189383,
+      "canvas_buffer_bytes": 19660800
+    },
+    "baseline/renderer-fixture/512/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 75.2905,
+        "min": 72.5839,
+        "max": 78.7649
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 8.7179,
+        "min": 8.6279,
+        "max": 9.1655
+      },
+      "deposits": 288232,
+      "touched_pixels": 189383,
+      "canvas_buffer_bytes": 19660800
+    },
+    "accelerated/renderer-fixture/512/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 433.738,
+        "min": 374.9909,
+        "max": 441.5445
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 9.2745,
+        "min": 7.8633,
+        "max": 9.8494
+      },
+      "deposits": 288232,
+      "touched_pixels": 189383,
+      "canvas_buffer_bytes": 19660800
+    },
+    "accelerated/renderer-fixture/512/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 80.3195,
+        "min": 74.0286,
+        "max": 103.35950000000001
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 10.2851,
+        "min": 8.676400000000001,
+        "max": 11.773900000000001
+      },
+      "deposits": 288232,
+      "touched_pixels": 189383,
+      "canvas_buffer_bytes": 19660800
+    },
+    "accelerated/renderer-fixture/512/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 297.4983,
+        "min": 292.24440000000004,
+        "max": 330.808
+      },
+      "blur_ms": null,
+      "deposits": 288232,
+      "touched_pixels": 189383,
+      "canvas_buffer_bytes": 19660800
+    },
+    "baseline/fixed-recipes/1024/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 825.6741,
+        "min": 812.5163,
+        "max": 843.1816
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "baseline/fixed-recipes/1024/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 111.8188,
+        "min": 111.1898,
+        "max": 121.14410000000001
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "accelerated/fixed-recipes/1024/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 718.6685,
+        "min": 713.6497,
+        "max": 774.9195
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "accelerated/fixed-recipes/1024/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 98.0033,
+        "min": 94.5626,
+        "max": 121.9221
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "accelerated/fixed-recipes/1024/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 635.5563,
+        "min": 600.6850000000001,
+        "max": 700.9305
+      },
+      "blur_ms": null,
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "baseline/matched-targets/1024/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 832.1293,
+        "min": 831.7008000000001,
+        "max": 842.0917
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "baseline/matched-targets/1024/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 111.59349999999999,
+        "min": 110.0087,
+        "max": 113.15079999999999
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "accelerated/matched-targets/1024/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 720.4314,
+        "min": 715.2964000000001,
+        "max": 734.953
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "accelerated/matched-targets/1024/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 97.5658,
+        "min": 96.69850000000001,
+        "max": 102.1602
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "accelerated/matched-targets/1024/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 622.5937,
+        "min": 616.1261000000001,
+        "max": 626.1765
+      },
+      "blur_ms": null,
+      "deposits": 610943,
+      "touched_pixels": 503608,
+      "canvas_buffer_bytes": 73400320
+    },
+    "baseline/renderer-fixture/1024/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 1733.0985,
+        "min": 1618.3113,
+        "max": 1930.7493
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 15.7701,
+        "min": 15.7399,
+        "max": 22.203799999999998
+      },
+      "deposits": 1149811,
+      "touched_pixels": 756730,
+      "canvas_buffer_bytes": 78643200
+    },
+    "baseline/renderer-fixture/1024/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 246.5029,
+        "min": 213.0352,
+        "max": 249.3605
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 14.5988,
+        "min": 13.0357,
+        "max": 15.5447
+      },
+      "deposits": 1149811,
+      "touched_pixels": 756730,
+      "canvas_buffer_bytes": 78643200
+    },
+    "accelerated/renderer-fixture/1024/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 1605.9965,
+        "min": 1520.4436,
+        "max": 1958.491
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 13.9688,
+        "min": 12.9042,
+        "max": 14.5886
+      },
+      "deposits": 1149811,
+      "touched_pixels": 756730,
+      "canvas_buffer_bytes": 78643200
+    },
+    "accelerated/renderer-fixture/1024/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 222.6795,
+        "min": 217.0496,
+        "max": 263.7939
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 13.661299999999999,
+        "min": 13.278099999999998,
+        "max": 15.3683
+      },
+      "deposits": 1149811,
+      "touched_pixels": 756730,
+      "canvas_buffer_bytes": 78643200
+    },
+    "accelerated/renderer-fixture/1024/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 1182.1551,
+        "min": 1082.2896,
+        "max": 1567.3377
+      },
+      "blur_ms": null,
+      "deposits": 1149811,
+      "touched_pixels": 756730,
+      "canvas_buffer_bytes": 78643200
+    },
+    "baseline/fixed-recipes/2048/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 3170.0048,
+        "min": 3131.9766,
+        "max": 3210.4656
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "baseline/fixed-recipes/2048/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 414.5971,
+        "min": 409.3361,
+        "max": 416.3035
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "accelerated/fixed-recipes/2048/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 3046.8788,
+        "min": 2651.2066999999997,
+        "max": 3122.9366999999997
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "accelerated/fixed-recipes/2048/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 385.72479999999996,
+        "min": 341.44669999999996,
+        "max": 417.3538
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "accelerated/fixed-recipes/2048/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 2405.7716,
+        "min": 2382.7045,
+        "max": 2660.7059
+      },
+      "blur_ms": null,
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "baseline/matched-targets/2048/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 3338.2402,
+        "min": 3287.0553999999997,
+        "max": 3472.3048
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "baseline/matched-targets/2048/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 419.4312,
+        "min": 406.8399,
+        "max": 435.7408
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "accelerated/matched-targets/2048/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 2554.1127,
+        "min": 2491.0122,
+        "max": 2619.0825
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "accelerated/matched-targets/2048/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 346.8116,
+        "min": 342.0251,
+        "max": 357.8888
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "accelerated/matched-targets/2048/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 2141.4451,
+        "min": 2074.9067,
+        "max": 2348.903
+      },
+      "blur_ms": null,
+      "deposits": 2441528,
+      "touched_pixels": 2014540,
+      "canvas_buffer_bytes": 293601280
+    },
+    "baseline/renderer-fixture/2048/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 6571.8607999999995,
+        "min": 6226.4605,
+        "max": 7694.683300000001
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 37.4909,
+        "min": 34.464099999999995,
+        "max": 51.3175
+      },
+      "deposits": 4589858,
+      "touched_pixels": 3025682,
+      "canvas_buffer_bytes": 314572800
+    },
+    "baseline/renderer-fixture/2048/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 956.7967000000001,
+        "min": 772.6916,
+        "max": 1513.5217
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 50.5017,
+        "min": 35.1096,
+        "max": 55.1896
+      },
+      "deposits": 4589858,
+      "touched_pixels": 3025682,
+      "canvas_buffer_bytes": 314572800
+    },
+    "accelerated/renderer-fixture/2048/direct": {
+      "paint_ms": {
+        "count": 3,
+        "median": 6524.9794999999995,
+        "min": 5724.5536,
+        "max": 6814.6575
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 40.9915,
+        "min": 32.819500000000005,
+        "max": 42.313900000000004
+      },
+      "deposits": 4589858,
+      "touched_pixels": 3025682,
+      "canvas_buffer_bytes": 314572800
+    },
+    "accelerated/renderer-fixture/2048/bypass": {
+      "paint_ms": {
+        "count": 3,
+        "median": 727.2676,
+        "min": 696.1206,
+        "max": 970.3226999999999
+      },
+      "blur_ms": {
+        "count": 3,
+        "median": 31.217499999999998,
+        "min": 30.5577,
+        "max": 41.065200000000004
+      },
+      "deposits": 4589858,
+      "touched_pixels": 3025682,
+      "canvas_buffer_bytes": 314572800
+    },
+    "accelerated/renderer-fixture/2048/deferred": {
+      "paint_ms": {
+        "count": 3,
+        "median": 4353.7303999999995,
+        "min": 4206.7965,
+        "max": 4717.1377999999995
+      },
+      "blur_ms": null,
+      "deposits": 4589858,
+      "touched_pixels": 3025682,
+      "canvas_buffer_bytes": 314572800
+    }
+  },
+  "comparisons": {
+    "fixed-recipes/512": {
+      "speedup": 1.2569365944671334,
+      "time_reduction_percent": 20.441492084655177,
+      "bypass_removable_fraction_percent": 83.686466159506,
+      "remaining_bypass_ms": 26.991899999999998,
+      "direct_decode_calls": 152828,
+      "deferred_decode_calls": 125979,
+      "removed_decode_calls": 26849
+    },
+    "matched-targets/512": {
+      "speedup": 1.2446939981731235,
+      "time_reduction_percent": 19.658968271098644,
+      "bypass_removable_fraction_percent": 83.16889304586262,
+      "remaining_bypass_ms": 31.5813,
+      "direct_decode_calls": 152828,
+      "deferred_decode_calls": 125979,
+      "removed_decode_calls": 26849
+    },
+    "renderer-fixture/512": {
+      "speedup": 1.4579511882925047,
+      "time_reduction_percent": 31.410598103002286,
+      "bypass_removable_fraction_percent": 81.48202371016605,
+      "remaining_bypass_ms": 80.3195,
+      "direct_decode_calls": 288233,
+      "deferred_decode_calls": 189384,
+      "removed_decode_calls": 98849
+    },
+    "fixed-recipes/1024": {
+      "speedup": 1.1307707908803675,
+      "time_reduction_percent": 11.564747863583836,
+      "bypass_removable_fraction_percent": 86.36321196768748,
+      "remaining_bypass_ms": 98.0033,
+      "direct_decode_calls": 610944,
+      "deferred_decode_calls": 503609,
+      "removed_decode_calls": 107335
+    },
+    "matched-targets/1024": {
+      "speedup": 1.157145342138862,
+      "time_reduction_percent": 13.580432501970352,
+      "bypass_removable_fraction_percent": 86.45730877360425,
+      "remaining_bypass_ms": 97.5658,
+      "direct_decode_calls": 610944,
+      "deferred_decode_calls": 503609,
+      "removed_decode_calls": 107335
+    },
+    "renderer-fixture/1024": {
+      "speedup": 1.3585328185785435,
+      "time_reduction_percent": 26.391178312032437,
+      "bypass_removable_fraction_percent": 86.134496557122,
+      "remaining_bypass_ms": 222.6795,
+      "direct_decode_calls": 1149812,
+      "deferred_decode_calls": 756731,
+      "removed_decode_calls": 393081
+    },
+    "fixed-recipes/2048": {
+      "speedup": 1.2664871428360032,
+      "time_reduction_percent": 21.041440834469682,
+      "bypass_removable_fraction_percent": 87.34033004529094,
+      "remaining_bypass_ms": 385.72479999999996,
+      "direct_decode_calls": 2441529,
+      "deferred_decode_calls": 2014541,
+      "removed_decode_calls": 426988
+    },
+    "matched-targets/2048": {
+      "speedup": 1.1927051970652902,
+      "time_reduction_percent": 16.156984772050198,
+      "bypass_removable_fraction_percent": 86.42144491118188,
+      "remaining_bypass_ms": 346.8116,
+      "direct_decode_calls": 2441529,
+      "deferred_decode_calls": 2014541,
+      "removed_decode_calls": 426988
+    },
+    "renderer-fixture/2048": {
+      "speedup": 1.4987100487434868,
+      "time_reduction_percent": 33.2759528210012,
+      "bypass_removable_fraction_percent": 88.85410138070165,
+      "remaining_bypass_ms": 727.2676,
+      "direct_decode_calls": 4589859,
+      "deferred_decode_calls": 3025683,
+      "removed_decode_calls": 1564176
+    }
+  },
+  "process_memory": [
+    {
+      "phase": "baseline",
+      "width": "512",
+      "observed_peak_working_set_bytes": "26664960",
+      "exit_code": "0"
+    },
+    {
+      "phase": "baseline",
+      "width": "1024",
+      "observed_peak_working_set_bytes": "84963328",
+      "exit_code": "0"
+    },
+    {
+      "phase": "baseline",
+      "width": "2048",
+      "observed_peak_working_set_bytes": "320282624",
+      "exit_code": "0"
+    },
+    {
+      "phase": "accelerated",
+      "width": "512",
+      "observed_peak_working_set_bytes": "26480640",
+      "exit_code": "0"
+    },
+    {
+      "phase": "accelerated",
+      "width": "1024",
+      "observed_peak_working_set_bytes": "84402176",
+      "exit_code": "0"
+    },
+    {
+      "phase": "accelerated",
+      "width": "2048",
+      "observed_peak_working_set_bytes": "320143360",
+      "exit_code": "0"
+    }
+  ],
+  "fixture_blur_live_buffer_estimate_bytes": {
+    "512": 20974084,
+    "1024": 79829904,
+    "2048": 315784080
+  },
+  "verification": {
+    "measured_runs": 135,
+    "warmup_runs": 45,
+    "scene_size_pairs": 9,
+    "all_valid_output_planes_identical_to_prechange": true,
+    "all_transport_statistics_identical": true,
+    "native_golden_cases_passed": 31,
+    "native_total_cases": 33,
+    "engine_version": "2.0.0-dev.3",
+    "native_report_sha256": "865b2966eec14f5acc41542b72c6d9788521fe321782cbc60813ce3809c57fb8",
+    "golden_sha256": "e0452ff0bad74ca1f83afc5427aee0e9f6c3de0e1ac223c780b949f1c936be7f",
+    "tests": "12 unit/integration tests plus 1 doctest in oil-kernel/oil-paint/oil-palette release suites passed",
+    "clippy": "scoped all-target Clippy with warnings denied passed"
+  },
+  "model_sha256": "643c6960282398b19f5e7eb4b8a788c104164fd1bc0adf83ddc7de8080088db7",
+  "job_sha256": {
+    "fixed-recipes": "3716420cdf406db7d12680b35ac05bc285076a3e52d48a09538762d331eb63eb",
+    "matched-targets": "49f137766befdac394168a70bb153cd6190e5762fb9e8165f4bc28e17b3da143",
+    "renderer-fixture": "a36eeab8454da02b4b25e34d836e37057a8881a814f4fe292922e06cfe8925e2"
+  },
+  "source_sha256": {
+    "oilpaint-renderer/crates/oil-kernel/src/brush.rs": "1a649a94c7e2671f52112ff07d68090c4e276ee61dc4c0e11fedff04ba0b7aef",
+    "oilpaint-renderer/crates/oil-palette/src/lib.rs": "a886c3152b9e26ddac37396ec3f18132da3f67a7e449217d927153fc7bbe3614",
+    "oilpaint-renderer/crates/oil-palette/examples/canvas_scaling.rs": "2ef1bffcbb47ea2fa0a243bf639c7722e6a14e736d03dabd744f2539e4fbd186",
+    "oilpaint-renderer/crates/oil-palette/tests/many_paints.rs": "dd7ca172841dcf3442dadf9078734d6d546a3e5b853ea370105634d2c05ff0a8",
+    "oilpaint-renderer/crates/oil-palette/tests/workflow.rs": "0f231f745623a5d9f0053230bc7bcce27fe9cc1fda0c7acb3ea867d93b4618a1",
+    "oilpaint-renderer/crates/oil-image/src/lib.rs": "cfbaa380faf85732eb1350aca696be252c9be7fc36dae5b38f9ee7b7152ca784",
+    "oilpaint-renderer/Cargo.lock": "148faa053ef4c65494f1613cac4e797470f38cb5a2e1a3853bb90b1b8295fcef",
+    "ochrell/experiments/palette_canvas_scaling/PLAN.md": "509c69e9342df951cfaabaa99fb17f4804a63b46f70ade04b94132f647bf0011",
+    "ochrell/experiments/palette_canvas_scaling/run.ps1": "b107eeb7845ab8dc29fde5cdcbb3f56c3fa925dc219591561fe583f52d9b6e26",
+    "ochrell/experiments/palette_canvas_scaling/report.py": "d442423d76226490fe46c8cf6264d2eb525f259d095b0eff65f77fe37f439bb2"
+  },
+  "before_source_sha256": {
+    "canvas_scaling.rs": "8c3efc566bc815f8a721ca850276daf849c1d68719e9d6c83d0495ca918f937d",
+    "brush.rs": "2f091962e53ae871e26940f5a7d5df7f6dbe75284f80479df8e75220dee1e59c",
+    "palette-lib.rs": "c96da8e88587e310b032627daa15edfba70fc731eb5a735b6cc4835ec47297b5"
+  },
+  "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)"
+}
