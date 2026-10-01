@@ -1,0 +1,11 @@
+{
+  "coefficients_max_abs": {
+    "q": 0.0,
+    "log_relative_s": 0.0,
+    "K": 0.0,
+    "S": 0.0,
+    "theta": 0.0
+  },
+  "archived_score_max_abs": 0.0,
+  "scored_statistics": 32
+}

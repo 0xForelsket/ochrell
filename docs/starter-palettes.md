@@ -105,6 +105,17 @@ larger unified calibration pool. Both models now have local OPP3 packages on
 the measured 31-band grid and verified native painting/replay. No measured
 eight-ingredient sample exists in this source, no spectral tails were invented,
 and no default or redistribution decision changed.
+The [paired multicolor-calibration comparison](../experiments/oil_multicolor_calibration/REPORT.md)
+then holds out complete chromatic-ratio families, including white additions and
+binary parents, for both calibration approaches. Adding the other multicolor
+measurements to the unchanged fitter lowers mean color error by 18.73% and
+spectral RMSE by 16.84% on 183 excluded multicolor samples, with better primary
+p95/max errors. Gains concentrate in white-containing mixtures: no-white mean
+color error rises 3.65%, and the 50 excluded binary parents worsen by 7.33% in
+mean color error and 35.02% in mean spectral RMSE. All 158 distinct fits and
+excluded-measurement perturbation checks passed. These are pooled fold results;
+the existing runtime packages remain unchanged while the calibration tradeoff
+is retained explicitly in the research record.
 
 ## Selected candidates
 
