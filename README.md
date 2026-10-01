@@ -139,6 +139,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `experiments/oil_public_data/REPORT.md` | Public measurement source audit and source-consistency checks |
 | `experiments/oil_external/REPORT.md` | Original header-paired external test; superseded for accuracy interpretation by the inferred-mapping study |
 | `experiments/oil_source_recovery/REPORT.md` | Frozen inferred 175-sample mapping, near reproduction of published baselines and quantified label ambiguity |
+| `experiments/oil_ternary_attenuation/REPORT.md` | One constrained ternary revision reduces empirical error but remains worse than K-M |
 | `experiments/oil_white_split/REPORT.md` | Frozen pair-component diagnosis: binary corrections fail to transfer into three chromatic pigments |
 | `experiments/oil_reconstructed/REPORT.md` | Unchanged model evaluation under inferred labels: robust spectral gains, white-mixture dependence and mapping sensitivity |
 | `experiments/oil_source_trace/REPORT.md` | Initial seven-model source audit and bounded ordering checks, preceding the inferred reconstruction |

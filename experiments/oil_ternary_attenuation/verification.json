@@ -1,0 +1,942 @@
+{
+  "manifest": {
+    "status": "Exploratory scalar revision after observing assessment failures.",
+    "upstream_manifest": {
+      "original_method": {
+        "experiment": "Grillini fixed-method transfer, grouped nominal recipe exclusions",
+        "hashes": {
+          "experiments/oil_external/PLAN.md": "8bd7dd1478444887dca93047633c0fc691e1512f62d16bc4c660f8329a1ef30e",
+          "experiments/oil_external/run.py": "53afcdcdaa80ce8227393a114b5f06299693815b474ec1ad978b3b55a5303f20",
+          "experiments/oil_public_data/audit.py": "3050b551348880003fc0058b91149b60bdffec8d724387d60965b76ec1b21a14",
+          "target/measured-oils/public-audit/grillini-data.zip": "6d8cec6fb4fff5d4c24d18d1783422da8ef955d3e7ba7263179a84ed6c9b683e",
+          "experiments/oil_parallel/interaction/run.py": "b6c4828856737393bc7b4561855acf35aa1dc340664d05c8ebd3726d509ce911",
+          "tools/measured_oils.py": "21f7e18f4c30cbfa9fcf1da801229942bc420afaec57ddd21d9a98510cc43137",
+          "tools/measured_oils_chromatic.py": "951daaddaed41ec95b221de3d0f767267dafab6d025dc129aa81b3ebb6f0a2fa",
+          "experiments/oil_parallel/validate_comparison.py": "f833991152dc92c00c840b8ed8009cb468d641c0d83d7777747bcb336e0b6409",
+          "config/measured-oils-v1.json": "d4c069baf2db4b7aae306d8583df3f7fbae24c805a8b2ef1c57739009b0b1f72",
+          "data/cie_380_780_1nm.csv": "153b2a573da2ab6c155ccb7c03ca21f16e938b030387e56565c7d03f6ad95f32"
+        },
+        "grid_nm": [
+          440,
+          450,
+          460,
+          470,
+          480,
+          490,
+          500,
+          510,
+          520,
+          530,
+          540,
+          550,
+          560,
+          570,
+          580,
+          590,
+          600,
+          610,
+          620,
+          630,
+          640,
+          650,
+          660,
+          670,
+          680,
+          690,
+          700,
+          710,
+          720,
+          730,
+          740
+        ],
+        "fit_mass_basis": "published rounded dry-pigment mass fractions",
+        "group_basis": "nominal ratios encoded by source sample labels",
+        "settings": {
+          "experiment": "old-holland-four-reference-v1",
+          "selected_columns_one_based": [
+            1,
+            3,
+            5,
+            8
+          ],
+          "grid_nm": [
+            400,
+            700,
+            10
+          ],
+          "model": "opaque-homogeneous-km-pure-ratios-relative-scattering",
+          "white_scattering_gauge": 1.0,
+          "log_scattering_bounds": [
+            -9.210340371976184,
+            9.210340371976184
+          ],
+          "initial_log_scattering": [
+            0.0,
+            -2.302585092994046,
+            2.302585092994046
+          ],
+          "curvature_weight": 0.0001,
+          "amplitude_weight": 1e-08,
+          "optimizer": "scipy-least-squares-trf-exact-jacobian",
+          "max_nfev": 2000,
+          "ftol": 1e-10,
+          "xtol": 1e-10,
+          "gtol": 1e-10,
+          "quality_screen": {
+            "mean_spectral_rmse": 0.02,
+            "p95_spectral_rmse": 0.05,
+            "mean_delta_e_2000": 3.0,
+            "p95_delta_e_2000": 6.0,
+            "max_delta_e_2000": 10.0
+          }
+        },
+        "folds": {
+          "Bc": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "Bc",
+              "Bwc"
+            ],
+            "nominal_chromatic_fraction": [
+              0.0,
+              0.333333333333,
+              0.666666666667
+            ]
+          },
+          "bWc": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "bWc",
+              "BC"
+            ],
+            "nominal_chromatic_fraction": [
+              0.0,
+              0.5,
+              0.5
+            ]
+          },
+          "bwC": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "bwC",
+              "bC"
+            ],
+            "nominal_chromatic_fraction": [
+              0.0,
+              0.666666666667,
+              0.333333333333
+            ]
+          },
+          "By": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "By",
+              "Bwy"
+            ],
+            "nominal_chromatic_fraction": [
+              0.333333333333,
+              0.0,
+              0.666666666667
+            ]
+          },
+          "bWy": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "bWy",
+              "BY"
+            ],
+            "nominal_chromatic_fraction": [
+              0.5,
+              0.0,
+              0.5
+            ]
+          },
+          "Bcy": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "Bcy"
+            ],
+            "nominal_chromatic_fraction": [
+              0.25,
+              0.25,
+              0.5
+            ]
+          },
+          "Wcy": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "Wcy",
+              "CY"
+            ],
+            "nominal_chromatic_fraction": [
+              0.5,
+              0.5,
+              0.0
+            ]
+          },
+          "bCy": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "bCy"
+            ],
+            "nominal_chromatic_fraction": [
+              0.25,
+              0.5,
+              0.25
+            ]
+          },
+          "wCy": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "wCy",
+              "Cy"
+            ],
+            "nominal_chromatic_fraction": [
+              0.333333333333,
+              0.666666666667,
+              0.0
+            ]
+          },
+          "bwY": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "bwY",
+              "bY"
+            ],
+            "nominal_chromatic_fraction": [
+              0.666666666667,
+              0.0,
+              0.333333333333
+            ]
+          },
+          "bcY": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "cY",
+              "Y"
+            ],
+            "test": [
+              "bcY"
+            ],
+            "nominal_chromatic_fraction": [
+              0.5,
+              0.25,
+              0.25
+            ]
+          },
+          "wcY": {
+            "train": [
+              "B",
+              "Bw",
+              "BW",
+              "bW",
+              "W",
+              "Bc",
+              "Wc",
+              "BC",
+              "WC",
+              "bC",
+              "wC",
+              "C",
+              "By",
+              "Wy",
+              "Cy",
+              "BY",
+              "WY",
+              "CY",
+              "bY",
+              "wY",
+              "Y"
+            ],
+            "test": [
+              "wcY",
+              "cY"
+            ],
+            "nominal_chromatic_fraction": [
+              0.666666666667,
+              0.333333333333,
+              0.0
+            ]
+          }
+        }
+      },
+      "hashes": {
+        "experiments/oil_reconstructed/run.py": "94b42b319b98f57d8ff15a4148177dbd3934855fa8a7c2c5e88763a8d8b3af6c",
+        "experiments/oil_reconstructed/PLAN.md": "6a5659c518b2f279dc1545f32f46487ba3f44f014719fa1dac166d09bf3311df",
+        "experiments/oil_source_recovery/mapping.json": "9e31ac91fcaa334b8bc56e9d3ae501d7ebe79de932ca066dba84ba276f9d6a22",
+        "experiments/oil_source_recovery/pair-ambiguity-audit.json": "19dabbaa16b9e77f3d4dbe6c635e5b0dae077518883760597f52380cd8f1b9a0",
+        "experiments/oil_source_recovery/figure6-vector-ticks.json": "7353324a563d88e5598ce76b99de04e90330995772c5b423bf9d970f8283eb5b",
+        "experiments/oil_source_trace/trace.py": "6b573aa884dfc9d4ed212be17e687480462f9b8f8c53bda113bdc0aebfab3df3"
+      },
+      "settings": {
+        "experiment": "old-holland-four-reference-v1",
+        "selected_columns_one_based": [
+          1,
+          3,
+          5,
+          8
+        ],
+        "grid_nm": [
+          400,
+          700,
+          10
+        ],
+        "model": "opaque-homogeneous-km-pure-ratios-relative-scattering",
+        "white_scattering_gauge": 1.0,
+        "log_scattering_bounds": [
+          -9.210340371976184,
+          9.210340371976184
+        ],
+        "initial_log_scattering": [
+          0.0,
+          -2.302585092994046,
+          2.302585092994046
+        ],
+        "curvature_weight": 0.0001,
+        "amplitude_weight": 1e-08,
+        "optimizer": "scipy-least-squares-trf-exact-jacobian",
+        "max_nfev": 2000,
+        "ftol": 1e-10,
+        "xtol": 1e-10,
+        "gtol": 1e-10,
+        "quality_screen": {
+          "mean_spectral_rmse": 0.02,
+          "p95_spectral_rmse": 0.05,
+          "mean_delta_e_2000": 3.0,
+          "p95_delta_e_2000": 6.0,
+          "max_delta_e_2000": 10.0
+        }
+      },
+      "environment": {
+        "python": "3.12.11",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "colour": "0.4.6"
+      },
+      "variants_sha256": "b37fedf4216a8ad68da58e035deb34700231cba6ef2c8a17c318361d483cbf10"
+    },
+    "hashes": {
+      "experiments/oil_ternary_attenuation/run.py": "9150a5692d344b1ede794cc02c7884e2a775071acf052b7107c942174263afa2",
+      "experiments/oil_ternary_attenuation/PLAN.md": "3ff3db77fb5adb4e2ee7cfaa0b58ff9842e6373db55ec48feba22b6dddad409e",
+      "target/measured-oils/grillini-reconstructed/frozen-models.json": "8090dd57ce49b584fcae15cdb85eafbe942a4181c97f53b27a95d22265bc1ced",
+      "experiments/oil_reconstructed/variants.json": "b37fedf4216a8ad68da58e035deb34700231cba6ef2c8a17c318361d483cbf10",
+      "experiments/oil_reconstructed/summary.json": "b454b47dc9b1b5b5d2f97de7b5a59c69a5cc80d8029be5687767f035910a5052",
+      "experiments/oil_reconstructed/errors.csv": "22372c6471c6342a50ec6d812e8638020bd6646cd0a5aac48ffb55b45596bcf7",
+      "experiments/oil_white_split/summary.json": "526f144fb5858d48d3eb690a53f731be7f9e78211540658301dc7f85335d2fea"
+    },
+    "rule": "chromatic_logit_shift * (1-lambda*27*cY*cC*cB) + unchanged white_logit_shift",
+    "lambda_bounds": [
+      0,
+      1
+    ],
+    "folds": {
+      "Bcy": {
+        "train": [
+          "bCy",
+          "bcY"
+        ],
+        "test": "Bcy"
+      },
+      "bCy": {
+        "train": [
+          "Bcy",
+          "bcY"
+        ],
+        "test": "bCy"
+      },
+      "bcY": {
+        "train": [
+          "Bcy",
+          "bCy"
+        ],
+        "test": "bcY"
+      }
+    },
+    "grid_nm": [
+      440,
+      450,
+      460,
+      470,
+      480,
+      490,
+      500,
+      510,
+      520,
+      530,
+      540,
+      550,
+      560,
+      570,
+      580,
+      590,
+      600,
+      610,
+      620,
+      630,
+      640,
+      650,
+      660,
+      670,
+      680,
+      690,
+      700,
+      710,
+      720,
+      730,
+      740
+    ],
+    "environment": {
+      "python": "3.12.11",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "colour": "0.4.6"
+    }
+  },
+  "frozen_sha256": "431e986d3b7df8b829905fa3b5d8f51fde087a1e127f0dadbfa344ab32abb256",
+  "checks": {
+    "scalar_max_abs": 3.3306690738754696e-16,
+    "gate_zero_max_abs": 0.0,
+    "lambda_zero_max_abs": 0.0,
+    "excluded_target_lambda_change": 0.0,
+    "excluded_target_objective_change": 0.0,
+    "dense_min": 0.04190654545454545,
+    "dense_max": 0.8104448902821316,
+    "pure_max_abs": 1.1102230246251565e-16,
+    "equal_thirds_full_attenuation_km_max_abs": 0.0
+  },
+  "scalar_fits_repeated": 21,
+  "unique_model_strengths_checked": 4,
+  "dense_recipes_per_check": 1029,
+  "unaffected_face_recipes_per_check": 906,
+  "continuity": [
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 0,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.00022924961028239488
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 0,
+      "epsilon": 1e-06,
+      "max_prediction_change": 2.2943160063459977e-07
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 0,
+      "epsilon": 1e-09,
+      "max_prediction_change": 2.294318623974334e-10
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 0,
+      "epsilon": 1e-12,
+      "max_prediction_change": 2.294275880387886e-13
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 1,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.0003181771770113806
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 1,
+      "epsilon": 1e-06,
+      "max_prediction_change": 3.209746098353783e-07
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 1,
+      "epsilon": 1e-09,
+      "max_prediction_change": 3.209774390722231e-10
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 1,
+      "epsilon": 1e-12,
+      "max_prediction_change": 3.209932319947484e-13
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 2,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.0008152912840507787
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 2,
+      "epsilon": 1e-06,
+      "max_prediction_change": 8.165881428823241e-07
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 2,
+      "epsilon": 1e-09,
+      "max_prediction_change": 8.165893516931533e-10
+    },
+    {
+      "model": "917a0467dbe34467f8ae55a28df86ea53be7e0aa918e91a9e046e7feec9194d0",
+      "missing_pigment": 2,
+      "epsilon": 1e-12,
+      "max_prediction_change": 8.165690346118026e-13
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 0,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.00023715180795957913
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 0,
+      "epsilon": 1e-06,
+      "max_prediction_change": 2.373818690504237e-07
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 0,
+      "epsilon": 1e-09,
+      "max_prediction_change": 2.373821139656229e-10
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 0,
+      "epsilon": 1e-12,
+      "max_prediction_change": 2.3733792708924284e-13
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 1,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.0003624938012687373
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 1,
+      "epsilon": 1e-06,
+      "max_prediction_change": 3.656287889397536e-07
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 1,
+      "epsilon": 1e-09,
+      "max_prediction_change": 3.656319136347008e-10
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 1,
+      "epsilon": 1e-12,
+      "max_prediction_change": 3.656241975846797e-13
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 2,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.0008316242525292505
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 2,
+      "epsilon": 1e-06,
+      "max_prediction_change": 8.330778876741718e-07
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 2,
+      "epsilon": 1e-09,
+      "max_prediction_change": 8.330792722333058e-10
+    },
+    {
+      "model": "615e8d49b2a0419fc31df55a75af9504590268883343b29141e7a0381905706b",
+      "missing_pigment": 2,
+      "epsilon": 1e-12,
+      "max_prediction_change": 8.33000335376255e-13
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 0,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.00022899393237960086
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 0,
+      "epsilon": 1e-06,
+      "max_prediction_change": 2.2917182079806864e-07
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 0,
+      "epsilon": 1e-09,
+      "max_prediction_change": 2.2917198694294427e-10
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 0,
+      "epsilon": 1e-12,
+      "max_prediction_change": 2.291500322826323e-13
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 1,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.0003159067107100233
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 1,
+      "epsilon": 1e-06,
+      "max_prediction_change": 3.186951648415093e-07
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 1,
+      "epsilon": 1e-09,
+      "max_prediction_change": 3.1869795691363834e-10
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 1,
+      "epsilon": 1e-12,
+      "max_prediction_change": 3.186895192186512e-13
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 2,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.0008160676090471775
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 2,
+      "epsilon": 1e-06,
+      "max_prediction_change": 8.173652950027588e-07
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 2,
+      "epsilon": 1e-09,
+      "max_prediction_change": 8.173665078103909e-10
+    },
+    {
+      "model": "4a5323f51f570c47d9b2b38e80c1694784e8689ea897ebfe89ead1c185b2c0a0",
+      "missing_pigment": 2,
+      "epsilon": 1e-12,
+      "max_prediction_change": 8.173461907290402e-13
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 0,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.0002330523922519645
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 0,
+      "epsilon": 1e-06,
+      "max_prediction_change": 2.3320106656843365e-07
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 0,
+      "epsilon": 1e-09,
+      "max_prediction_change": 2.3320131936621635e-10
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 0,
+      "epsilon": 1e-12,
+      "max_prediction_change": 2.3320234632251413e-13
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 1,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.00031949812581916204
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 1,
+      "epsilon": 1e-06,
+      "max_prediction_change": 3.223242669991855e-07
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 1,
+      "epsilon": 1e-09,
+      "max_prediction_change": 3.2232702618095743e-10
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 1,
+      "epsilon": 1e-12,
+      "max_prediction_change": 3.2232549962429857e-13
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 2,
+      "epsilon": 0.001,
+      "max_prediction_change": 0.0008646571548897031
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 2,
+      "epsilon": 1e-06,
+      "max_prediction_change": 8.662429765715629e-07
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 2,
+      "epsilon": 1e-09,
+      "max_prediction_change": 8.662444095364208e-10
+    },
+    {
+      "model": "eb922224b36b51fadf56530789b1a5c603fd9fc92c941e70f2549fa40fcca67c",
+      "missing_pigment": 2,
+      "epsilon": 1e-12,
+      "max_prediction_change": 8.661960038125471e-13
+    }
+  ]
+}

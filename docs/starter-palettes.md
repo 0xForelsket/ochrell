@@ -55,6 +55,13 @@ direction and the third overshoots, consistently across all seven mappings.
 White-containing mixtures benefit from both chromatic and white-pair terms.
 No single pair removal fixes all three failures. A proposed future revision would
 need explicit ternary calibration; no revision was fitted in this diagnosis.
+The approved [single attenuation experiment](../experiments/oil_ternary_attenuation/REPORT.md)
+then calibrated one bounded strength on two chromatic ternaries and assessed the
+excluded third, rotating exclusions across all seven mappings. Every fit selected
+maximum attenuation. Mean excluded-target RMSE improved from 0.024189 to 0.017338,
+but K-M remained better at 0.016568. Across mappings, the revision stayed 4.4-5.4%
+worse than K-M. Pair and white-ternary predictions were exactly preserved. The
+revision is retained as exploratory evidence and is not promoted to the runtime.
 
 ## Selected candidates
 
