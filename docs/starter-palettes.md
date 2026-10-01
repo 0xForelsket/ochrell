@@ -48,6 +48,13 @@ paired-scan family. Gains concentrate in white-containing mixtures: all three
 Y/C/B ternaries without white worsen, and the mean windowed color advantage is
 small and can reverse under mapping uncertainty. This supports continued research
 under inferred labels; no measured preset, renderer or default is changed.
+A [frozen component diagnosis](../experiments/oil_white_split/REPORT.md) finds that
+calibration observes each pair correction alone, whereas chromatic ternaries
+combine three. Two ternaries receive a correction in the wrong overall spectral
+direction and the third overshoots, consistently across all seven mappings.
+White-containing mixtures benefit from both chromatic and white-pair terms.
+No single pair removal fixes all three failures. A proposed future revision would
+need explicit ternary calibration; no revision was fitted in this diagnosis.
 
 ## Selected candidates
 
