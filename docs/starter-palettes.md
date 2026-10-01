@@ -116,6 +116,18 @@ mean color error and 35.02% in mean spectral RMSE. All 158 distinct fits and
 excluded-measurement perturbation checks passed. These are pooled fold results;
 the existing runtime packages remain unchanged while the calibration tradeoff
 is retained explicitly in the research record.
+The [balanced calibration follow-up](../experiments/oil_balanced_calibration/REPORT.md)
+tests one fixed rule giving equal total fitting weight to four nonpure recipe
+categories, with the same family exclusions and unchanged model/regularizers.
+It retains 86.94% of expanded calibration's multicolor mean-color gain and
+95.96% of its spectral gain. Binary mean DE00 falls from 3.4631 to 3.1725 and
+no-white multicolor mean from 3.4828 to 3.2842, both below the binary-only
+baseline. Primary multicolor mean DE00 rises from 2.8344 to 2.9197 versus
+expanded calibration. Binary spectral RMSE remains 25.05% above binary-only
+calibration, with individual and tail regressions retained in the report.
+All 107 candidate fits, excluded-data refits and the independent CSV score audit
+passed. This is a candidate calibration compromise for painting trials; no
+final all-data model was fitted or runtime package changed in this comparison.
 
 ## Selected candidates
 

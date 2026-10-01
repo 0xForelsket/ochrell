@@ -1,0 +1,12 @@
+{
+  "reference_statistics_and_rows_reproduced_exactly": true,
+  "uniform_weight_reference": "expanded-00b068655dcb3fe7",
+  "uniform_weight_coefficients_max_abs": {
+    "q": 0.0,
+    "log_relative_s": 0.0,
+    "K": 0.0,
+    "S": 0.0,
+    "theta": 0.0
+  },
+  "reference_bundle_sha256": "c80814e3a14e7379c399104a0fdcc4acee69f0e44e100b3c875c0cd01d3ee595"
+}

@@ -1,0 +1,9 @@
+{
+  "rows": 233,
+  "families": 107,
+  "statistics_checked": 21160,
+  "passed": true,
+  "errors_sha256": "ca70e5447492ae8625360e64bd52a7b800638def2478b0aa436058bd0a910206",
+  "summary_sha256": "d3c2fc44eb17f7804b437bf34bb0239565131f071d4ccac1f0ebfe6701ffe3b8",
+  "report_code_sha256": "849f1eec6b406a5fd40f1ca8778ca75a303a4b5b0fc1a80e13922b63a58c8daf"
+}
