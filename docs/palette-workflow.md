@@ -132,7 +132,8 @@ checks exercise reachable colors and unmatched black with 8, 10 and 16 materials
 `PaletteLut` remains four-paint only. Larger palettes decode their known recipes
 directly through K-M. No 7D/15D table is allocated, no RGB residual is added and
 no ingredient is dropped. Speedups measured for the four-paint LUT do not apply
-to this direct path; larger-palette acceleration remains future work.
+to this direct path. The renderer now has optional scalar forward acceleration,
+described below, which keeps every material component.
 
 The sibling renderer exposes `PaletteMixerN::<N>::direct(palette)` and
 `PaletteJobN<N>` for direct recipe painting. `RecipeLoadN<N>` preserves every
@@ -201,12 +202,11 @@ closest-found black and a remaining binary spectral tradeoff. Achieved RGB
 feedback stays important for unreachable targets; see the report for the full
 comparison rather than treating rendered appearance as physical validation.
 
-There is no eight-paint LUT yet. The direct decoder is about 1.02 microseconds
-per recipe on the measured host. A dense seven-coordinate extension of the
-four-paint table is impractical; larger-palette acceleration needs a different
-representation. RGB-to-recipe lookup/caching would accelerate authoring, while
-forward-decoder acceleration would affect painting. Explicit recipe authoring
-already avoids the inverse search entirely.
+The optical package contains no eight-paint recipe LUT. Its original direct
+decoder measured about 1.02 microseconds per recipe on that run. A dense
+seven-coordinate extension of the four-paint table is impractical. The renderer
+now offers separate exact authoring caching and optional scalar forward
+acceleration below. Explicit recipe authoring already avoids inverse search.
 
 ### Renderer authoring cache
 
@@ -242,5 +242,28 @@ gains are smaller because they revisit pixels less often. Its canvas buffers
 remain 300 MiB; the observed benchmark-process peak is about 305 MiB.
 All final-output hashes match the pre-change baseline, and all 31 existing
 native golden cases pass without changing engine version or saved formats.
-This avoids intermediate display work; further forward-decoder acceleration
-would still need its own exactness or approximation checks.
+This avoids intermediate display work. The following forward-decoder pass
+measures an additional improvement on top of final-image rendering.
+
+### Optional fast display evaluation
+
+The renderer now accepts `with_forward_decoder(ForwardDecoder::AlgebraicV1)` or
+`ForwardDecoder::ExpLutV1` on a direct mixer or existing job. The first simplifies
+the empirical correction to an equivalent ratio with one exponential; the second
+uses a 513-node scalar exponential lookup. Both keep the same frozen optical
+coefficients, 1-16 material proportions and reference target/streak authoring.
+`Reference` remains the default and is always available for comparison.
+
+The [forward evaluation report](../experiments/palette_forward_math/REPORT.md)
+finds 4.901 s reference, 3.050 s algebraic and 2.857 s lookup medians for the
+2048x2560 layered fixture, all using `paint_final`. The table occupies 4104 bytes
+per mixer, plus a 992-byte basis for 31 bands and a cloned optical model. It adds
+no canvas planes: the eight-paint fixture's canvas buffers remain 300 MiB.
+
+These choices explicitly allow numerical differences. Across the recipe screen
+the lookup's maximum reflectance difference is 1.221e-6; all-pixel painting checks
+and saved replay also pass their declared limits. This is approximation of the
+existing model, not a new physical-paint accuracy result. OPJ2 stores decoder tags
+0/1/2 so saved jobs retain their selected evaluation. Old tag-0 and prepared-four
+artifacts keep their meaning; new tags are rejected by older readers. No fitted
+model, global default or Ochrell core optical implementation changes in this pass.

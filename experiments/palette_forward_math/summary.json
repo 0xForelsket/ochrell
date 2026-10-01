@@ -1,0 +1,356 @@
+{
+  "date": "2026-10-01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "package_sha256": "643c6960282398b19f5e7eb4b8a788c104164fd1bc0adf83ddc7de8080088db7",
+  "frozen_model_sha256": "99cc38cb2751d8a09895e3a78375aabd003c6933c068145334bf604a71d70afc",
+  "preparation_and_screen": {
+    "algebraic": {
+      "recipes": "62608",
+      "recipe_sha256": "82dd1b618f557e70d71dcdc61f980f051351ac21cbf26cd77973ec2b157d9655",
+      "package_sha256": "643c6960282398b19f5e7eb4b8a788c104164fd1bc0adf83ddc7de8080088db7",
+      "preparation_all_decoders_ms": "0.0135",
+      "exact_display_counts": "{\"algebraic\": 62604}",
+      "auxiliary_bytes": "[(\"reference\", 992), (\"algebraic\", 992)]"
+    },
+    "lookup": {
+      "recipes": "62608",
+      "recipe_sha256": "82dd1b618f557e70d71dcdc61f980f051351ac21cbf26cd77973ec2b157d9655",
+      "package_sha256": "643c6960282398b19f5e7eb4b8a788c104164fd1bc0adf83ddc7de8080088db7",
+      "preparation_all_decoders_ms": "0.0572",
+      "exact_display_counts": "{\"algebraic\": 62604, \"exp-lut\": 2686}",
+      "auxiliary_bytes": "[(\"reference\", 992), (\"algebraic\", 992), (\"exp-lut\", 5096)]"
+    }
+  },
+  "decode_ns": {
+    "reference": {
+      "median": 1307.2120000000002,
+      "min": 1255.1190000000001,
+      "max": 1550.694
+    },
+    "algebraic": {
+      "median": 672.569,
+      "min": 618.787,
+      "max": 858.614
+    },
+    "exp-lut": {
+      "median": 551.533,
+      "min": 496.821,
+      "max": 637.512
+    }
+  },
+  "max_recipe_errors": {
+    "algebraic": {
+      "reflectance": 2.220446049250313e-16,
+      "raw_linear": 4.440892098500626e-16,
+      "display_channel": 1.7930101953575397e-16,
+      "oklab100": 0.0
+    },
+    "exp-lut": {
+      "reflectance": 1.2206990745999846e-06,
+      "raw_linear": 1.4360738352925395e-06,
+      "display_channel": 4.410743713378906e-06,
+      "oklab100": 6.927347606492522e-05
+    }
+  },
+  "paint_seconds": [
+    {
+      "scene": "fixed-recipes",
+      "width": 512,
+      "decoder": "reference",
+      "median": 0.2930145,
+      "min": 0.2899678,
+      "max": 0.3409921
+    },
+    {
+      "scene": "fixed-recipes",
+      "width": 512,
+      "decoder": "algebraic",
+      "median": 0.1836979,
+      "min": 0.1791838,
+      "max": 0.2950108
+    },
+    {
+      "scene": "fixed-recipes",
+      "width": 512,
+      "decoder": "exp-lut",
+      "median": 0.157098,
+      "min": 0.1528271,
+      "max": 0.15806479999999998
+    },
+    {
+      "scene": "matched-targets",
+      "width": 512,
+      "decoder": "reference",
+      "median": 0.2711054,
+      "min": 0.2196655,
+      "max": 0.3225082
+    },
+    {
+      "scene": "matched-targets",
+      "width": 512,
+      "decoder": "algebraic",
+      "median": 0.1544359,
+      "min": 0.1455782,
+      "max": 0.1798984
+    },
+    {
+      "scene": "matched-targets",
+      "width": 512,
+      "decoder": "exp-lut",
+      "median": 0.1226395,
+      "min": 0.1191998,
+      "max": 0.139894
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 512,
+      "decoder": "reference",
+      "median": 0.4846006,
+      "min": 0.4018737,
+      "max": 0.5447353
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 512,
+      "decoder": "algebraic",
+      "median": 0.2489517,
+      "min": 0.1923508,
+      "max": 0.2542868
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 512,
+      "decoder": "exp-lut",
+      "median": 0.2110132,
+      "min": 0.1817305,
+      "max": 0.2723297
+    },
+    {
+      "scene": "fixed-recipes",
+      "width": 1024,
+      "decoder": "reference",
+      "median": 1.0913399,
+      "min": 0.8604587,
+      "max": 1.1171209
+    },
+    {
+      "scene": "fixed-recipes",
+      "width": 1024,
+      "decoder": "algebraic",
+      "median": 0.6736517,
+      "min": 0.6025969,
+      "max": 0.7208191
+    },
+    {
+      "scene": "fixed-recipes",
+      "width": 1024,
+      "decoder": "exp-lut",
+      "median": 0.5584413,
+      "min": 0.3749237,
+      "max": 0.6535778
+    },
+    {
+      "scene": "matched-targets",
+      "width": 1024,
+      "decoder": "reference",
+      "median": 1.1281149000000001,
+      "min": 0.9868037,
+      "max": 1.170174
+    },
+    {
+      "scene": "matched-targets",
+      "width": 1024,
+      "decoder": "algebraic",
+      "median": 0.9472371,
+      "min": 0.6593813,
+      "max": 0.9771067
+    },
+    {
+      "scene": "matched-targets",
+      "width": 1024,
+      "decoder": "exp-lut",
+      "median": 0.5229183,
+      "min": 0.4709193,
+      "max": 0.5578538
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 1024,
+      "decoder": "reference",
+      "median": 1.4782828000000001,
+      "min": 1.1072732,
+      "max": 1.5305806
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 1024,
+      "decoder": "algebraic",
+      "median": 0.7750997,
+      "min": 0.6500994,
+      "max": 0.8679345
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 1024,
+      "decoder": "exp-lut",
+      "median": 0.6767977,
+      "min": 0.5471475,
+      "max": 0.7783027
+    },
+    {
+      "scene": "fixed-recipes",
+      "width": 2048,
+      "decoder": "reference",
+      "median": 2.4376976,
+      "min": 2.3891712,
+      "max": 3.7904876999999995
+    },
+    {
+      "scene": "fixed-recipes",
+      "width": 2048,
+      "decoder": "algebraic",
+      "median": 1.727116,
+      "min": 1.6685303,
+      "max": 2.0869406
+    },
+    {
+      "scene": "fixed-recipes",
+      "width": 2048,
+      "decoder": "exp-lut",
+      "median": 1.4739171,
+      "min": 1.1267087,
+      "max": 1.8099186999999999
+    },
+    {
+      "scene": "matched-targets",
+      "width": 2048,
+      "decoder": "reference",
+      "median": 3.8142788,
+      "min": 3.4328183,
+      "max": 3.8488373
+    },
+    {
+      "scene": "matched-targets",
+      "width": 2048,
+      "decoder": "algebraic",
+      "median": 1.9517780999999998,
+      "min": 1.4902071000000001,
+      "max": 3.2906302
+    },
+    {
+      "scene": "matched-targets",
+      "width": 2048,
+      "decoder": "exp-lut",
+      "median": 1.7494033,
+      "min": 1.23445,
+      "max": 2.1851599
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 2048,
+      "decoder": "reference",
+      "median": 4.901076,
+      "min": 4.1685159,
+      "max": 5.2073109
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 2048,
+      "decoder": "algebraic",
+      "median": 3.0503084,
+      "min": 2.3133138,
+      "max": 3.3923268
+    },
+    {
+      "scene": "renderer-fixture",
+      "width": 2048,
+      "decoder": "exp-lut",
+      "median": 2.8568724,
+      "min": 2.1159662,
+      "max": 3.4539549
+    }
+  ],
+  "saved_jobs": [
+    {
+      "scene": "fixed-recipes",
+      "decoder": "reference",
+      "sha256": "3716420cdf406db7d12680b35ac05bc285076a3e52d48a09538762d331eb63eb",
+      "bytes": 54977,
+      "original_sha256": "3716420cdf406db7d12680b35ac05bc285076a3e52d48a09538762d331eb63eb"
+    },
+    {
+      "scene": "fixed-recipes",
+      "decoder": "algebraic",
+      "sha256": "82b8c9a7cd112e7ad73cb5ad9963b43e068e25c3a68ebf384ed67e9bf055396d",
+      "bytes": 54977,
+      "original_sha256": "3716420cdf406db7d12680b35ac05bc285076a3e52d48a09538762d331eb63eb"
+    },
+    {
+      "scene": "fixed-recipes",
+      "decoder": "exp-lut",
+      "sha256": "d21098547b7ed8f65900c2d8abc63148828cf63f0f061d2223ef8bf8d8b5ea3f",
+      "bytes": 54977,
+      "original_sha256": "3716420cdf406db7d12680b35ac05bc285076a3e52d48a09538762d331eb63eb"
+    },
+    {
+      "scene": "matched-targets",
+      "decoder": "reference",
+      "sha256": "49f137766befdac394168a70bb153cd6190e5762fb9e8165f4bc28e17b3da143",
+      "bytes": 54977,
+      "original_sha256": "49f137766befdac394168a70bb153cd6190e5762fb9e8165f4bc28e17b3da143"
+    },
+    {
+      "scene": "matched-targets",
+      "decoder": "algebraic",
+      "sha256": "4e56b0545fd090d6616da6f6d916e44af4f09aa7e8227040d738877a23b3bd7a",
+      "bytes": 54977,
+      "original_sha256": "49f137766befdac394168a70bb153cd6190e5762fb9e8165f4bc28e17b3da143"
+    },
+    {
+      "scene": "matched-targets",
+      "decoder": "exp-lut",
+      "sha256": "86c868367ed85fefbff8d29b6d62948aba9108956a7049b3e452878bdea519cf",
+      "bytes": 54977,
+      "original_sha256": "49f137766befdac394168a70bb153cd6190e5762fb9e8165f4bc28e17b3da143"
+    },
+    {
+      "scene": "renderer-fixture",
+      "decoder": "reference",
+      "sha256": "a36eeab8454da02b4b25e34d836e37057a8881a814f4fe292922e06cfe8925e2",
+      "bytes": 58333,
+      "original_sha256": "a36eeab8454da02b4b25e34d836e37057a8881a814f4fe292922e06cfe8925e2"
+    },
+    {
+      "scene": "renderer-fixture",
+      "decoder": "algebraic",
+      "sha256": "78c931afae92192856eb7b27528cde01610e09f05b96d5fe0620647228b6663c",
+      "bytes": 58333,
+      "original_sha256": "a36eeab8454da02b4b25e34d836e37057a8881a814f4fe292922e06cfe8925e2"
+    },
+    {
+      "scene": "renderer-fixture",
+      "decoder": "exp-lut",
+      "sha256": "182e56a77ded5f1b763752f4f67536395b0bd6e467e7939cfe56012ed80d53e2",
+      "bytes": 58333,
+      "original_sha256": "a36eeab8454da02b4b25e34d836e37057a8881a814f4fe292922e06cfe8925e2"
+    }
+  ],
+  "native_golden_cases": 31,
+  "source_sha256": {
+    "crates/oil-mix/src/palette_forward.rs": "f2486c9f4a83d5f4fbef41480d96e58bd5b469959d1b2be9c0df7b3892e19517",
+    "crates/oil-mix/src/palette.rs": "a8354815c260254d90e3bb9f983002e1d9ac69c9399125eaa267ee355937309d",
+    "crates/oil-mix/src/lib.rs": "e5565b72db9a9a0e73a9ca2f223cbaadda3f8f69781d034539989829211d5a27",
+    "crates/oil-paint/src/lib.rs": "dde7ce216b87a900482df05b6fee368b4f71707ec2a252adc99d81a32a003c06",
+    "crates/oil-palette/src/lib.rs": "b82f502ce201d0c8154c476000f7e8ad75ae22b1cbe245acaa8b0c099733f5cf",
+    "crates/oil-palette/src/codec.rs": "bcf017d878e2ab9df24e39755e9c7ada5959a8584a03629bacb60a000e54fbf1",
+    "crates/oil-mix/examples/forward_math.rs": "713dde8424d2a5870e1bee5f931a670e9121ef227e7ab37ec5cacc8b337cee37",
+    "crates/oil-palette/examples/forward_paint.rs": "226f5f51ad2a5158ad49148ce6ee1414bab54ddc05323963a39441c33fb49f88",
+    "crates/oil-mix/tests/forward_decoder.rs": "03cedbb1af261947afb0b91cfcf846930c7b785c1102c841984a52fc531dd05e",
+    "crates/oil-palette/tests/forward_jobs.rs": "8ae084f9bdf6d1aa0c8ea733ebccbb3481698b1de91f95bc4a3fec16a8bf4a56"
+  },
+  "report_source_sha256": "5e0ee0cbf0104a94e93b38e9a16f99c1f6674cdcce454b6444ea7a79c9879a35",
+  "table_bytes": 4104,
+  "basis31_bytes": 992,
+  "real_arithmetic_reflectance_error_bound": 1.228356411137405e-06,
+  "test_note": "26 unit/integration tests plus 1 doctest passed; scoped all-target Clippy passed. See commands in REPORT.md."
+}

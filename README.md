@@ -149,6 +149,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `experiments/oil_balanced_package/REPORT.md` | Final balanced Old Holland Eight packages, identical-recipe painting comparisons, target matching, replay and the eight-paint LUT decision |
 | `experiments/palette_authoring_cache/REPORT.md` | Exact renderer target-match caching: cold/warm timings, repeated/unique colors and byte-identical painting verification |
 | `experiments/palette_canvas_scaling/REPORT.md` | 512/1024/2048 painting profiles, memory accounting and exact final-display acceleration with preserved output |
+| `experiments/palette_forward_math/REPORT.md` | Optional algebraic and 4 KiB exponential-table decoding: numerical limits, saved replay and full-paint timing comparison |
 | `experiments/oil_unified_eight/REPORT.md` | Unified eight-paint fit, 183-mixture assessment and local native-window runtime packages |
 | `experiments/oil_anchor_base/REPORT.md` | Pure/white-only base calibration ablation: selected spectral gains but worse cohort mean and color error |
 | `experiments/oil_failure_cases/REPORT.md` | Frozen failure diagnosis: incompatible opaque calibration data and yellow-rich optical extrapolation |
