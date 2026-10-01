@@ -1,0 +1,54 @@
+[
+  {
+    "file": "mixed-ink-oil-pointer.txt",
+    "url": "https://raw.githubusercontent.com/Navid-visual/Mixed-integer-ink-selection/main/Dataset/Oil%20paint/Reflectance_oilcolor.mat",
+    "bytes": 130,
+    "sha256": "9224e54c44dccfbd4e29dd48f12130e00d9706aaaaed61111fa7355b02ab58a4",
+    "status": "downloaded"
+  },
+  {
+    "file": "mixed-ink-dataset-readme.md",
+    "url": "https://raw.githubusercontent.com/Navid-visual/Mixed-integer-ink-selection/main/Dataset/README.md",
+    "bytes": 1692,
+    "sha256": "10318345dc42171a47935f4aae8be294ac855d05911313c693da171f4e03cede",
+    "status": "downloaded"
+  },
+  {
+    "file": "reichert-2025.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12283775/fullTextXML",
+    "bytes": 205807,
+    "sha256": "fc9369eae8104d8088f1b3ebc7a1ed2fa63ffe9ad71c7c1c7ee7467c9d0bb2e3",
+    "status": "downloaded"
+  },
+  {
+    "file": "bath-183.html",
+    "url": "https://researchdata.bath.ac.uk/183/",
+    "bytes": 47591,
+    "sha256": "1d25b36dac32fa2b1d0b0fb3825af3367c82d35d4f201d8e58af3a70799a8c98",
+    "status": "downloaded"
+  },
+  {
+    "file": "bath-reflectance.tar.gz",
+    "url": "https://researchdata.bath.ac.uk/183/1/Reflectance-Spectra.tar.gz",
+    "bytes": 2468624,
+    "sha256": "018dfa9d5452cf3a24e017b5e1a4d145ac0005cde13092c8ae591515fc40fb62"
+  },
+  {
+    "file": "bath-readme.rtf",
+    "url": "https://researchdata.bath.ac.uk/183/3/README.rtf",
+    "bytes": 99347,
+    "sha256": "f2bab67257f5a83989ef9f417deee0b303e6faaaca16d49f976f25a7c95dcd64"
+  },
+  {
+    "file": "mixed-ink-oil.mat",
+    "url": "https://media.githubusercontent.com/media/Navid-visual/Mixed-integer-ink-selection/main/Dataset/Oil%20paint/Reflectance_oilcolor.mat",
+    "bytes": 39516,
+    "sha256": "52f0ccf0e9b6fc945cfd241d72f41c9e8f7018e3763ff976758573c00201a117"
+  },
+  {
+    "file": "reichert-figshare.json",
+    "url": "https://api.figshare.com/v2/articles/28639103",
+    "bytes": 8969,
+    "sha256": "e1a6efe007369b879ad2e3477630cc68778381f8f561899e0ba09b2f9611208a"
+  }
+]

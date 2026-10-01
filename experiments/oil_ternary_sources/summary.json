@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-01",
+  "status": "Coverage and provenance only; no new model fit or model-error score.",
+  "hashes": {
+    "target/measured-oils/source/spectralDatasets.zip": "cda35e5ab968bb18a05127c1b9fb0b2bd3c4a4bb88d4bf4ae1e4b2bb5de07538",
+    "target/measured-oils/public-audit/grillini-data.zip": "6d8cec6fb4fff5d4c24d18d1783422da8ef955d3e7ba7263179a84ed6c9b683e",
+    "experiments/oil_ternary_sources/audit.py": "b1a0cd1c54ba5023206dc8f57b57ab1f2123249e4d9ad1dd8e9c842fd780ee67",
+    "experiments/oil_ternary_sources/PLAN.md": "ed3e89e9f5416889cba0a346ada4cbedd55611a3de3b96e840ee806f66ba747a",
+    "experiments/oil_source_recovery/pair-ambiguity-audit.json": "19dabbaa16b9e77f3d4dbe6c635e5b0dae077518883760597f52380cd8f1b9a0",
+    "target/measured-oils/ternary-source-audit/mixed-ink-oil.mat": "52f0ccf0e9b6fc945cfd241d72f41c9e8f7018e3763ff976758573c00201a117",
+    "target/measured-oils/ternary-source-audit/bath-reflectance.tar.gz": "018dfa9d5452cf3a24e017b5e1a4d145ac0005cde13092c8ae591515fc40fb62"
+  },
+  "old_holland": {
+    "rows": 286,
+    "bands": 31,
+    "range_nm": [
+      400,
+      700
+    ],
+    "ingredient_count_histogram": {
+      "1": 8,
+      "2": 95,
+      "3": 101,
+      "4": 53,
+      "5": 18,
+      "6": 6,
+      "7": 5
+    },
+    "no_white_ternaries": 38,
+    "no_white_families": 26,
+    "previous_control_rows": [
+      172,
+      174,
+      176
+    ],
+    "additional_ternaries": 35,
+    "additional_families": 25,
+    "additional_gate_range": [
+      0.00066825,
+      1.0
+    ],
+    "additional_distinct_gate_values": 18,
+    "additional_calibration_row_range": [
+      25,
+      39
+    ],
+    "no_duplicate_normalized_recipes": true,
+    "all_25_palettes_have_four_pures_and_all_six_binary_pairs": true
+  },
+  "grillini": {
+    "rows": 175,
+    "ingredient_count_histogram": {
+      "1": 7,
+      "2": 63,
+      "3": 105
+    },
+    "no_white_ternaries": 60,
+    "no_white_families": 20,
+    "additional_to_YCB": 57,
+    "gate_range": [
+      0.84375,
+      0.84375
+    ],
+    "targets_ambiguous_at_1e_5": 17,
+    "qualification": "All identities remain inferred. The seven earlier Y/C/B/W projections do not exhaust ambiguity for other palettes."
+  },
+  "mixed_ink_repository": {
+    "array_shape": [
+      289,
+      31
+    ],
+    "matched_asadi_rows": 286,
+    "unique_matches": 286,
+    "maximum_nearest_spectrum_difference": 1.1102230246251565e-16,
+    "additional_spectrum_rows_one_based": [
+      23,
+      149,
+      150
+    ],
+    "qualification": "The inspected repository contains no oil recipe table for the three additional spectra; not an independent 289-sample test."
+  },
+  "bath": {
+    "groups": [
+      "LTY-RL_Glaze",
+      "LTY_Pure",
+      "LW-LTY_33.3-66.7",
+      "LW-LTY_50.0-50.0",
+      "LW-LTY_66.7-33.3",
+      "LW-RL_33.3-66.7",
+      "LW-RL_50.0-50.0",
+      "LW-RL_66.7-33.3",
+      "RL-LTY_33.3-66.7",
+      "RL-LTY_50.0-50.0",
+      "RL-LTY_66.7-33.3",
+      "RL-LTY_Glaze",
+      "RL-VRM_Glaze",
+      "RL_Pure",
+      "VRM-RL_33.3-66.7",
+      "VRM-RL_40.0-60.0",
+      "VRM-RL_50.0-50.0",
+      "VRM-RL_60.0-40.0",
+      "VRM-RL_66.7-33.3",
+      "VRM-RL_Glaze",
+      "VRM_Pure"
+    ],
+    "group_type_counts": {
+      "layered": 4,
+      "pure": 3,
+      "binary": 14
+    },
+    "no_ternary_group_in_archive": true
+  }
+}

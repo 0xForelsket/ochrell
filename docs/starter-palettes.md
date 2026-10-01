@@ -62,6 +62,13 @@ maximum attenuation. Mean excluded-target RMSE improved from 0.024189 to 0.01733
 but K-M remained better at 0.016568. Across mappings, the revision stayed 4.4-5.4%
 worse than K-M. Pair and white-ternary predictions were exactly preserved. The
 revision is retained as exploratory evidence and is not promoted to the runtime.
+A [broader public-data audit](../experiments/oil_ternary_sources/REPORT.md) now
+identifies 35 additional no-white Old Holland ternaries across 25 paint triples,
+with varied ratios and complete pure/binary calibration support for each palette.
+An unscored cohort and next-study protocol are prepared. Another 57 Grillini
+ternaries expand pigment coverage but retain the same 2:1:1 recipe shape and
+inferred-label caveats. A purported 289-spectrum oil source reproduces all 286
+Old Holland spectra and cannot serve as an independent replication.
 
 ## Selected candidates
 
