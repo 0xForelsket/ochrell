@@ -128,6 +128,16 @@ calibration, with individual and tail regressions retained in the report.
 All 107 candidate fits, excluded-data refits and the independent CSV score audit
 passed. This is a candidate calibration compromise for painting trials; no
 final all-data model was fitted or runtime package changed in this comparison.
+The subsequent [packaging and painting comparison](../experiments/oil_balanced_package/REPORT.md)
+fits that fixed rule to all 286 measurements and exports local native OPP3
+packages. The balanced corrected package is now the preferred local experimental
+Old Holland Eight choice for recipe painting; the previous package is retained.
+All 2,411 Rust/Python probes, six saved-job replays and fixed-recipe material
+transport checks pass. Closest-found black is lighter (#292A30 versus #232225),
+and mean error against 32 arbitrary RGB targets rises 7.32%; target reachability
+is separate from measured-paint accuracy. Native decoding is about 1.02 us per
+recipe and the 384x480 fixture paints in about 224 ms. No eight-paint LUT or
+global-default switch is included; see the report's acceleration discussion.
 
 ## Selected candidates
 

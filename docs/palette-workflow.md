@@ -170,7 +170,7 @@ Plain 81-band packages still write OPP1/OPP2 exactly. Recipes keep their existin
 formats, bound to the complete palette/model identity; a grid or model change
 therefore cannot silently reuse another recipe's meaning.
 
-The local Old Holland packages are `target/measured-oils/unified-eight/`:
+The original local Old Holland packages are `target/measured-oils/unified-eight/`:
 `old-holland-eight-km.opp` and `old-holland-eight-empirical.opp`. Load with
 `PaletteN::<8,31>::from_bytes`; in the renderer use
 `PaletteMixerN::<8,false,31>::from_palette_bytes` and `PaletteJobN<8,false,31>`.
@@ -183,3 +183,27 @@ neutral-normalized RGB convention as the original runtime on that window.
 The measured assessment separately reports unclipped windowed XYZ/Lab DE00.
 These local experimental packages do not change the default, certify real-paint
 accuracy, add browser exposure or establish a redistribution decision.
+
+### Preferred local measured package
+
+The [balanced package and renderer comparison](../experiments/oil_balanced_package/REPORT.md)
+now supplies `target/measured-oils/balanced-eight/old-holland-eight-balanced-empirical.opp`.
+It uses the tested equal-category calibration rule fitted to all 286 source
+measurements. The companion `preferred-palette.json` records the recommendation
+and exact identity; applications still choose the package explicitly. The local
+ZIP includes its K-M base and the previous binary-calibrated package for comparison.
+Load it through the same B=31 APIs above; there is no format or runtime migration.
+
+The 2,411 runtime probes and six saved painting replays pass. Fixed recipe
+painting preserves identical material transport across the two packages. The
+balanced model is preferred for measured recipe behavior, with a lighter
+closest-found black and a remaining binary spectral tradeoff. Achieved RGB
+feedback stays important for unreachable targets; see the report for the full
+comparison rather than treating rendered appearance as physical validation.
+
+There is no eight-paint LUT yet. The direct decoder is about 1.02 microseconds
+per recipe on the measured host. A dense seven-coordinate extension of the
+four-paint table is impractical; larger-palette acceleration needs a different
+representation. RGB-to-recipe lookup/caching would accelerate authoring, while
+forward-decoder acceleration would affect painting. Explicit recipe authoring
+already avoids the inverse search entirely.

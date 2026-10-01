@@ -146,6 +146,7 @@ the Rust library still builds and runs without Python or renderer code.
 | `experiments/oil_source_recovery/REPORT.md` | Frozen inferred 175-sample mapping, near reproduction of published baselines and quantified label ambiguity |
 | `experiments/oil_multicolor_calibration/REPORT.md` | Binary versus expanded calibration: paired exclusion of complete recipe families across the eight-paint dataset |
 | `experiments/oil_balanced_calibration/REPORT.md` | One fixed category-balancing rule compared with binary and expanded calibration under the same family exclusions |
+| `experiments/oil_balanced_package/REPORT.md` | Final balanced Old Holland Eight packages, identical-recipe painting comparisons, target matching, replay and the eight-paint LUT decision |
 | `experiments/oil_unified_eight/REPORT.md` | Unified eight-paint fit, 183-mixture assessment and local native-window runtime packages |
 | `experiments/oil_anchor_base/REPORT.md` | Pure/white-only base calibration ablation: selected spectral gains but worse cohort mean and color error |
 | `experiments/oil_failure_cases/REPORT.md` | Frozen failure diagnosis: incompatible opaque calibration data and yellow-rich optical extrapolation |

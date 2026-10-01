@@ -15,6 +15,12 @@ four-material accelerator. The [unified Old Holland Eight model](../experiments/
 now has local experimental native-window packages and verified native painting.
 Measured oil accuracy remains a research result; no default or distributed preset
 promotion is established.
+The subsequent [balanced full-data package](../experiments/oil_balanced_package/REPORT.md)
+is now recommended for local experimental measured recipe painting, with the
+previous package preserved. The global default and distribution remain separate.
+Native package, matching, all-material transport and replay checks pass; no
+eight-paint LUT is supplied. The measured performance report separates costly
+RGB authoring from direct recipe decoding to guide the next acceleration step.
 
 ## Decision
 

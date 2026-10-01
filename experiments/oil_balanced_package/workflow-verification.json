@@ -1,0 +1,274 @@
+{
+  "fit_sha256": "99cc38cb2751d8a09895e3a78375aabd003c6933c068145334bf604a71d70afc",
+  "packages": {
+    "km": {
+      "file": "old-holland-eight-balanced-km.opp",
+      "bytes": 5618,
+      "sha256": "a1ddae3b8086fa29e5361040eae655d4c377045ca9b6ed8085c663ab63e9afa6",
+      "identity": "9c37e7873418728e98112ee0d38bfb489c6ac98416dab270b13c4442cb85eefd"
+    },
+    "empirical": {
+      "file": "old-holland-eight-balanced-empirical.opp",
+      "bytes": 6521,
+      "sha256": "643c6960282398b19f5e7eb4b8a788c104164fd1bc0adf83ddc7de8080088db7",
+      "identity": "f1174289c727d92e8a237e887a8e50866e0db5bb147e68b4fc4a772cfe858c07"
+    }
+  },
+  "completed_checks": {
+    "cargo test --offline -p oil-palette": "7 integration tests and 1 documentation test passed",
+    "cargo clippy --offline -p oil-palette --example compare_old_holland -- -D warnings": "passed"
+  },
+  "reference_package_sha256": "9d21533abbe7a4d3a947ac96f322e3b804f1b08910579a903a0cdb1d69eb4001",
+  "timings": {
+    "previous/author-fixture": {
+      "count": 1,
+      "mean": 3495.6047,
+      "median": 3495.6047,
+      "min": 3495.6047,
+      "p95": 3495.6047,
+      "max": 3495.6047
+    },
+    "previous/decode-srgb": {
+      "count": 7,
+      "mean": 984.9774285714285,
+      "median": 988.0759999999999,
+      "min": 951.103,
+      "p95": 1028.1209,
+      "max": 1030.982
+    },
+    "previous/match-32-targets": {
+      "count": 1,
+      "mean": 251.3398,
+      "median": 251.3398,
+      "min": 251.3398,
+      "p95": 251.3398,
+      "max": 251.3398
+    },
+    "previous/paint-fixed-recipes": {
+      "count": 7,
+      "mean": 119.45547142857143,
+      "median": 120.2455,
+      "min": 113.3431,
+      "p95": 122.20356000000001,
+      "max": 122.25450000000001
+    },
+    "previous/paint-matched-targets": {
+      "count": 7,
+      "mean": 114.043,
+      "median": 113.3878,
+      "min": 106.99,
+      "p95": 120.39791000000001,
+      "max": 120.60260000000001
+    },
+    "previous/paint-renderer-fixture": {
+      "count": 7,
+      "mean": 225.21158571428572,
+      "median": 224.64329999999998,
+      "min": 215.77450000000002,
+      "p95": 234.75678,
+      "max": 236.0031
+    },
+    "previous/prepare": {
+      "count": 3,
+      "mean": 0.28063333333333335,
+      "median": 0.2806,
+      "min": 0.2033,
+      "p95": 0.35025999999999996,
+      "max": 0.358
+    },
+    "balanced/author-fixture": {
+      "count": 1,
+      "mean": 4285.8344,
+      "median": 4285.8344,
+      "min": 4285.8344,
+      "p95": 4285.8344,
+      "max": 4285.8344
+    },
+    "balanced/decode-srgb": {
+      "count": 7,
+      "mean": 992.9867142857141,
+      "median": 1019.593,
+      "min": 908.771,
+      "p95": 1052.2114000000001,
+      "max": 1062.169
+    },
+    "balanced/match-32-targets": {
+      "count": 1,
+      "mean": 318.9152,
+      "median": 318.9152,
+      "min": 318.9152,
+      "p95": 318.9152,
+      "max": 318.9152
+    },
+    "balanced/paint-fixed-recipes": {
+      "count": 7,
+      "mean": 114.94718571428572,
+      "median": 114.29979999999999,
+      "min": 107.5101,
+      "p95": 122.02293,
+      "max": 122.5647
+    },
+    "balanced/paint-matched-targets": {
+      "count": 7,
+      "mean": 115.85280000000002,
+      "median": 112.1191,
+      "min": 107.07650000000001,
+      "p95": 128.55378,
+      "max": 130.305
+    },
+    "balanced/paint-renderer-fixture": {
+      "count": 7,
+      "mean": 224.7581,
+      "median": 223.915,
+      "min": 212.7165,
+      "p95": 235.92096999999998,
+      "max": 238.3363
+    },
+    "balanced/prepare": {
+      "count": 3,
+      "mean": 0.5661999999999999,
+      "median": 0.2969,
+      "min": 0.26659999999999995,
+      "p95": 1.05128,
+      "max": 1.1351
+    }
+  },
+  "target_matching": {
+    "metric": "Displayed OKLab distance times 100; RGB target reachability, not measured-paint accuracy",
+    "scores": {
+      "previous": {
+        "count": 32,
+        "mean": 4.63740894717745,
+        "median": 0.5880010466746477,
+        "min": 3.577315665915371e-08,
+        "p95": 20.229581146513883,
+        "max": 25.294241326900423
+      },
+      "balanced": {
+        "count": 32,
+        "mean": 4.976921296371752,
+        "median": 0.6668230212429562,
+        "min": 3.577315665915371e-08,
+        "p95": 20.21596986251372,
+        "max": 28.51999211327529
+      }
+    },
+    "comparison_tolerance_ok100": 0.0001,
+    "improved": 5,
+    "worsened": 11,
+    "tied": 16,
+    "black": {
+      "previous": {
+        "model": "previous",
+        "target_id": "0",
+        "r": "0",
+        "g": "0",
+        "b": "0",
+        "achieved_r": "0.13642117",
+        "achieved_g": "0.13142478",
+        "achieved_b": "0.14618383",
+        "error_ok100": "25.294241326900423",
+        "evaluations": "5918",
+        "milliseconds": "5.7581999999999995",
+        "recipe": "0;0;0.10302221;0.416333;0;0.4806448;0;0"
+      },
+      "balanced": {
+        "model": "balanced",
+        "target_id": "0",
+        "r": "0",
+        "g": "0",
+        "b": "0",
+        "achieved_r": "0.15920593",
+        "achieved_g": "0.16300157",
+        "achieved_b": "0.18866257",
+        "error_ok100": "28.51999211327529",
+        "evaluations": "5843",
+        "milliseconds": "7.3706",
+        "recipe": "0;0;0;0.25482363;0.27008897;0.47508743;0;0"
+      }
+    }
+  },
+  "display_differences": {
+    "fixed-recipes": {
+      "mean_abs_display_channel_difference": 0.004388183820992708,
+      "max_abs_display_channel_difference": 0.18039216101169586,
+      "status": "Difference between rendered images; not an accuracy metric"
+    },
+    "matched-targets": {
+      "mean_abs_display_channel_difference": 0.002389968140050769,
+      "max_abs_display_channel_difference": 0.08235293626785278,
+      "status": "Difference between rendered images; not an accuracy metric"
+    },
+    "renderer-fixture": {
+      "mean_abs_display_channel_difference": 0.0020634548272937536,
+      "max_abs_display_channel_difference": 0.05882355570793152,
+      "status": "Difference between rendered images; not an accuracy metric"
+    }
+  },
+  "lut_storage_scaling": {
+    "4": {
+      "dimensions": 3,
+      "dense_rgb_f32_bytes_at_65": 3295500,
+      "ordered_simplex_rgb_f32_bytes_at_65": 574860
+    },
+    "8": {
+      "dimensions": 7,
+      "dense_rgb_f32_bytes_at_65": 58826734687500,
+      "ordered_simplex_rgb_f32_bytes_at_65": 15958688460
+    },
+    "16": {
+      "dimensions": 15,
+      "dense_rgb_f32_bytes_at_65": 18744833867464876831054687500,
+      "ordered_simplex_rgb_f32_bytes_at_65": 64699730713220460
+    }
+  },
+  "recommendation": {
+    "preferred_measured_package": "old-holland-eight-balanced-empirical.opp",
+    "identity": "f1174289c727d92e8a237e887a8e50866e0db5bb147e68b4fc4a772cfe858c07",
+    "scope": "Local experimental measured Old Holland Eight recipe painting",
+    "decision": "Prefer balanced for measured recipe behavior; retain previous binary calibration for explicit comparison",
+    "global_default_changed": false,
+    "decoder": "native direct 31-band; no eight-paint LUT",
+    "limitations": [
+      "Same-source accuracy evidence",
+      "Lighter closest-found black",
+      "RGB matching is approximate and may be unreachable",
+      "Binary spectral tradeoff remains"
+    ]
+  },
+  "renderer_verification": "6 jobs replay all five canvas planes exactly; package and future mixing replay exact; fixed-recipe material/height/wetness/coverage identical between packages; valid eight-material states; 32 matched targets per package; 7 alternating warmed timings per operation\n",
+  "renderer_source_hashes": {
+    "crates/oil-palette/examples/compare_old_holland.rs": "1abd5ebe0029d8ad0e0da09f544dc92e2373834299359515d1ed593954728a80",
+    "crates/oil-palette/src/lib.rs": "c96da8e88587e310b032627daa15edfba70fc731eb5a735b6cc4835ec47297b5",
+    "crates/oil-palette/src/codec.rs": "c58b6b175ac95a30958b3c23f2e81aa2734890b468dee032f025d04874f45ee9",
+    "crates/oil-mix/src/palette.rs": "150889855562c5ff410cf5f03eab71b5d4aad60c08b2d33d0298030dbacf1aab",
+    "crates/oil-mix/Cargo.toml": "4f4207fad7d18de6c6c16a53aeb98dc09e61cfa4c0fe76fafa29fe0388a7c91b",
+    "Cargo.lock": "148faa053ef4c65494f1613cac4e797470f38cb5a2e1a3853bb90b1b8295fcef"
+  },
+  "renderer_runtime_ochrell_revision": "17c13d018c1ac569755dadb41b9b169f7f3cd1ea",
+  "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)",
+  "local_archive": {
+    "file": "old-holland-eight-balanced-local.zip",
+    "bytes": 19458,
+    "sha256": "db8361a957060bcdd64c2bb444280e6f4585f6be754dc2070847fbb7f679338c"
+  },
+  "comparison_files": {
+    "comparison/balanced/fixed-recipes.opj": "3716420cdf406db7d12680b35ac05bc285076a3e52d48a09538762d331eb63eb",
+    "comparison/balanced/fixed-recipes.png": "c28d955484afeef15ea643245fde50ccc5ae2b9069a37cf53ec6d77abf7db5fa",
+    "comparison/balanced/matched-targets.opj": "49f137766befdac394168a70bb153cd6190e5762fb9e8165f4bc28e17b3da143",
+    "comparison/balanced/matched-targets.png": "b27b9b610cc2bf04ca766945535c61cf69a78d3e51639fc505e7f57d760d6030",
+    "comparison/balanced/renderer-fixture.opj": "a36eeab8454da02b4b25e34d836e37057a8881a814f4fe292922e06cfe8925e2",
+    "comparison/balanced/renderer-fixture.png": "8c63c0fad99c53eb847be7238316d7eb1df08d715420e68bfef43a85c94e7b37",
+    "comparison/matches.csv": "38dd86767df418657bdf678dc5cd6b4af5ca4af159a87b159d0262107054fec5",
+    "comparison/plane-hashes.csv": "370341c2a9657c6d3ae0baf8ea22f41bf24b761b131a1d8585524376a01a9593",
+    "comparison/previous/fixed-recipes.opj": "a4a45f7cf7fcbba3924e366c6556e27bb0fdbd9d86c8f61d7e8db0a7cb2ebada",
+    "comparison/previous/fixed-recipes.png": "1ae8cafedbde4abcff20cd759c9ae27a4f714424ef72d08b4717b59d3ca768ef",
+    "comparison/previous/matched-targets.opj": "35ee046184aafae9df1c3dd293c3acdeb7bf0158524081f68cc76b18598d1197",
+    "comparison/previous/matched-targets.png": "af23d2969dd74fc07bcad18db92caf819bac15c19e553a6e1e5d32b7a32702db",
+    "comparison/previous/renderer-fixture.opj": "57f76b195dd1f50c7986a0701362ddf58c7fcfde0823ccd5b6beed423cd764c9",
+    "comparison/previous/renderer-fixture.png": "d8c946c46a3ad50751c871e595f92ed843b9b143e7ab7d6ab89d6b39d3d60d13",
+    "comparison/swatches.csv": "e5453e956bff16deac0934ff9fa4dd1bf3bdbd4e02215af5a1f708e5a1ce5d6f",
+    "comparison/timings.csv": "8822798b984df7cc3b152413b9d42180c2c31f74fe415f435310c36a7d8a913f",
+    "comparison/verification.txt": "cb5718552d0f04369c46614e4fa55e9198b95ac5669656288ae3b5fcef21d150"
+  }
+}

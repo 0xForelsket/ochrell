@@ -1,0 +1,37 @@
+{
+  "packages": {
+    "fit_sha256": "99cc38cb2751d8a09895e3a78375aabd003c6933c068145334bf604a71d70afc",
+    "packages": {
+      "km": {
+        "file": "old-holland-eight-balanced-km.opp",
+        "bytes": 5618,
+        "sha256": "a1ddae3b8086fa29e5361040eae655d4c377045ca9b6ed8085c663ab63e9afa6",
+        "identity": "9c37e7873418728e98112ee0d38bfb489c6ac98416dab270b13c4442cb85eefd"
+      },
+      "empirical": {
+        "file": "old-holland-eight-balanced-empirical.opp",
+        "bytes": 6521,
+        "sha256": "643c6960282398b19f5e7eb4b8a788c104164fd1bc0adf83ddc7de8080088db7",
+        "identity": "f1174289c727d92e8a237e887a8e50866e0db5bb147e68b4fc4a772cfe858c07"
+      }
+    },
+    "recipe_count": 2411,
+    "recipes_sha256": "ea9229dd817ec7dae3fb37d7c6e64b3494c97d20cb0792d9a03ca91770ad36ff"
+  },
+  "checks": {
+    "km": {
+      "spectral_max_abs": 2.220446049250313e-16,
+      "linear_rgb_max_abs": 3.3306690738754696e-16
+    },
+    "empirical": {
+      "spectral_max_abs": 4.440892098500626e-16,
+      "linear_rgb_max_abs": 3.3306690738754696e-16
+    }
+  },
+  "runtime_hashes": {
+    "src/palette.rs": "0b9d15edb04b87029e45df04b1be6f8cf2464fffdaef09f8c371d2a052923b7f",
+    "src/palette_package.rs": "e9231e4f5ef5ccf332a7f5ea84a48a6b9cf7874152f27d5f6d3f2832e4a21ba4",
+    "src/palette_window.rs": "6fb24390fd3c69f53595fef50610b94beb53f24c7dce744efb1a26e54fc6e37e",
+    "examples/measured_palette_probe.rs": "1ad47def8c0f212bb9d944dabc57b8626ee4357b6ca0a9564c092857aaad445e"
+  }
+}
