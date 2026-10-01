@@ -2,7 +2,7 @@
 
 **Open-source pigment mixing for digital painting.**
 
-An independent Rust library for RGB-in, pigment-like mixing, RGB-out. It uses smooth spectral reconstruction and Kubelkaâ€“Munk absorption/scattering, with no proprietary Mixbox implementation data and no Spectral.js coefficients.
+An independent Rust library for RGB-in, pigment-like mixing, RGB-out. It uses smooth spectral reconstruction and Kubelka–Munk absorption/scattering, with no proprietary Mixbox implementation data and no Spectral.js coefficients.
 
 **Research release:** mathematically improved, reproducible and suitable for integration experiments; not calibrated to a specific real paint. Version 0.2 improves the earlier blue/yellow, cyan/magenta and white-tint failures. The full evaluation, tradeoffs and negative findings are in the [revision report](docs/revision-report.md) and [paper](paper/paper.md).
 
@@ -78,7 +78,7 @@ model and recorded output bits while improving core CPU throughput in alternatin
 local benchmarks. Raw candidates, rejection and reproduction commands are kept
 separate from the frozen v0.2 paper and integration measurements.
 
-The new default replaces nonlinear palette inversion and the 33Â³ encoder LUT with an explicit continuous spectral reconstruction. Three independently fitted primary spectra generate complementary anchors; a declared optical-strength prior controls absorption/scattering and white behavior. The reference uses 81 bands/f64; the default uses 41 bands/f32 optics. Both use stack arrays. Default construction has no table parse.
+The new default replaces nonlinear palette inversion and the 33³ encoder LUT with an explicit continuous spectral reconstruction. Three independently fitted primary spectra generate complementary anchors; a declared optical-strength prior controls absorption/scattering and white behavior. The reference uses 81 bands/f64; the default uses 41 bands/f32 optics. Both use stack arrays. Default construction has no table parse.
 
 On the recorded host, complete mixing reaches about 1.4 million operations/s and cached mixing about 4.4 million/s. The new default is slower than the legacy LUT, and its latent is larger (340 versus 44 bytes). See [measured benchmarks](docs/benchmarks.md) rather than treating these figures as cross-platform guarantees.
 
@@ -99,7 +99,7 @@ python3 tools/reproduce.py
 
 The last command fits the basis, compiles/tests Rust, runs 10,000 reconstruction and 10,000 mixture samples, canonical/random/tint trajectories, independent holdout probes, ablations and timings, then regenerates figures, tables and manuscript. PDF generation additionally requires Pandoc and TeX. `CARGO` may identify a custom toolchain wrapper. The Python packages must be installed before offline Rust execution. `tools/reproduce_legacy.py` preserves the previous study.
 
-Edit **`config.toml`** to change model/experiment settings; rerun generation and recompile after model changes. The optimized Rust kernel supports the documented Î²=0.5 prior. Unsupported reproduction configurations fail explicitly. The Python model supports the broader ablation family. No pigment measurements or network access are needed for model generation.
+Edit **`config.toml`** to change model/experiment settings; rerun generation and recompile after model changes. The optimized Rust kernel supports the documented β=0.5 prior. Unsupported reproduction configurations fail explicitly. The Python model supports the broader ablation family. No pigment measurements or network access are needed for model generation.
 
 Frozen Mixbox/Spectral.js comparison outputs and acquisition metadata are included under `comparisons/external-baseline`; new comparisons are under `results/revision/external`. They are observations after model selection, not fitting targets. Reacquiring a changing web demo is intentionally separate from the reproducible default workflow.
 
@@ -137,9 +137,10 @@ the Rust library still builds and runs without Python or renderer code.
 | `experiments/oil_grouped/REPORT.md` | Grouped recipe validation withholding each chromatic ratio and all its white additions |
 | `experiments/oil_red_blue/REPORT.md` | Frozen-model red/blue correction diagnosis and calibration-coverage sensitivity |
 | `experiments/oil_public_data/REPORT.md` | Public measurement source audit and source-consistency checks |
-| `experiments/oil_external/REPORT.md` | Fixed-method test on a second measured palette; poor scores and unresolved source compatibility |
+| `experiments/oil_external/REPORT.md` | Original header-paired external test; superseded for accuracy interpretation by the inferred-mapping study |
 | `experiments/oil_source_recovery/REPORT.md` | Frozen inferred 175-sample mapping, near reproduction of published baselines and quantified label ambiguity |
-| `experiments/oil_source_trace/REPORT.md` | Seven-model source-to-paper reconstruction, bounded ordering checks and the remaining provenance gap |
+| `experiments/oil_reconstructed/REPORT.md` | Unchanged model evaluation under inferred labels: robust spectral gains, white-mixture dependence and mapping sensitivity |
+| `experiments/oil_source_trace/REPORT.md` | Initial seven-model source audit and bounded ordering checks, preceding the inferred reconstruction |
 | `data/README.md` | Dataset/license attribution and checksums |
 | `results/revision/` | Raw current results, environment, fit and ablations |
 | `paper/paper.md`, `.tex`, `.pdf` | Revised scientific paper |

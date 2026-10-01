@@ -1,0 +1,341 @@
+{
+  "status": "Post-evaluation descriptive subgroups; no fitting or tuning.",
+  "variants": {
+    "base": {
+      "white_ternary9": {
+        "samples": [
+          "Bwc",
+          "bWc",
+          "bwC",
+          "Bwy",
+          "bWy",
+          "Wcy",
+          "wCy",
+          "bwY",
+          "wcY"
+        ],
+        "count": 9,
+        "spectral_rmse": {
+          "km_mean": 0.04087861023579895,
+          "empirical_mean": 0.025850542003706792,
+          "improved": 8,
+          "improvement_percent": 36.762669145076536
+        },
+        "delta_e_2000": {
+          "km_mean": 6.972165507920102,
+          "empirical_mean": 6.300174253824078,
+          "improved": 6,
+          "improvement_percent": 9.638199972916139
+        }
+      },
+      "chromatic_ternary3": {
+        "samples": [
+          "Bcy",
+          "bCy",
+          "bcY"
+        ],
+        "count": 3,
+        "spectral_rmse": {
+          "km_mean": 0.016568480800018857,
+          "empirical_mean": 0.024188847992034437,
+          "improved": 0,
+          "improvement_percent": -45.99315582396008
+        },
+        "delta_e_2000": {
+          "km_mean": 4.652703057489923,
+          "empirical_mean": 6.239967509761093,
+          "improved": 0,
+          "improvement_percent": -34.11488832746357
+        }
+      }
+    },
+    "variant-01": {
+      "white_ternary9": {
+        "samples": [
+          "Bwc",
+          "bWc",
+          "bwC",
+          "Bwy",
+          "bWy",
+          "Wcy",
+          "wCy",
+          "bwY",
+          "wcY"
+        ],
+        "count": 9,
+        "spectral_rmse": {
+          "km_mean": 0.03813951286963198,
+          "empirical_mean": 0.02398032255002702,
+          "improved": 8,
+          "improvement_percent": 37.12472775413711
+        },
+        "delta_e_2000": {
+          "km_mean": 7.155494993471551,
+          "empirical_mean": 6.6079925479112624,
+          "improved": 6,
+          "improvement_percent": 7.651496452164565
+        }
+      },
+      "chromatic_ternary3": {
+        "samples": [
+          "Bcy",
+          "bCy",
+          "bcY"
+        ],
+        "count": 3,
+        "spectral_rmse": {
+          "km_mean": 0.016568480800018857,
+          "empirical_mean": 0.024188847992034437,
+          "improved": 0,
+          "improvement_percent": -45.99315582396008
+        },
+        "delta_e_2000": {
+          "km_mean": 4.652703057489923,
+          "empirical_mean": 6.239967509761093,
+          "improved": 0,
+          "improvement_percent": -34.11488832746357
+        }
+      }
+    },
+    "variant-02": {
+      "white_ternary9": {
+        "samples": [
+          "Bwc",
+          "bWc",
+          "bwC",
+          "Bwy",
+          "bWy",
+          "Wcy",
+          "wCy",
+          "bwY",
+          "wcY"
+        ],
+        "count": 9,
+        "spectral_rmse": {
+          "km_mean": 0.0411867866814824,
+          "empirical_mean": 0.0261238632056708,
+          "improved": 8,
+          "improvement_percent": 36.5722230100167
+        },
+        "delta_e_2000": {
+          "km_mean": 7.113402180150421,
+          "empirical_mean": 6.466530410842342,
+          "improved": 6,
+          "improvement_percent": 9.093704431799745
+        }
+      },
+      "chromatic_ternary3": {
+        "samples": [
+          "Bcy",
+          "bCy",
+          "bcY"
+        ],
+        "count": 3,
+        "spectral_rmse": {
+          "km_mean": 0.017192530876742478,
+          "empirical_mean": 0.025157139251080513,
+          "improved": 0,
+          "improvement_percent": -46.32597976085248
+        },
+        "delta_e_2000": {
+          "km_mean": 4.687658453561117,
+          "empirical_mean": 6.599473502207917,
+          "improved": 0,
+          "improvement_percent": -40.784009065217475
+        }
+      }
+    },
+    "variant-03": {
+      "white_ternary9": {
+        "samples": [
+          "Bwc",
+          "bWc",
+          "bwC",
+          "Bwy",
+          "bWy",
+          "Wcy",
+          "wCy",
+          "bwY",
+          "wcY"
+        ],
+        "count": 9,
+        "spectral_rmse": {
+          "km_mean": 0.040767084912264634,
+          "empirical_mean": 0.025911964902835136,
+          "improved": 9,
+          "improvement_percent": 36.43900475444686
+        },
+        "delta_e_2000": {
+          "km_mean": 7.015613613045206,
+          "empirical_mean": 6.3182694623805125,
+          "improved": 6,
+          "improvement_percent": 9.939888214026134
+        }
+      },
+      "chromatic_ternary3": {
+        "samples": [
+          "Bcy",
+          "bCy",
+          "bcY"
+        ],
+        "count": 3,
+        "spectral_rmse": {
+          "km_mean": 0.016678667764437025,
+          "empirical_mean": 0.0242378665839213,
+          "improved": 0,
+          "improvement_percent": -45.32255769014312
+        },
+        "delta_e_2000": {
+          "km_mean": 4.622994247249083,
+          "empirical_mean": 6.287156410932877,
+          "improved": 0,
+          "improvement_percent": -35.99749587994956
+        }
+      }
+    },
+    "variant-04": {
+      "white_ternary9": {
+        "samples": [
+          "Bwc",
+          "bWc",
+          "bwC",
+          "Bwy",
+          "bWy",
+          "Wcy",
+          "wCy",
+          "bwY",
+          "wcY"
+        ],
+        "count": 9,
+        "spectral_rmse": {
+          "km_mean": 0.04202915459820516,
+          "empirical_mean": 0.02674012207647684,
+          "improved": 8,
+          "improvement_percent": 36.37720688862305
+        },
+        "delta_e_2000": {
+          "km_mean": 6.954730744281185,
+          "empirical_mean": 6.293701651962451,
+          "improved": 6,
+          "improvement_percent": 9.504740249826245
+        }
+      },
+      "chromatic_ternary3": {
+        "samples": [
+          "Bcy",
+          "bCy",
+          "bcY"
+        ],
+        "count": 3,
+        "spectral_rmse": {
+          "km_mean": 0.016606357177083593,
+          "empirical_mean": 0.025293419951015594,
+          "improved": 0,
+          "improvement_percent": -52.31167005079209
+        },
+        "delta_e_2000": {
+          "km_mean": 4.668545044938574,
+          "empirical_mean": 6.639788208257978,
+          "improved": 0,
+          "improvement_percent": -42.22392939008991
+        }
+      }
+    },
+    "variant-05": {
+      "white_ternary9": {
+        "samples": [
+          "Bwc",
+          "bWc",
+          "bwC",
+          "Bwy",
+          "bWy",
+          "Wcy",
+          "wCy",
+          "bwY",
+          "wcY"
+        ],
+        "count": 9,
+        "spectral_rmse": {
+          "km_mean": 0.03844828535659595,
+          "empirical_mean": 0.024261238713334903,
+          "improved": 8,
+          "improvement_percent": 36.89903596917413
+        },
+        "delta_e_2000": {
+          "km_mean": 7.297825988651367,
+          "empirical_mean": 6.773596327378673,
+          "improved": 6,
+          "improvement_percent": 7.183367513666503
+        }
+      },
+      "chromatic_ternary3": {
+        "samples": [
+          "Bcy",
+          "bCy",
+          "bcY"
+        ],
+        "count": 3,
+        "spectral_rmse": {
+          "km_mean": 0.017192530876742478,
+          "empirical_mean": 0.025157139251080513,
+          "improved": 0,
+          "improvement_percent": -46.32597976085248
+        },
+        "delta_e_2000": {
+          "km_mean": 4.687658453561117,
+          "empirical_mean": 6.599473502207917,
+          "improved": 0,
+          "improvement_percent": -40.784009065217475
+        }
+      }
+    },
+    "variant-06": {
+      "white_ternary9": {
+        "samples": [
+          "Bwc",
+          "bWc",
+          "bwC",
+          "Bwy",
+          "bWy",
+          "Wcy",
+          "wCy",
+          "bwY",
+          "wcY"
+        ],
+        "count": 9,
+        "spectral_rmse": {
+          "km_mean": 0.03802869546998033,
+          "empirical_mean": 0.024041208032221147,
+          "improved": 9,
+          "improvement_percent": 36.781402214548315
+        },
+        "delta_e_2000": {
+          "km_mean": 7.194084493777548,
+          "empirical_mean": 6.6204177389077765,
+          "improved": 6,
+          "improvement_percent": 7.974145360204745
+        }
+      },
+      "chromatic_ternary3": {
+        "samples": [
+          "Bcy",
+          "bCy",
+          "bcY"
+        ],
+        "count": 3,
+        "spectral_rmse": {
+          "km_mean": 0.016678667764437025,
+          "empirical_mean": 0.0242378665839213,
+          "improved": 0,
+          "improvement_percent": -45.32255769014312
+        },
+        "delta_e_2000": {
+          "km_mean": 4.622994247249083,
+          "empirical_mean": 6.287156410932877,
+          "improved": 0,
+          "improvement_percent": -35.99749587994956
+        }
+      }
+    }
+  }
+}

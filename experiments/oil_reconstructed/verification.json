@@ -1,0 +1,564 @@
+{
+  "manifest": {
+    "original_method": {
+      "experiment": "Grillini fixed-method transfer, grouped nominal recipe exclusions",
+      "hashes": {
+        "experiments/oil_external/PLAN.md": "8bd7dd1478444887dca93047633c0fc691e1512f62d16bc4c660f8329a1ef30e",
+        "experiments/oil_external/run.py": "53afcdcdaa80ce8227393a114b5f06299693815b474ec1ad978b3b55a5303f20",
+        "experiments/oil_public_data/audit.py": "3050b551348880003fc0058b91149b60bdffec8d724387d60965b76ec1b21a14",
+        "target/measured-oils/public-audit/grillini-data.zip": "6d8cec6fb4fff5d4c24d18d1783422da8ef955d3e7ba7263179a84ed6c9b683e",
+        "experiments/oil_parallel/interaction/run.py": "b6c4828856737393bc7b4561855acf35aa1dc340664d05c8ebd3726d509ce911",
+        "tools/measured_oils.py": "21f7e18f4c30cbfa9fcf1da801229942bc420afaec57ddd21d9a98510cc43137",
+        "tools/measured_oils_chromatic.py": "951daaddaed41ec95b221de3d0f767267dafab6d025dc129aa81b3ebb6f0a2fa",
+        "experiments/oil_parallel/validate_comparison.py": "f833991152dc92c00c840b8ed8009cb468d641c0d83d7777747bcb336e0b6409",
+        "config/measured-oils-v1.json": "d4c069baf2db4b7aae306d8583df3f7fbae24c805a8b2ef1c57739009b0b1f72",
+        "data/cie_380_780_1nm.csv": "153b2a573da2ab6c155ccb7c03ca21f16e938b030387e56565c7d03f6ad95f32"
+      },
+      "grid_nm": [
+        440,
+        450,
+        460,
+        470,
+        480,
+        490,
+        500,
+        510,
+        520,
+        530,
+        540,
+        550,
+        560,
+        570,
+        580,
+        590,
+        600,
+        610,
+        620,
+        630,
+        640,
+        650,
+        660,
+        670,
+        680,
+        690,
+        700,
+        710,
+        720,
+        730,
+        740
+      ],
+      "fit_mass_basis": "published rounded dry-pigment mass fractions",
+      "group_basis": "nominal ratios encoded by source sample labels",
+      "settings": {
+        "experiment": "old-holland-four-reference-v1",
+        "selected_columns_one_based": [
+          1,
+          3,
+          5,
+          8
+        ],
+        "grid_nm": [
+          400,
+          700,
+          10
+        ],
+        "model": "opaque-homogeneous-km-pure-ratios-relative-scattering",
+        "white_scattering_gauge": 1.0,
+        "log_scattering_bounds": [
+          -9.210340371976184,
+          9.210340371976184
+        ],
+        "initial_log_scattering": [
+          0.0,
+          -2.302585092994046,
+          2.302585092994046
+        ],
+        "curvature_weight": 0.0001,
+        "amplitude_weight": 1e-08,
+        "optimizer": "scipy-least-squares-trf-exact-jacobian",
+        "max_nfev": 2000,
+        "ftol": 1e-10,
+        "xtol": 1e-10,
+        "gtol": 1e-10,
+        "quality_screen": {
+          "mean_spectral_rmse": 0.02,
+          "p95_spectral_rmse": 0.05,
+          "mean_delta_e_2000": 3.0,
+          "p95_delta_e_2000": 6.0,
+          "max_delta_e_2000": 10.0
+        }
+      },
+      "folds": {
+        "Bc": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "Bc",
+            "Bwc"
+          ],
+          "nominal_chromatic_fraction": [
+            0.0,
+            0.333333333333,
+            0.666666666667
+          ]
+        },
+        "bWc": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "bWc",
+            "BC"
+          ],
+          "nominal_chromatic_fraction": [
+            0.0,
+            0.5,
+            0.5
+          ]
+        },
+        "bwC": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "bwC",
+            "bC"
+          ],
+          "nominal_chromatic_fraction": [
+            0.0,
+            0.666666666667,
+            0.333333333333
+          ]
+        },
+        "By": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "By",
+            "Bwy"
+          ],
+          "nominal_chromatic_fraction": [
+            0.333333333333,
+            0.0,
+            0.666666666667
+          ]
+        },
+        "bWy": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "bWy",
+            "BY"
+          ],
+          "nominal_chromatic_fraction": [
+            0.5,
+            0.0,
+            0.5
+          ]
+        },
+        "Bcy": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "Bcy"
+          ],
+          "nominal_chromatic_fraction": [
+            0.25,
+            0.25,
+            0.5
+          ]
+        },
+        "Wcy": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "Wcy",
+            "CY"
+          ],
+          "nominal_chromatic_fraction": [
+            0.5,
+            0.5,
+            0.0
+          ]
+        },
+        "bCy": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "bCy"
+          ],
+          "nominal_chromatic_fraction": [
+            0.25,
+            0.5,
+            0.25
+          ]
+        },
+        "wCy": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "wCy",
+            "Cy"
+          ],
+          "nominal_chromatic_fraction": [
+            0.333333333333,
+            0.666666666667,
+            0.0
+          ]
+        },
+        "bwY": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "bwY",
+            "bY"
+          ],
+          "nominal_chromatic_fraction": [
+            0.666666666667,
+            0.0,
+            0.333333333333
+          ]
+        },
+        "bcY": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "cY",
+            "Y"
+          ],
+          "test": [
+            "bcY"
+          ],
+          "nominal_chromatic_fraction": [
+            0.5,
+            0.25,
+            0.25
+          ]
+        },
+        "wcY": {
+          "train": [
+            "B",
+            "Bw",
+            "BW",
+            "bW",
+            "W",
+            "Bc",
+            "Wc",
+            "BC",
+            "WC",
+            "bC",
+            "wC",
+            "C",
+            "By",
+            "Wy",
+            "Cy",
+            "BY",
+            "WY",
+            "CY",
+            "bY",
+            "wY",
+            "Y"
+          ],
+          "test": [
+            "wcY",
+            "cY"
+          ],
+          "nominal_chromatic_fraction": [
+            0.666666666667,
+            0.333333333333,
+            0.0
+          ]
+        }
+      }
+    },
+    "hashes": {
+      "experiments/oil_reconstructed/run.py": "94b42b319b98f57d8ff15a4148177dbd3934855fa8a7c2c5e88763a8d8b3af6c",
+      "experiments/oil_reconstructed/PLAN.md": "6a5659c518b2f279dc1545f32f46487ba3f44f014719fa1dac166d09bf3311df",
+      "experiments/oil_source_recovery/mapping.json": "9e31ac91fcaa334b8bc56e9d3ae501d7ebe79de932ca066dba84ba276f9d6a22",
+      "experiments/oil_source_recovery/pair-ambiguity-audit.json": "19dabbaa16b9e77f3d4dbe6c635e5b0dae077518883760597f52380cd8f1b9a0",
+      "experiments/oil_source_recovery/figure6-vector-ticks.json": "7353324a563d88e5598ce76b99de04e90330995772c5b423bf9d970f8283eb5b",
+      "experiments/oil_source_trace/trace.py": "6b573aa884dfc9d4ed212be17e687480462f9b8f8c53bda113bdc0aebfab3df3"
+    },
+    "settings": {
+      "experiment": "old-holland-four-reference-v1",
+      "selected_columns_one_based": [
+        1,
+        3,
+        5,
+        8
+      ],
+      "grid_nm": [
+        400,
+        700,
+        10
+      ],
+      "model": "opaque-homogeneous-km-pure-ratios-relative-scattering",
+      "white_scattering_gauge": 1.0,
+      "log_scattering_bounds": [
+        -9.210340371976184,
+        9.210340371976184
+      ],
+      "initial_log_scattering": [
+        0.0,
+        -2.302585092994046,
+        2.302585092994046
+      ],
+      "curvature_weight": 0.0001,
+      "amplitude_weight": 1e-08,
+      "optimizer": "scipy-least-squares-trf-exact-jacobian",
+      "max_nfev": 2000,
+      "ftol": 1e-10,
+      "xtol": 1e-10,
+      "gtol": 1e-10,
+      "quality_screen": {
+        "mean_spectral_rmse": 0.02,
+        "p95_spectral_rmse": 0.05,
+        "mean_delta_e_2000": 3.0,
+        "p95_delta_e_2000": 6.0,
+        "max_delta_e_2000": 10.0
+      }
+    },
+    "environment": {
+      "python": "3.12.11",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "colour": "0.4.6"
+    },
+    "variants_sha256": "b37fedf4216a8ad68da58e035deb34700231cba6ef2c8a17c318361d483cbf10"
+  },
+  "model_bundle_sha256": "8090dd57ce49b584fcae15cdb85eafbe942a4181c97f53b27a95d22265bc1ced",
+  "unique_fits": 38,
+  "subset_mappings": 7,
+  "scalar_max_abs": 2.8449465006019636e-15,
+  "pure_max_abs": 1.1102230246251565e-16,
+  "excluded_target_perturbation_coefficient_change": 0,
+  "finite_bounded_all34_all_models": true
+}

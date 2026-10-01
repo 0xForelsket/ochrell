@@ -41,8 +41,13 @@ published means and exactly reproduces the best/worst counts. These statistics
 helped select the mapping, and some assignments vary under looser tolerances;
 this is conditional source recovery, not author-confirmed ground truth. The
 earlier external scores cannot establish generalization under the released
-header pairing. The next comparison freezes the inferred mapping and unchanged
-fitting method, with explicit sensitivity to alternative assignments.
+header pairing. The [frozen-method rerun](../experiments/oil_reconstructed/REPORT.md) now finds
+26.9% lower mean spectral RMSE on twelve grouped ternaries. Its advantage remains
+26.1-26.9% across all seven feasible selected-palette mappings in the tested
+paired-scan family. Gains concentrate in white-containing mixtures: all three
+Y/C/B ternaries without white worsen, and the mean windowed color advantage is
+small and can reverse under mapping uncertainty. This supports continued research
+under inferred labels; no measured preset, renderer or default is changed.
 
 ## Selected candidates
 
