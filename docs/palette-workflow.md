@@ -132,8 +132,8 @@ checks exercise reachable colors and unmatched black with 8, 10 and 16 materials
 `PaletteLut` remains four-paint only. Larger palettes decode their known recipes
 directly through K-M. No 7D/15D table is allocated, no RGB residual is added and
 no ingredient is dropped. Speedups measured for the four-paint LUT do not apply
-to this direct path. The renderer now has optional scalar forward acceleration,
-described below, which keeps every material component.
+to this direct path. The renderer now uses scalar forward acceleration for new
+corrected-palette mixers, described below, keeping every material component.
 
 The sibling renderer exposes `PaletteMixerN::<N>::direct(palette)` and
 `PaletteJobN<N>` for direct recipe painting. `RecipeLoadN<N>` preserves every
@@ -205,7 +205,7 @@ comparison rather than treating rendered appearance as physical validation.
 The optical package contains no eight-paint recipe LUT. Its original direct
 decoder measured about 1.02 microseconds per recipe on that run. A dense
 seven-coordinate extension of the four-paint table is impractical. The renderer
-now offers separate exact authoring caching and optional scalar forward
+now offers separate exact authoring caching and default scalar forward
 acceleration below. Explicit recipe authoring already avoids inverse search.
 
 ### Renderer authoring cache
@@ -245,14 +245,21 @@ native golden cases pass without changing engine version or saved formats.
 This avoids intermediate display work. The following forward-decoder pass
 measures an additional improvement on top of final-image rendering.
 
-### Optional fast display evaluation
+### Fast display by default
 
-The renderer now accepts `with_forward_decoder(ForwardDecoder::AlgebraicV1)` or
-`ForwardDecoder::ExpLutV1` on a direct mixer or existing job. The first simplifies
-the empirical correction to an equivalent ratio with one exponential; the second
-uses a 513-node scalar exponential lookup. Both keep the same frozen optical
-coefficients, 1-16 material proportions and reference target/streak authoring.
-`Reference` remains the default and is always available for comparison.
+New `PaletteMixerN::direct` and `from_palette_bytes` mixers automatically select
+`ForwardDecoder::ExpLutV1` for corrected palettes, including Old Holland Eight.
+It simplifies the empirical correction and uses a 513-node scalar exponential
+lookup. Plain K-M palettes need no table and retain reference evaluation;
+prepared-four OPL1 retains its existing path. All 1-16 material proportions,
+frozen optical coefficients and reference target/streak authoring are preserved.
+
+Use `with_forward_decoder(ForwardDecoder::Reference)` for an explicit comparison,
+or `AlgebraicV1` for the equivalent expression without interpolation. Existing
+saved jobs always load their recorded mode, so promoting the new-job default
+does not silently change their output. The low-level tagless
+`PaletteMixerN::from_bytes(palette, table)` keeps legacy reference semantics;
+use `from_palette_bytes` to start new work with the current default.
 
 The [forward evaluation report](../experiments/palette_forward_math/REPORT.md)
 finds 4.901 s reference, 3.050 s algebraic and 2.857 s lookup medians for the
@@ -265,5 +272,8 @@ the lookup's maximum reflectance difference is 1.221e-6; all-pixel painting chec
 and saved replay also pass their declared limits. This is approximation of the
 existing model, not a new physical-paint accuracy result. OPJ2 stores decoder tags
 0/1/2 so saved jobs retain their selected evaluation. Old tag-0 and prepared-four
-artifacts keep their meaning; new tags are rejected by older readers. No fitted
-model, global default or Ochrell core optical implementation changes in this pass.
+artifacts keep their meaning; new tags are rejected by older readers. The initial
+comparison kept acceleration opt-in during validation; the follow-up promotes it
+for new corrected-palette work. Fitted models, Ochrell core optics and the
+separate default RGB renderer are unchanged. The comparison and authoring-cache
+benchmarks explicitly retain reference evaluation to preserve their study inputs.
