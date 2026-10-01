@@ -1,0 +1,303 @@
+{
+  "timings": {
+    "fixture/disabled": {
+      "author_ms": {
+        "count": 7,
+        "median": 3194.7055,
+        "min": 2935.7243,
+        "max": 4582.5307999999995
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 3194.7055,
+        "min": 2935.7243,
+        "max": 4582.5307999999995
+      }
+    },
+    "fixture/cold": {
+      "author_ms": {
+        "count": 7,
+        "median": 1190.7248,
+        "min": 1138.9,
+        "max": 1387.4127
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 1190.7248,
+        "min": 1138.9,
+        "max": 1387.4127
+      }
+    },
+    "fixture/warm": {
+      "author_ms": {
+        "count": 7,
+        "median": 0.1624,
+        "min": 0.13779999999999998,
+        "max": 0.2223
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 1355.2330000000002,
+        "min": 1147.2967999999998,
+        "max": 1495.4246
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 1355.3850000000002,
+        "min": 1147.5190999999998,
+        "max": 1495.6029
+      }
+    },
+    "repeated64/disabled": {
+      "author_ms": {
+        "count": 7,
+        "median": 790.9593,
+        "min": 699.5782,
+        "max": 1043.0582
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 790.9593,
+        "min": 699.5782,
+        "max": 1043.0582
+      }
+    },
+    "repeated64/cold": {
+      "author_ms": {
+        "count": 7,
+        "median": 100.6803,
+        "min": 86.58399999999999,
+        "max": 107.6829
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 100.6803,
+        "min": 86.58399999999999,
+        "max": 107.6829
+      }
+    },
+    "repeated64/warm": {
+      "author_ms": {
+        "count": 7,
+        "median": 0.0026,
+        "min": 0.0025,
+        "max": 0.0037
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 101.77319999999999,
+        "min": 89.3924,
+        "max": 106.9224
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 101.77569999999999,
+        "min": 89.395,
+        "max": 106.9254
+      }
+    },
+    "unique64/disabled": {
+      "author_ms": {
+        "count": 7,
+        "median": 1158.8136,
+        "min": 809.6166000000001,
+        "max": 1384.0055
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 1158.8136,
+        "min": 809.6166000000001,
+        "max": 1384.0055
+      }
+    },
+    "unique64/cold": {
+      "author_ms": {
+        "count": 7,
+        "median": 1152.0767,
+        "min": 923.3272999999999,
+        "max": 1516.4088
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 1152.0767,
+        "min": 923.3272999999999,
+        "max": 1516.4088
+      }
+    },
+    "unique64/warm": {
+      "author_ms": {
+        "count": 7,
+        "median": 0.005,
+        "min": 0.0044,
+        "max": 0.0083
+      },
+      "prime_ms": {
+        "count": 7,
+        "median": 1040.3306,
+        "min": 865.4735000000001,
+        "max": 1479.9655
+      },
+      "prime_plus_author_ms": {
+        "count": 7,
+        "median": 1040.3356,
+        "min": 865.4782,
+        "max": 1479.9719
+      }
+    }
+  },
+  "counts": {
+    "fixture/disabled": {
+      "requests": 285,
+      "hits": 0,
+      "misses": 285,
+      "entries": 0
+    },
+    "fixture/cold": {
+      "requests": 285,
+      "hits": 174,
+      "misses": 111,
+      "entries": 111
+    },
+    "fixture/warm": {
+      "requests": 285,
+      "hits": 285,
+      "misses": 0,
+      "entries": 111
+    },
+    "repeated64/disabled": {
+      "requests": 64,
+      "hits": 0,
+      "misses": 64,
+      "entries": 0
+    },
+    "repeated64/cold": {
+      "requests": 64,
+      "hits": 56,
+      "misses": 8,
+      "entries": 8
+    },
+    "repeated64/warm": {
+      "requests": 64,
+      "hits": 64,
+      "misses": 0,
+      "entries": 8
+    },
+    "unique64/disabled": {
+      "requests": 64,
+      "hits": 0,
+      "misses": 64,
+      "entries": 0
+    },
+    "unique64/cold": {
+      "requests": 64,
+      "hits": 0,
+      "misses": 64,
+      "entries": 64
+    },
+    "unique64/warm": {
+      "requests": 64,
+      "hits": 64,
+      "misses": 0,
+      "entries": 64
+    }
+  },
+  "profile_roles": {
+    "main": {
+      "requests": 94,
+      "distinct_targets_within_role": 36
+    },
+    "streak-dark": {
+      "requests": 94,
+      "distinct_targets_within_role": 36
+    },
+    "streak-light": {
+      "requests": 94,
+      "distinct_targets_within_role": 36
+    },
+    "secondary": {
+      "requests": 2,
+      "distinct_targets_within_role": 2
+    },
+    "ground": {
+      "requests": 1,
+      "distinct_targets_within_role": 1
+    }
+  },
+  "requests": 285,
+  "distinct_targets": 111,
+  "repeated_requests": 174,
+  "outputs_sha256": {
+    "fixture": "a36eeab8454da02b4b25e34d836e37057a8881a814f4fe292922e06cfe8925e2",
+    "repeated64": "fe97f248d3b21bef80d8d463357a858168ffa1a3cf25c7fe064d49f82111fe52",
+    "unique64": "3b75c30518a307719af907e9d95441b062b00cbd73c56668f8f88c316be8771c"
+  },
+  "package_sha256": "643c6960282398b19f5e7eb4b8a788c104164fd1bc0adf83ddc7de8080088db7",
+  "prechange_source_sha256": {
+    "palette.rs": "150889855562c5ff410cf5f03eab71b5d4aad60c08b2d33d0298030dbacf1aab",
+    "authoring_cache.rs": "0b0b9d1ae4b4495b18951bee8585e2555c6c50f2ced45e9de5e867949218970c",
+    "profile.txt": "f604baefadd5720c757b4869447f3ff09562d1321cb01c5821eaa824d7337c39"
+  },
+  "source_sha256": {
+    "oilpaint-renderer/crates/oil-mix/src/palette.rs": "5aa8acd59e73a899981d1fe5533240e91b48f4f1e75eb3c7e94ac6a2e96660c8",
+    "oilpaint-renderer/crates/oil-mix/tests/target_cache.rs": "90aaa8fcfa4d7234fcde7dea991d5b005ea8962feadac3dc1dd6f670f364c0db",
+    "oilpaint-renderer/crates/oil-palette/tests/workflow.rs": "d1d43d396c5d83a50b937ecdd3bf53fa5d1fe110668ef80a12539fc9e2dd0494",
+    "oilpaint-renderer/crates/oil-palette/examples/authoring_cache.rs": "03a2892c655bd7f43c69b7d94f84a6101afd9db4b99cd606ed6a032c803f26cd",
+    "oilpaint-renderer/crates/oil-palette/src/lib.rs": "c96da8e88587e310b032627daa15edfba70fc731eb5a735b6cc4835ec47297b5",
+    "oilpaint-renderer/Cargo.lock": "148faa053ef4c65494f1613cac4e797470f38cb5a2e1a3853bb90b1b8295fcef",
+    "ochrell/experiments/palette_authoring_cache/PLAN.md": "0bdf49109155eece6313717e1073997f0d1c39e68dbc6fd531260d51d87401cc",
+    "ochrell/experiments/palette_authoring_cache/report.py": "2e4ba69c0620b6d0549e232f96c143e61ae30377b09b47213f5929de7936db6c"
+  },
+  "raw_sha256": {
+    "timings.csv": "0ca7966a9bc7b531cbc931e324a9227b7d576e793f3b64e400bc7c6273429c17",
+    "checks.csv": "2c9fea05710faea155222a04e1e8216bb16157b807f31cb6971db13213b172b2",
+    "target-reuse.csv": "b270c8b57682765813de23578f91f92e97e5aa117122cf873426f7e2a59c9201"
+  },
+  "verification": "All 63 measured condition/workload runs produce identical full result bytes. All 3 fixture modes have identical OPJ2 bytes, all five canvas planes and blurred heights; saved replay agrees and cache reloads empty. Painting does not touch cache counters.\n",
+  "scoped_tests": "17 unit/integration tests plus 1 documentation test passed in oil-mix/oil-palette release suites",
+  "clippy": "cargo clippy --offline -p oil-mix -p oil-palette --all-targets -- -D warnings passed",
+  "rustc": "rustc 1.91.1 (ed61e7d7e 2025-11-07)",
+  "cache": {
+    "default_capacity": 1024,
+    "key": "validated RGB f32 bits",
+    "policy": "FIFO",
+    "scope": "one immutable palette/decoder instance",
+    "serialized": false,
+    "concurrency": "short synchronized lookup/insert; duplicate concurrent misses may solve independently"
+  }
+}

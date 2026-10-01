@@ -207,3 +207,21 @@ four-paint table is impractical; larger-palette acceleration needs a different
 representation. RGB-to-recipe lookup/caching would accelerate authoring, while
 forward-decoder acceleration would affect painting. Explicit recipe authoring
 already avoids the inverse search entirely.
+
+### Renderer authoring cache
+
+The sibling renderer's `PaletteMixerN` now caches exact target matches, enabled
+by default with 1024 FIFO entries per immutable palette/decoder instance.
+It keys validated input RGB f32 bits and preserves every original result field.
+Configure with `with_target_cache_capacity(n)` (zero disables), inspect
+`target_cache_stats()`, or clear with mutable `clear_target_cache()`.
+This is renderer authoring behavior; the lower-level Ochrell `ColorMatcherN`
+and the optical model are unchanged.
+
+The [measured cache comparison](../experiments/palette_authoring_cache/REPORT.md)
+finds 285 searches but only 111 distinct targets in the 94-stroke fixture.
+An empty cache reduces median authoring from 3.195 s to 1.191 s (2.68x).
+The warm pass takes 0.1624 ms after a separately recorded 1.355 s priming cost.
+New unique targets avoid no solver calls. Recipes, result bits, saved job bytes,
+all five canvas planes and blurred heights remain exact; cache contents are
+not serialized and painting does not access the cache. This is not a forward LUT.
